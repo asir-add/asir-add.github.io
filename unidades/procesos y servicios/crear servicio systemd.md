@@ -3,30 +3,34 @@
 Se va a configurar el script "/path/to/FOO" como un servicio, de forma que inicie automáticamente en el nivel de ejecución 5, que en nuestro caso es el nivel de ejecución por defecto en LinuxMint 18. 
 NOTA: "FOO" puede estar en cualquier otra ubicación, y debe tener permisos de ejecución.
 OJO: Reemplazar "/path/to/FOO" con la ruta al binario del servicio a iniciar. 
+
 1.	Abrir una BASH como "root":
-$ sudo bash
+
+	`$ sudo bash`
+    
 2.	Crear el "unit file" del servicio "foo" en  /etc/systemd/system:
-Creamos el fichero "/etc/systemd/system/foo.service":
 
-[Unit]
-Description=Servicio FOO
-After=syslog.socket
+	Creamos el fichero "/etc/systemd/system/foo.service":
 
-[Service]
-KillMode=process
-ExecStart=/bin/bash -c /path/to/FOO
-Restart=always
-
-[Install]
-WantedBy=runlevel5.target
-
-Descripción de cada una de las propiedades usadas en el fichero anterior:
-[Unit]
-Description	Texto descriptivo del servicio.
-After	Indicamos después de que servicios/targets/sockets se inicia el nuestro. En nuestro caso es después de iniciar el socket “syslog” pues nuestro servicio usa el log del sistema.
-[Service]
-KillMode	Indicamos la forma en la que se detiene el servicio; en este caso, “process” indica que se enviará la señal sólo al proceso principal. Éste deberá ocuparse de todos sus hijos.
-ExecStart	Indicamos el comando que inicia el servicio.
+    [Unit]
+    Description=Servicio FOO
+    After=syslog.socket
+    
+    [Service]
+    KillMode=process
+    ExecStart=/bin/bash -c /path/to/FOO
+    Restart=always
+    
+    [Install]
+    WantedBy=runlevel5.target
+    
+    Descripción de cada una de las propiedades usadas en el fichero anterior:
+    [Unit]
+    Description	Texto descriptivo del servicio.
+    After	Indicamos después de que servicios/targets/sockets se inicia el nuestro. En nuestro caso es después de iniciar el socket “syslog” pues nuestro servicio usa el log del sistema.
+    [Service]
+    KillMode	Indicamos la forma en la que se detiene el servicio; en este caso, “process” indica que se enviará la señal sólo al proceso principal. Éste deberá ocuparse de todos sus hijos.
+    ExecStart	Indicamos el comando que inicia el servicio.
 
 NOTA: En nuestro caso, al tratarse de un script, lo que ejecutamos es una BASH que a su vez ejecutará el script FOO.
 Restart	En caso de que el servicio falle o se mate al proceso y el servicio se detenga, con “always” se reiniciará automáticamente.
