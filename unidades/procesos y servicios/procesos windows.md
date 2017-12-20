@@ -28,7 +28,7 @@ Distintas formas de iniciar el "Administrador de tareas" de Windows:
 
 ### Información detallada
 
-* En la pestaña "Detalles" del "Administrador de tareas" disponemos de la vista clásica de procesos, con másdetalles.
+* En la pestaña "Detalles" del "Administrador de Tareas" disponemos de la vista clásica de procesos, con más detalles.
 
 ![Pestaña Detalles del Administrador de Tareas](imagenes/task-manager-02.png)
 
@@ -36,7 +36,133 @@ Distintas formas de iniciar el "Administrador de tareas" de Windows:
 
 ![Selección de columnas en el Administrador de Tareas](imagenes/task-manager-03.png)
 
+### Cambiar la prioridad de un proceso
 
+Botón secundario del ratón sobre el proceso > Establecer prioridad > Seleccionamos la prioridad deseada:
 
+![Cambiar la prioridad de un proceso](imagenes/task-manager-04.png)
 
+### Cambiar la afinidad de un proceso
 
+* En microprocesadores de varios núcleos o en equipos multiprocesador es posible indicar para cada proceso en que núcleo(s) o micros se debe ejecutar (eso es la“afinidad”).
+* Botón secundario del ratón sobre el proceso > Establecer afinidad.
+
+![Establecer afinidad de un proceso](imagenes/task-manager-05.png)
+
+### Terminar un proceso
+
+* Matar un proceso (y sus subprocesos); forzar la terminación de una aplicación.
+
+* Pestaña "Detalles" > botón secundario del ratón sobre el proceso > "Finalizar tarea" / "Finalizar el árbol de procesos".
+
+  ![Terminar un proceso desde el Administrador de Tareas](imagenes/task-manager-06.png)
+
+### Ubicación del ejecutable
+
+* Conocer donde se encuentra almacenado en disco el archivo ejecutable que inició el proceso.
+* Pestaña "Detalles" > Botón secundario del ratón sobre el proceso > “Abrir ubicación delarchivo”.
+
+![Ubicación del ejecutable desde el Administrador de Tareas](imagenes/task-manager-07.png)
+
+## El comando "tasklist"
+
+Comando que permite listar los procesos desde el Símbolo del sistema (CMD).
+
+```bash
+CMD> tasklist
+
+Nombre de imagen               PID Nombre de sesión Núm. de ses Uso de memor
+========================= ======== ================ =========== ============
+System Idle Process              0 Services                   0         8 KB
+System                           4 Services                   0     1.116 KB
+smss.exe                       388 Services                   0       104 KB
+csrss.exe                      516 Services                   0       804 KB
+wininit.exe                    632 Services                   0       236 KB
+csrss.exe                      640 Console                    1     1.604 KB
+services.exe                   708 Services                   0     4.620 KB
+lsass.exe                      716 Services                   0     8.108 KB
+svchost.exe                    820 Services                   0       248 KB
+svchost.exe                    844 Services                   0    16.148 KB
+fontdrvhost.exe                864 Services                   0       436 KB
+winlogon.exe                   936 Console                    1     1.848 KB
+fontdrvhost.exe                988 Console                    1     1.784 KB
+svchost.exe                    356 Services                   0     9.556 KB
+svchost.exe                    556 Services                   0     3.492 KB
+[...]
+```
+
+### Filtros
+
+Es posible usar filtros con el comando `tasklist`, de forma que sólo se listarán los procesos que cumplan los criterios especificados:
+
+| Nombre      | Operadores             | Descripción                              |
+| ----------- | ---------------------- | ---------------------------------------- |
+| STATUS      | eq, ne                 | Estado del proceso: RUNNING, NOT RESPONDING, UNKNOWN |
+| IMAGENAME   | eq, ne                 | Nombre del ejecutable (binario).         |
+| PID         | eq, ne, gt, lt, ge, le | Identificador del proceso.               |
+| SESSION     | eq, ne, gt, lt, ge, le | Número de sesión.                        |
+| SESSIONNAME | eq, ne                 | Nombre de la sesión.                     |
+| CPUTIME     | eq, ne, gt, lt, ge, le | Tiempo de uso de CPU en formato HH:MM:SS. |
+| MEMUSAGE    | eq, ne, gt, lt, ge, le | Uso de memoria en KiB.                   |
+| USERNAME    | eq, ne                 | Nombre de usuario.                       |
+| SERVICES    | eq, ne                 | Nombre de servicio.                      |
+| WINDOWTITLE | eq, ne                 | Título de la ventana.                    |
+| MODULES     | eq, ne                 | Nombre de la DLL (librería de enlace dinámico). |
+
+El significado de los operadores es el siguiente:
+
+| Operador | Descripción |
+| -------- | ----------- |
+| eq       | =           |
+| ne       | <>          |
+| gt       | >           |
+| lt       | <           |
+| ge       | >=          |
+| le       | <=          |
+
+#### Ejemplos
+
+Listar los procesos que NO son del usuario SYSTEM:
+
+```shell
+CMD> tasklist /fi "USERNAME ne SYSTEM"
+```
+
+Listar los procesos en ejecución:
+
+```shell
+CMD> tasklist /fi "STATUS eq RUNNING"
+```
+
+Listar los procesos cuyo ejecutable sea "cmd.exe":
+
+```shell
+CMD> tasklist /fi "IMAGENAME eq cmd.exe"
+```
+
+Lista el proceso con PID 1234:
+
+```shell
+CMD> tasklist /fi "PID eq 1234"
+```
+
+Listar los procesos que llevan más de 2 horas de uso de CPU y que pertenezcan al usuario "fran":
+
+```shell
+CMD> tasklist /fi "CPUTIME ge 2:00:00" /fi "USERNAME eq fran"
+```
+
+## El comando "taskkill"
+
+Permite matar procesos desde el Símbolo del sistema (CMD).
+
+Sintaxis:
+
+```
+taskkill [/f] /pid <pid>
+taskkill [/f] /fi<filtro>
+```
+
+:information_source: `<filtro>` sigue el mismo formato que los [filtros de `tasklist`](#filtros).
+
+:information_source: `/f` fuerza el cierre.
