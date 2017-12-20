@@ -113,6 +113,7 @@ Ahora comprobamos que el servicio reinicia si matamos el proceso principal.
 4005 ?        00:00:00 FOO
 ```
 Se observa que por mucho que matemos al proceso “FOO”, SystemD vuelve a iniciarlo (directiva Restart).
+
 5. **Habilitamos el servicio:**
 
 Es necesario habilitar el servicio para que se inicie automáticamente al iniciar el sistema:
