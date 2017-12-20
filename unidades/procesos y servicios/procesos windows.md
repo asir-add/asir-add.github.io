@@ -22,9 +22,9 @@ Distintas formas de iniciar el "Administrador de tareas" de Windows:
 * En la pestaña “Procesos” del “Administrador de tareas” disponemos de la vista sencilla de procesos.
 * Los procesos aparecen agrupados: Aplicaciones, Segundo plano, Servicios, ...
 
-:warning: Algunas versiones de Windows muestran `*32` junto al nombre el proceso, indicando que se tarat de una aplicación para microprocesadores de 32 bits.
+![Administrador de Tareas](imagenes/task-manager-01.png)
 
-![Administrador de Tareas](imagenes/task-manager-01.png)~
+⚠️ Algunas versiones de Windows muestran `*32` junto al nombre el proceso, indicando que se tarat de una aplicación para microprocesadores de 32 bits.
 
 ### Información detallada
 
