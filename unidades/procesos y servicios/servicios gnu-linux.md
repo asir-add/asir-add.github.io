@@ -9,7 +9,8 @@
 * Aunque el usuario también puede iniciarlos o detenerlos.
 * Tradicionalmente estos procesos son comandos cuyo nombre acaba en “d” (httpd, sshd, syslogd, atd, ...).
 
-##El proceso init
+## El proceso init
+
 * Es el primer proceso iniciado por el sistema operativo tras cargarse el Kernel.
 * Su binario se encuentra en `/sbin/init`.
 * Su PID (identificador de proceso) es el 1.
@@ -72,7 +73,7 @@ Los estilos de inicio más habituales en GNU/Linux son los siguientes:
 * **Upstart**: implementado para Ubuntu (y sus derivados) por Canonical.
 * **SystemD**: sistema de inicio adoptado actualmente por la mayoría de las distribuciones GNU/Linux.
 
-###SystemV
+### SystemV
 
 * También se le denomina SysV.
 * El proceso “init” lee el fichero `/etc/inittab` cuando se inicia el sistema y así sabe lo que tiene que hacer.
@@ -129,7 +130,7 @@ En SystemV es posible controlar los servicios mediante sus scripts de control en
 | /etc/init.d/<servicio> restart | Reinicia el servicio           | `# /etc/init.d/apache2 restart` |
 | /etc/init.d/<servicio> status  | Conocer el estado del servicio | `# /etc/init.d/apache2 status`  |
 
-###El comando "service"
+### El comando "service"
 
 Este comando funciona para todos los estilos de inicio (SysV, Upstart, SystemD):
 
@@ -194,11 +195,13 @@ Normalmente no suele venir instalado, por lo que debemos hacerlo nosotros:
 ```bash
 # apt-get install sysv-rc-conf
 ```
+
 Para iniciarlo:
 
 ```bash
 # sysv-rc-conf
 ```
+
 ### El comando "initctl"
 
 Comando para controlar los servicios en Upstart (Ubuntu y derivados):
