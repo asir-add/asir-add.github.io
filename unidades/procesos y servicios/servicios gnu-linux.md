@@ -115,7 +115,7 @@ Comandos para gestionar los servicios en los distintos estilos de inicio de GNU/
 | [service](#el-comando-service)           | Ídem.                                    |
 | [invoke-rc.d](#el-comando-invoke-rcd)    | Ídem.                                    |
 | [update-rc.d](#el-comando-update-rcd)    | Configurar los niveles de ejecución en los que se iniciará un servicio en SysV desde línea de comandos |
-| [sysv-rc-conf](#la-utilidad-sys-rc-conf) | Ídem al anterior pero con una interfaz en modo texto. |
+| [sysv-rc-conf](#la-utilidad-sysv-rc-conf) | Ídem al anterior pero con una interfaz en modo texto. |
 | [initctl](#el-comando-initctl)           | Iniciar, detener,reiniciar y conocer el estado de los servicios de tipo Upstart. |
 | [systemctl](#el-comando-systemctl)       | Iniciar, detener,reiniciar y conocer el estado de los servicios de tipo SystemD. |
 
