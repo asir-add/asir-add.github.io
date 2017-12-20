@@ -188,7 +188,7 @@ A continuación se explica su uso en SystemD:
 
 Forma más sencilla que el comando "update-rc.d" en SystemV para configurar los niveles de ejecución en los que se inician o detienen los servicios.
 
-![sysv-rc-conf](https://raw.githubusercontent.com/fvarrui/ADD/master/unidades/procesos%20y%20servicios/imagenes/sysv-rc-conf.png)
+![sysv-rc-conf](imagenes/sysv-rc-conf.png)
 
 Normalmente no suele venir instalado, por lo que debemos hacerlo nosotros:
 
