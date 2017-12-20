@@ -109,15 +109,15 @@ Los estilos de inicio más habituales en GNU/Linux son los siguientes:
 
 Comandos para gestionar los servicios en los distintos estilos de inicio de GNU/Linux:
 
-| Comando                | Descripción                              |
-| ---------------------- | ---------------------------------------- |
-| /etc/init.d/<servicio> | Iniciar, detener, reiniciar y conocer el estado de los servicios de tipo SysV. |
-| service                | Ídem.                                    |
-| invoke-rc.d            | Ídem.                                    |
-| update-rc.d            | Configurar los niveles de ejecución en los que se iniciará un servicio en SysV desde línea de comandos |
-| sysv-rc-conf           | Ídem al anterior pero con una interfaz en modo texto. |
-| initctl                | Iniciar, detener,reiniciar y conocer el estado de los servicios de tipo Upstart. |
-| systemctl              | Iniciar, detener,reiniciar y conocer el estado de los servicios de tipo SystemD. |
+| Comando                                  | Descripción                              |
+| ---------------------------------------- | ---------------------------------------- |
+| [/etc/init.d/<servicio>](#los-scripts-etcinitd) | Iniciar, detener, reiniciar y conocer el estado de los servicios de tipo SysV. |
+| service                                  | Ídem.                                    |
+| invoke-rc.d                              | Ídem.                                    |
+| update-rc.d                              | Configurar los niveles de ejecución en los que se iniciará un servicio en SysV desde línea de comandos |
+| sysv-rc-conf                             | Ídem al anterior pero con una interfaz en modo texto. |
+| initctl                                  | Iniciar, detener,reiniciar y conocer el estado de los servicios de tipo Upstart. |
+| systemctl                                | Iniciar, detener,reiniciar y conocer el estado de los servicios de tipo SystemD. |
 
 ### Los scripts /etc/init.d
 
