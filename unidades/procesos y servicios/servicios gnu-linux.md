@@ -69,9 +69,9 @@ Los niveles de ejecución suelen ser los siguientes, aunque pueden variar de una
 
 Los estilos de inicio más habituales en GNU/Linux son los siguientes:
 
-* **SysV**: derivado del sistema UNIX System V. Es el estilo deinicio clásico.
-* **Upstart**: implementado para Ubuntu (y sus derivados) por Canonical.
-* **SystemD**: sistema de inicio adoptado actualmente por la mayoría de las distribuciones GNU/Linux.
+* **[SysV](#systemv)**: derivado del sistema UNIX System V. Es el estilo de inicio clásico.
+* **[Upstart](#upstart)**: implementado para Ubuntu (y sus derivados) por Canonical.
+* **[SystemD](#systemd)**: sistema de inicio adoptado actualmente por la mayoría de las distribuciones GNU/Linux.
 
 ### SystemV
 
@@ -111,13 +111,13 @@ Comandos para gestionar los servicios en los distintos estilos de inicio de GNU/
 
 | Comando                                  | Descripción                              |
 | ---------------------------------------- | ---------------------------------------- |
-| [/etc/init.d/<servicio>](#los-scripts-etcinitd) | Iniciar, detener, reiniciar y conocer el estado de los servicios de tipo SysV. |
-| service                                  | Ídem.                                    |
-| invoke-rc.d                              | Ídem.                                    |
-| update-rc.d                              | Configurar los niveles de ejecución en los que se iniciará un servicio en SysV desde línea de comandos |
-| sysv-rc-conf                             | Ídem al anterior pero con una interfaz en modo texto. |
-| initctl                                  | Iniciar, detener,reiniciar y conocer el estado de los servicios de tipo Upstart. |
-| systemctl                                | Iniciar, detener,reiniciar y conocer el estado de los servicios de tipo SystemD. |
+| [/etc/init.d/servicio](#los-scripts-etcinitd) | Iniciar, detener, reiniciar y conocer el estado de los servicios de tipo SysV. |
+| [service](#el-comando-service)           | Ídem.                                    |
+| [invoke-rc.d](#el-comando-invoke-rcd)    | Ídem.                                    |
+| [update-rc.d](#el-comando-update-rcd)    | Configurar los niveles de ejecución en los que se iniciará un servicio en SysV desde línea de comandos |
+| [sysv-rc-conf](#la-utilidad-sys-rc-conf) | Ídem al anterior pero con una interfaz en modo texto. |
+| [initctl](#el-comando-initctl)           | Iniciar, detener,reiniciar y conocer el estado de los servicios de tipo Upstart. |
+| [systemctl](#el-comando-systemctl)       | Iniciar, detener,reiniciar y conocer el estado de los servicios de tipo SystemD. |
 
 ### Los scripts /etc/init.d
 
