@@ -64,7 +64,9 @@ Botón secundario del ratón sobre el proceso > Establecer prioridad > Seleccion
 
 ![Ubicación del ejecutable desde el Administrador de Tareas](imagenes/task-manager-07.png)
 
-## El comando "tasklist"
+## Administrar procesos desde el Símbolo del sistema (CMD)
+
+### El comando "tasklist"
 
 Comando que permite listar los procesos desde el Símbolo del sistema (CMD).
 
@@ -91,7 +93,7 @@ svchost.exe                    556 Services                   0     3.492 KB
 [...]
 ```
 
-### Filtros
+#### Filtros
 
 Es posible usar filtros con el comando `tasklist`, de forma que sólo se listarán los procesos que cumplan los criterios especificados:
 
@@ -152,7 +154,7 @@ Listar los procesos que llevan más de 2 horas de uso de CPU y que pertenezcan a
 CMD> tasklist /fi "CPUTIME ge 2:00:00" /fi "USERNAME eq fran"
 ```
 
-## El comando "taskkill"
+### El comando "taskkill"
 
 Permite matar procesos desde el Símbolo del sistema (CMD).
 
@@ -163,6 +165,123 @@ taskkill [/f] /pid <pid>
 taskkill [/f] /fi<filtro>
 ```
 
-:information_source: `<filtro>` sigue el mismo formato que los [filtros de `tasklist`](#filtros).
+:information_source: `<filtro>` sigue el mismo formato que los [filtros](#filtros)  de `tasklist`.
 
 :information_source: `/f` fuerza el cierre.
+
+#### Ejemplos
+
+Mata el proceso con PID 1234:
+
+```shell
+CMD> taskkill /pid 1234
+```
+
+Mata todos los procesos cuyo ejecutable sea "cmd.exe":
+
+```shell
+CMD> tasklist /fi "IMAGENAME eq cmd.exe"
+```
+
+## Administrar procesos desde PowerShell (PS)
+
+### Get-Process
+
+Cmdlet que permite obtener información sobre los procesos del sistema.
+
+| Orden                      | Descripción                              |
+| -------------------------- | ---------------------------------------- |
+| Get-Process                | Devuelve todos los procesos.             |
+| Get-Process -Id <pid>      | Devuelve el proceso con el PID indicado. |
+| Get-Process -Name <nombre> | Devuelve el proceso con el nombre indicado. Se pueden usar los comodines `*` y `?`. |
+
+#### Ejemplos
+
+Listar los procesos cuyo nombre empiece por "note":
+
+```powershell
+PS> Get-Process -Name note*
+```
+
+Listar los procesos cuyo nombre acabe en "ator":
+
+```powershell
+PS> Get-Process -Name *ator
+```
+
+Listar los procesos con PID 12 y 35:
+
+```powershell
+PS> Get-Process -Id 12,35
+```
+
+### Stop-Process
+
+Cmdlet que permite matar los procesos del sistema.
+
+| Orden                       | Descripción                              |
+| --------------------------- | ---------------------------------------- |
+| Stop-Process -Id <pid>      | Elimina el proceso con el PID indicado.  |
+| Stop-Process -Name <nombre> | Elimina el proceso con el nombre indicado. Se puede usar el comodín `*`. |
+
+:information_source: Es posible utilizar los modificadores `-WhatIf` y `-Confirm`.
+
+#### Ejemplos
+
+Matar al proceso con PID 1234:
+
+```powershell
+PS> Stop-Process -Id 1234
+```
+
+Matar los procesos con nombre "notepad":
+
+```powershell
+PS> Stop-Process -Name notepad
+```
+
+Matar los procesos cuyo nombre empieza en "note" o acaba en "ator":
+
+```powershell
+PS> Stop-Process -Name note*,*ator
+PS> Get-Process -Name note*,*ator | Stop-Process
+```
+
+Mostrar los procesos que se matarían si se ejecutase el comando:
+
+```powershell
+PS> Get-Process | Stop-Process -WhatIf
+```
+
+### Cambiar la prioridad
+
+Se puede establecer la prioridad de un proceso a través de la propiedad `PriorityClass` de los objetos de tipo "Process" devueltos por el cmdlet `Get-Process`.
+
+```powershell
+PS> $proceso = Get-Process -Id 1234
+PS> $proceso.PriorityClass = [System.Diagnostics.ProcessPriorityClass]::<prioridad>
+```
+
+Donde `prioridad` puede ser:
+
+| Valor       | Descripción                     |
+| ----------- | ------------------------------- |
+| RealTime    | Tiempo real (máxima prioridad). |
+| High        | Alta.                           |
+| AboveNormal | Por encima de lo normal.        |
+| Normal      | Normal.                         |
+| BelowNormal | Por debajo de lo normal.        |
+| Idle        | Baja.                           |
+
+### Tareas en segundo plano
+
+Otros commandlets relacionados con la gestión de los procesos en segundo plano en PowerShell son los siguientes:
+
+| Cmdlet      | Descripción                              |
+| ----------- | ---------------------------------------- |
+| Get-Job     | Devuelve los trabajos en segundo plano iniciados desde PS. |
+| Start-Job   | Inicia un trabajo en segundo plano vinculado a la sesión de PS actual. |
+| Stop-Job    | Detiene un trabajo en segundo plano vinculado a la sesión de PS actual. |
+| Receive-Job | Obtiene el resultado de la ejecución del trabajo en segundo plano. |
+| Wait-Job    | Espera a que termine un trabajo determinado. |
+
