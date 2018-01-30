@@ -2,25 +2,33 @@
   docs:
   - home
   
-- title: Introducción a los sistemas informáticos
+- title: Procesos y servicios
   docs:
-  - sistemas-informaticos/index
+  - procesos-y-servicios/index
   
-- title: Componentes del PC
+- title: Automatización
   docs:
-  - componentes-pc/index
-  - componentes-pc/que-es-un-pc
-  - componentes-pc/microprocesador
-  - componentes-pc/memoria-ram
-  - componentes-pc/placa-base
-  - componentes-pc/conectores-y-buses
-  - componentes-pc/perifericos
-  - componentes-pc/fuente-alimentacion
-  - componentes-pc/carcasa
+  - automatizacion/index
 
-- title: Arduino
+- title: Acceso remoto
   docs:
-  - arduino/atmel-studio
-  - arduino/ensamblador-avr
-  - arduino/proyectos/index
+  - acceso-remoto/index
+ 
+- title: Servicios de directorio
+  docs:
+  - servicios-de-directorio/index
+ 
+- title: Servicios de impresión
+  docs:
+  - servicios-de-impresion/index
+ 
+- title: Integración de sistemas
+  docs:
+  - integracion-de-sistemas/index
+ 
+ - title: Scripting
+  docs:
+  - scripting/index
+ 
+
  
