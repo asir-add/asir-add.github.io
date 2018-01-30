@@ -1,0 +1,51 @@
+lang: es-ES
+title: Administración de Sistemas Operativos
+email: fran.profe.icm@gmail.com
+description: Apuntes, tutoriales y actividades del módulo profesional ADD de 2ºASIR.
+
+baseurl: /FUW
+
+bootwatch: paper
+
+markdown: kramdown
+
+highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - .idea/
+  - .gitignore
+  - README.md
+  
+timezone: Europe/London
+
+defaults:
+- scope:
+    path: _posts
+    type: posts
+  values:
+    layout: post
+    sectionid: blog
+- scope:
+    path: _docs
+    type: docs
+  values:
+    layout: docs
+    sectionid: docs
+    seo:
+      type: "WebPage"
+
+collections:
+  docs:
+    permalink: /:collection/:path
+    output: true
+  posts:
+    permalink: /blog/:year/:month/:day/:title/
+    output: true

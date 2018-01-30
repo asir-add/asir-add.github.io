@@ -1,0 +1,26 @@
+- title: Inicio
+  docs:
+  - home
+  
+- title: Introducción a los sistemas informáticos
+  docs:
+  - sistemas-informaticos/index
+  
+- title: Componentes del PC
+  docs:
+  - componentes-pc/index
+  - componentes-pc/que-es-un-pc
+  - componentes-pc/microprocesador
+  - componentes-pc/memoria-ram
+  - componentes-pc/placa-base
+  - componentes-pc/conectores-y-buses
+  - componentes-pc/perifericos
+  - componentes-pc/fuente-alimentacion
+  - componentes-pc/carcasa
+
+- title: Arduino
+  docs:
+  - arduino/atmel-studio
+  - arduino/ensamblador-avr
+  - arduino/proyectos/index
+ 
