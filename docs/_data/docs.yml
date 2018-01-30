@@ -4,7 +4,10 @@
   
 - title: Procesos y servicios
   docs:
-  - procesos-y-servicios/index
+  - procesos-y-servicios/procesos-gnu-linux
+  - procesos-y-servicios/procesos-windows
+  - procesos-y-servicios/servicios-gnu-linux
+  - procesos-y-servicios/servicios-windows
   
 - title: Automatización
   docs:

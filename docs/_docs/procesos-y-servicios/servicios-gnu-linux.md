@@ -1,4 +1,6 @@
-# Servicios en GNU/Linux
+---
+title: Servicios en GNU/Linux
+---
 
 ## Servicio
 

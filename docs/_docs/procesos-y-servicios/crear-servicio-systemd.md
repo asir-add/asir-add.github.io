@@ -1,4 +1,6 @@
-# Configurar un servicio SystemD en GNU/Linux
+---
+title: configurar un servicio SystemD en GNU/Linux
+---
 
 Se va a configurar el binario/script "/path/to/FOO" como un servicio, de forma que inicie automáticamente en el nivel de ejecución 5, que en nuestro caso es el nivel de ejecución por defecto en LinuxMint 18.2. 
 
