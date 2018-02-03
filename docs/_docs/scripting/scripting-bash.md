@@ -18,7 +18,7 @@ echo Hola Mundo
 
 ## El segundo script
 
-* Los comentarios (#)
+* Los comentarios (#).
 * El script "comentarios.sh":
 
 ```bash
@@ -47,6 +47,7 @@ echo ¿Cómo estás?
 
 * Es posible pasar parámetros a un script cuando lo ejecutamos, como si se tratara de un comando más.
 * Son accesibles utilizando las siguientes variables:
+
 | Parámetro | Descripción                              |
 | --------- | ---------------------------------------- |
 | $0        | Corresponde con el nombre del script.    |
@@ -55,8 +56,8 @@ echo ¿Cómo estás?
 | $3        | Es el tercer parámetro pasado al script. |
 | $n        | Es el enésimo parámetro pasado al script. |
 
-* 
-  Script "parametros.sh":
+* Script "parametros.sh":
+
 ```bash
 #!/bin/bash
 ########################################
@@ -108,6 +109,7 @@ echo La variable \? vale $?
 ## Ordenes importantes en la programación de scripts
 
 ### El comando `shift`
+
 * Sintaxis: `shift n`
 * Desplaza "n" posiciones a la izquierda los parámetros, de forma que, por ejemplo, el parámetro $3 pase a ser \$2 si n=1.
 * Esto permite leer los parámetros cuando son más de 9.
@@ -407,7 +409,6 @@ bash: [: demasiados argumentos		# error
 
 * Sintaxis: `test numero1 operador numero2  ` ó `[ numero1 operador numero2 ]`
 * Operadores:
-
 
 | Operador | Descripción                              |
 | -------- | ---------------------------------------- |
