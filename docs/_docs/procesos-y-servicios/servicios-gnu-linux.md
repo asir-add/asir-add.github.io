@@ -25,17 +25,23 @@ title: Servicios en GNU/Linux
   * Limpia los sistemas de ficheros temporales
   * Habilita el “login” para que los usuarios puedan iniciar sesión
 * El proceso “init” se inicia con una configuración determinada por lo que se denomina nivel de ejecución (runlevel).
+
 ## Nivel de ejecución
+
 * El nivel de ejecución o runlevel le indica al proceso “init” como iniciar el sistema.
 * Hay hasta 7 niveles de ejecución (del 0 al 6).
 * Para conocer el nivel de ejecución actual ejecutamos el comando “runlevel”
+
 ```bash
 $ runlevel
 ```
+
 * Para cambiar el nivel de ejecución disponemos del comando “telinit”:
+
 ```bash
 # telinit <runlevel>
 ```
+
 Donde "runlevel" es el nivel de ejecución al que se quiere cambiar.
 
 Por ejemplo: para cambiar al nivel de ejecución 0 (apagar el equipo):
