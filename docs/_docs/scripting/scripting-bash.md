@@ -14,7 +14,7 @@ echo Hola Mundo
 * Ejecutar: `./holamundo.sh`
   * Hay que añadir “./” porque “holamundo.sh” no está en el PATH.
 
-> :warning: La primera línea **#!/bin/bash** indica a la shell que el script debe ejecutarse con el intérprete de comandos `/bin/bash`. Debemos incluirla en todos los scripts.
+> La primera línea **#!/bin/bash** indica a la shell que el script debe ejecutarse con el intérprete de comandos `/bin/bash`. Debemos incluirla en todos los scripts.
 
 ## El segundo script
 
@@ -226,7 +226,7 @@ resultado=$(expr 2 \* \( $arg1 - $arg2 \))
 echo El resultado es $resultado
 ```
 
-> :eyes: `*`, `(` y `)` son escapados con `\` porque tienen un significado especial para la BASH.
+> `*`, `(` y `)` son escapados con `\` porque tienen un significado especial para la BASH.
 
 #### Operadores relacionales
 
@@ -241,7 +241,7 @@ echo El resultado es $resultado
 
 * Si el resultado es verdadero devuelve 1, si es falso devuelve 0.
 
->  :eyes: `>` y `<` tienen significado especial para la BASH (son redirecciones) y hay que escaparlos.
+>  ​ `>` y `<` tienen significado especial para la BASH (son redirecciones) y hay que escaparlos.
 
 * Script "comparacion.sh":
 
@@ -279,9 +279,9 @@ $ expr 0 \& 0
 0
 $ expr 1 \& 1
 1
-$ expr 1 | 3
+$ expr 1 \| 3
 1
-$ expr 0 | 3
+$ expr 0 \| 3
 3
 ```
 
@@ -357,7 +357,7 @@ $ [ -d /etc/passwd ] ; echo $?
 | <        | Devuelve verdadero (0) si cadena1 va antes alfabéticamente que cadena2. |
 | >        | Devuelve verdadero (0) si cadena1 va después que cadena2. |
 
->  :eyes: `>` y `<` hay que escaparlos para que no sean interpretados por la BASH (son redirecciones) .
+> `>` y `<` hay que escaparlos para que no sean interpretados por la BASH (son redirecciones) .
 
 * Es sensible a mayúsculas y minúsculas, por lo que “hola” es distinto de “Hola” u “HOLA”.
 * Ejemplos:
@@ -399,7 +399,7 @@ bash: [: demasiados argumentos		# error
 2
 ```
 
-> :star2: Las variables también hay que ponerlas entre comillas dobles (""), para evitar errores en caso de que la variable no exista o esté vacía.
+> Las variables también hay que ponerlas entre comillas dobles (""), para evitar errores en caso de que la variable no exista o esté vacía.
 >
 > ```bash
 > [ "$var" = "hola" ]
@@ -446,7 +446,7 @@ $ test $a -ne 23 ; echo $?
 | !        | Negación (NOT).  Invierte el operando. Si `operando1` es `true` (0), devuelve `false` (1), y si es `false` (<>0) devuelve `true` (0). |
 | (...)    | Paréntesis. Permiten agrupar expresiones y alterar el orden de evaluación. :warning: Deben escaparse con `\`. |
 
->  ⚠️ ! (NOT) es un operador unario: `test ! operando1`, por lo que sólo recibe un operando.
+>  `!` (NOT) es un operador unario: `test ! operando1`, por lo que sólo recibe un operando.
 
 * Ejemplos:
 
@@ -481,7 +481,7 @@ $ [ \( $a -lt $b -a $b -eq 50 \) -o ! -f /etc/passwd ] ; echo $?
 
 ## Estructuras de control
 
-### If
+### if
 
 * Sintaxis:
 
@@ -599,7 +599,7 @@ else
 fi 
 ```
 
-### Case
+### case
 
 * Sintaxis:
 
@@ -707,7 +707,7 @@ case "$opcion" in
 esac 
 ```
 
-### While
+### while
 
 * Sintaxis:
 
@@ -752,7 +752,7 @@ done < /etc/passwd
 echo "El fichero tiene $numero líneas"
 ```
 
-### Until
+### until
 
 * Sintaxis:
 
@@ -776,7 +776,7 @@ do
 done
 ```
 
-### For
+### for
 
 * Sintaxis:
 
@@ -834,15 +834,15 @@ done
 
 ### break, continue y exit
 
-#### break
+#### `break`
 
 * Hace que cualquier bucle `while`, `for` o `until` termine y pase el control a la siguiente línea después de `done`.
 
-#### continue
+#### `continue`
 
 * Hace que termine la iteración actual de cualquier bucle `while`, `for` o `until` y pase directamente a la siguiente iteración sin terminar de ejecutar las órdenes de la iteración actual.
 
-#### exit [n]
+#### `exit [n]`
 
 * Termina la ejecución del script y devuelve `n` como código de retorno (0 significa éxito, distinto de 0 significa error)
 
@@ -879,7 +879,7 @@ done
 
 >  PS3 es la variable de entorno que corresponde al prompt de `select`.
 
-### Funciones
+## Funciones
 
 * Sintaxis de definición de una función:
 
@@ -954,7 +954,7 @@ echo "El espacio ocupado total esde $totalMegas MB"
 
 >  `df -k` devuelve el espacio libre y ocupado en kilobytes (-k) por las distintas particiones montadas.
 
-#### Librería de funciones
+### Librería de funciones
 
 * Es posible crear una librería de funciones que podemos reutilizar desde otros scripts.
 * Librería "funciones.sh":
