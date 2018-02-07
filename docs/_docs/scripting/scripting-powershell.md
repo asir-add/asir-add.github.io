@@ -1,5 +1,5 @@
 ---
-title: Programación de la PowerShell
+title: Scripting en PowerShell
 ---
 
 ## El primer script

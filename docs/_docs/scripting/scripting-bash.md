@@ -1,5 +1,5 @@
 ---
-title: Programación de la BASH
+title: Scripting en BASH
 ---
 
 ## El primer script
