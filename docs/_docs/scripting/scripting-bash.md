@@ -538,8 +538,8 @@ fi
 ```bash
 #!/bin/bash
 #######################################################
-# Comprueba si existe el archivopasado por parámetro, 
-# y si existe indica de que tipoes.
+# Comprueba si existe el archivo pasado por parámetro, 
+# y si existe indica de qué tipo es.
 #######################################################
 
 # comprueba si el número de parámetros ($#) pasados al script es 0
@@ -743,11 +743,11 @@ done
 ##################################################
 # Va leyendo línea a línea elfichero /etc/passwd
 ##################################################
-numero=1
+numero=0
 while read linea
 do
-	echo $numero $linea
 	numero=$(expr $numero + 1)
+	echo $numero $linea
 done < /etc/passwd
 echo "El fichero tiene $numero líneas"
 ```
@@ -789,7 +789,7 @@ done
 
 * El bucle se repite por cada una de las palabras o valores que contenga "lista".
 * En cada iteración del bucle `for`, "variable" toma el valor del elemento correspondiente de “lista”.
-* Ejemplo “saludar-varios.sh”:
+* Ejemplo "saludar-varios.sh":
 
 ```bash
 #!/bin/bash
@@ -803,10 +803,10 @@ done
 
 ```bash
 #!/bin/bash
-#######################################################
-# Comprueba si existen los archivospasados por parámetro, 
-# y si existe indica de que tipoes.
-#######################################################
+##########################################################
+# Comprueba si existen los archivos pasados por parámetro, 
+# y si existe indica de qué tipo es.
+##########################################################
 if [ $# -eq 0 ]; then
 	echo Debes introducir al menos un argumento.
 	exit 1

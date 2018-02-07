@@ -32,4 +32,5 @@
 - title: Scripting
   docs:
   - scripting/scripting-bash
+  - scripting/scripting-powershell
  
