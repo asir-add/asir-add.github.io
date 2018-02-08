@@ -1,5 +1,5 @@
 ---
-title: Proyecto Papelera
+title: Proyecto PAPELERA
 ---
 
 ## Descripción
@@ -43,4 +43,3 @@ borrar.sh [ --help | -r fichero [ destino ] | --estadisticas | --vaciar | ficher
 | --vaciar          | Elimina el contenido de la papelera.     |    10    |
 | fichero           | Envía un fichero a la papelera.          |    20    |
 | Cualquier usuario | El script puede ser utilizado por cualquier usuario (cada uno con su propia papelera) sin necesidad de modificarlo. |    10    |
-
