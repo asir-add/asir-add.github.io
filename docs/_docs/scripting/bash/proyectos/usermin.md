@@ -8,14 +8,14 @@ A veces la gestión de los usuarios mediante los comandos del sistema se vuelve 
 
 Este proyecto consiste en elaborar un script para la Shell BASH en GNU/Linux que nos facilite la administración de los usuarios del sistema:
 
-* El nombre del script será `useradmin.sh`.
+* El nombre del script será `usermin.sh`.
 
 ## Sintaxis
 
 * La sintaxis del script es la siguiente:
 
 ```bash
-useradmin.sh [ --help | --listar | --consultar usuario | --nuevo usuario | --eliminar usuario | -f fichero ]
+usermin.sh [ --help | --listar | --consultar usuario | --nuevo usuario | --eliminar usuario | -f fichero ]
 ```
 
 * El funcionamiento del script será el siguiente:
