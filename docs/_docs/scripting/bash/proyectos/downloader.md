@@ -6,18 +6,18 @@ title: Proyecto DOWNLOADER
 
 Muchas veces cuando descargamos algo de Internet ocurre que ya lo hemos descargado antes y nos gustaría saber cuando ocurre eso.
 
-Este proyecto consiste en elaborar un script para la BASH en GNU/Linux que nos ayudE a controlar nuestras descargas:
+Este proyecto consiste en elaborar un script para la BASH en GNU/Linux que nos ayude a controlar nuestras descargas:
 
 * El nombre del script será `downloader.sh`.
 * Los ficheros descargados se guardarán en un directorio en nuestro directorio de usuario (HOME). Es decir, si nosotros somos el usuario **chanquete**, nuestro directorio de descargas será `/home/chanquete/descargas`. 
-* El directorio HOME del usuario que ejecuta el script lo podemos sacar de la variable $HOME. Si no existe el directorio `descargas` se deberá crear.
+* El directorio HOME del usuario que ejecuta el script lo podemos sacar de la variable `$HOME`. Si no existe el directorio `descargas` se deberá crear.
 
 
 * En el directorio de `descargas` se creará el fichero oculto `.registro` donde se añadirá al final cada URL descargada.
 
 ## El comando `wget`
 
-* Para descargar un fichero desde una URL se usará el comando `wget`;
+* Para descargar un fichero desde una URL se usará el comando `wget`.
 * Por ejemplo:
 
 ```BASH
