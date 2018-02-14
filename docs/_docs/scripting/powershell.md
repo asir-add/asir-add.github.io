@@ -180,6 +180,33 @@ False
 123
 ```
 
+#### Parámetro con conjunto de valores limitado
+
+* Para hacer que un parámetro sólo pueda recibir un conjunto limitado de valores (limitado.ps1):
+
+```powershell
+Param(
+    [ValidateSet("word","excel","powerpoint")][string] $parametro
+)
+Write-Host $parametro
+```
+
+* Uso del script:
+
+```powershell
+PS> .\limitado.ps1 -parametro word
+word
+
+PS> .\limitado.ps1 -parametro access
+.\limitado.ps1 : No se puede validar el argumento del parámetro 'parametro'. El argumento "access" no pertenece al conjunto 
+"word;excel;powerpoint" especificado por el atributo ValidateSet. Proporcione un argumento que pertenezca al conjunto e intente ejecutar el comando de nuevo.
+En línea: 1 Carácter: 16
++ .\limitado.ps1 access
++                ~~~~~~
+    + CategoryInfo          : InvalidData: (:) [limitado.ps1], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,limitado.ps1
+```
+
 #### Parámetros obligatorios
 
 * Es posible hacer que un parámero sea obligatorio (mandatory.ps1):
@@ -187,7 +214,7 @@ False
 ```powershell
 Param(
     [string] $primero,
-    [Parameter(Mandatory=$true)] [string] $segundo
+    [Parameter(Mandatory=$true)][string] $segundo
 )
 Write-Host $primero
 Write-Host $segundo
