@@ -24,10 +24,10 @@ Este proyecto consiste en elaborar un script para la BASH en GNU/Linux que nos a
 wget --tries=5 --directory-prefix=/directorio/destino –q <url>
 ```
 
-> Un ejemplo de URL sería: [http://downloads.sourceforge.net/sevenzip/7z920.tar.bz2](http://downloads.sourceforge.net/sevenzip/7z920.tar.bz2), de forma que el fichero descargado se llamaría `7z920.tar.bz2`.
+> Un ejemplo de URL sería: [http://www.7-zip.org/a/7z1801-x64.exe](http://www.7-zip.org/a/7z1801-x64.exe), de forma que el fichero descargado se llamaría `7z1801-x64.exe`.
 
 ```bash
-wget --tries=5 --directory-prefix=/home/chanquete –q http://dow....et/sevenzip/7z920.tar.bz2
+wget --tries=5 --directory-prefix=/home/chanquete –q http://www.7-zip.org/a/7z1801-x64.exe
 ```
 
 * Las opciones utilizadas con el comando `wget` son:

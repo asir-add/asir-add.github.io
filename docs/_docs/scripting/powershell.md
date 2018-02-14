@@ -294,13 +294,13 @@ Write-Host $z
 * `Math` es una clase que ofrece funciones y constantes matemáticas (raíz cuadrada, potencia, número PI, ...). 
 * Para acceder a sus miembros usamos `[Math]::<miembro>`.
 
-| Miembro                      | Descripción                              |
-| ---------------------------- | ---------------------------------------- |
-| [Math]::PI                   | Devuelve el valor de `PI`.               |
-| [Math]::Pow(base, exponente) | Devuelve la `base` elevada al `exponente`. |
-| [Math]::Sqrt(valor)          | Devuelve la raíz cuadrada de `valor`.    |
-| [Math]::Max(valor1, valor2)  | Devuelve el mayor de `valor1` y `valor2`. |
-| [Math]::Min(valor1, valor2)  | Devuelve el menor de `valor1` y `valor2`. |
+| Miembro                      | Tipo      | Descripción                                    |
+| ---------------------------- | --------- | ---------------------------------------------- |
+| [Math]::PI                   | Constante | Devuelve el valor del número `PI` (3.1416...). |
+| [Math]::Pow(base, exponente) | Función   | Devuelve la `base` elevada al `exponente`.     |
+| [Math]::Sqrt(valor)          | Función   | Devuelve la raíz cuadrada de `valor`.          |
+| [Math]::Max(valor1, valor2)  | Función   | Devuelve el mayor de `valor1` y `valor2`.      |
+| [Math]::Min(valor1, valor2)  | Función   | Devuelve el menor de `valor1` y `valor2`.      |
 
 * Script "radio.ps1":
 
@@ -312,18 +312,18 @@ Write-Host "El área de la circunferencia de radio" $radio "es" $area
 
 ## Operadores relacionales
 
-* Los operadores relacionales se utilizan para comparar valores y devuelven un booleano (True o False).
+* Los operadores relacionales se utilizan para comparar valores y devuelven un valor de tipo booleano (True o False).
 
-| Operador | Descripción                              | Ejemplo   |
-| -------- | ---------------------------------------- | --------- |
-| -eq      | ¿Son los operandos iguales?              | `4 -eq 5` |
-| -ne      | ¿Son los operandos distintos?            | `4 -ne 5` |
-| -gt      | ¿Es el primer operando mayor que el segundo operando? | `4 -gt 5` |
-| -ge      | ¿Es el primer operando mayor o igual que el segundo operando? | `4 -ge 5` |
-| -lt      | ¿Es el primer operando menor que el segundo operando? | `4 -lt 5` |
-| -le      | ¿Es el primer operando menor o igual que el segundo operando? | `4 -le 5` |
+| Operador | Descripción                                                  | Ejemplo   |
+| -------- | ------------------------------------------------------------ | --------- |
+| `-eq`    | ¿Son los operandos iguales?                                  | `4 -eq 5` |
+| `-ne`    | ¿Son los operandos distintos?                                | `4 -ne 5` |
+| `-gt`    | ¿Es el primer operando mayor que el segundo operando?        | `4 -gt 5` |
+| `-ge`    | ¿Es el primer operando mayor o igual que el segundo operando? | `4 -ge 5` |
+| `-lt`    | ¿Es el primer operando menor que el segundo operando?        | `4 -lt 5` |
+| `-le`    | ¿Es el primer operando menor o igual que el segundo operando? | `4 -le 5` |
 
-> Más información: `Get-Help about_Comparison_Operators`
+> Para obtener más información podemos ejecutar el siguiente cmdlet: `Get-Help about_Comparison_Operators`
 
 * Script "comparacion.ps1":
 
@@ -351,18 +351,18 @@ Write-Host "¿" $a "es igual a" $b "?" $resultado
 
 * Otros operadores relacionales:
 
-| Operador     | Descripción                              |
-| ------------ | ---------------------------------------- |
-| -in          | Comprueba si un elemento está dentro de un array. |
-| -notin       | Comprueba si un elemento NO está dentro de un array. |
-| -like        | Compara una cadena con otra usando el metacarácter *. Si casa devuelve True. |
-| -notlike     | Compara una cadena con otra usando el metacarácter *. Si casa devuelve False. |
-| -match       | Compara una cadena de caracteres con una expresión regular. Si casa devuelve True. |
-| -notmatch    | Compara una cadena de caracteres con una expresión regular. Si casa devuelve False. |
-| -contains    | Comprueba si un array contiene un elemento. |
-| -notcontains | Comprueba si un array NO contiene un elemento. |
-| -is          | Comprueba si un valor es de un tipo de datos determinado (int, double, string, ...) |
-| -isnot       | Comprueba si un valor NO es de un tipo determinado. |
+| Operador       | Descripción                                                  |
+| -------------- | ------------------------------------------------------------ |
+| `-in`          | Comprueba si un elemento está dentro de un array.            |
+| `-notin`       | Comprueba si un elemento NO está dentro de un array.         |
+| `-like`        | Compara una cadena con otra usando el metacarácter *. Si casa devuelve True. |
+| `-notlike`     | Compara una cadena con otra usando el metacarácter *. Si casa devuelve False. |
+| `-match`       | Compara una cadena de caracteres con una expresión regular. Si casa devuelve True. |
+| `-notmatch`    | Compara una cadena de caracteres con una expresión regular. Si casa devuelve False. |
+| `-contains`    | Comprueba si un array contiene un elemento.                  |
+| `-notcontains` | Comprueba si un array NO contiene un elemento.               |
+| `-is`          | Comprueba si un valor es de un tipo de datos determinado (int, double, string, ...) |
+| `-isnot`       | Comprueba si un valor NO es de un tipo determinado.          |
 
 * Ejemplos:
 
@@ -438,11 +438,11 @@ True
 
 * Los operadores lógicos permiten crear expresiones de comparación más complejas.
 
-| Operador | Descripción                              | Ejemplo             |
-| -------- | ---------------------------------------- | ------------------- |
-| \-or     | "O" lógico. Si alguno de los operandos es Verdadero, devuelve Verdadero. | `$False -or $True`  |
-| -and     | "Y" lógico. Si alguno de los operandos es Falso, devuelve Falso. | `$False -and $True` |
-| -not     | Negación. Si el operando es Verdadero, devuelve Falso, y viceversa. | `-not $True`        |
+| Operador | Descripción                                                  | Ejemplo             |
+| -------- | ------------------------------------------------------------ | ------------------- |
+| `-or`    | "O" lógico. Si alguno de los operandos es Verdadero, devuelve Verdadero. | `$False -or $True`  |
+| `-and`   | "Y" lógico. Si alguno de los operandos es Falso, devuelve Falso. | `$False -and $True` |
+| `-not`   | Negación. Si el operando es Verdadero, devuelve Falso, y viceversa. | `-not $True`        |
 
 * Más ejemplos:
 
@@ -464,561 +464,587 @@ False
 
 ## Estructuras de control
 
-<TODO>
-
 ### if
 
 * Sintaxis:
 
-```bash
-if condicion1
-then
+```powershell
+if (condicion1) {
 	ordenes
-elif condicion2
-then
+} elseif (condicion2) {
 	ordenes
-else 
+} else {
 	ordenes
-fi
+}
 ```
 
-* Nos permite tomar decisiones a partir de los códigos de retorno de los comandos utilizados como condiciones.
-* Normalmente se usa junto con la orden `test`.
-* El script "existe-hosts.sh":
+* Nos permite tomar decisiones según se cumplan o no unas condiciones (expresiones booleanas).
+* El script "temperatura.ps1":
 
-```bash
-#!/bin/bash
-#############################
-# Ejemplo de uso de if-fi
-#############################
-if test –f /etc/hosts
-then
-	cat /etc/hosts
-else
-	echo El archivo no existe
-fi
+```powershell
+$temperatura = [double] (Read-Host -Prompt "¿Cuál es la temperatura del paciente?")
+if ($temperatura -lt 35) {
+    "Hipotermia"
+} elseif ($temperatura -gt 37 -and $temperatura -lt 38) {
+    "Febrícula"
+} elseif ($temperatura -ge 38 -and $temperatura -le 39) {
+    "Fiebre"
+} elseif ($temperatura -gt 39 -and $temperatura -lt 40.5) {
+    "Fiebre alta"
+} elseif ($temperatura -ge 40.5) {
+    "Hipertermia"
+} else {
+    "Normal"
+}
 ```
 
-> Si el código de retorno del comando  `test` devuelve 0 (verdadero), se ejecuta la orden `cat`. 
->
-> Si es <> 0, es falso y se ejecuta la orden  `echo`.
+* El script "crea-dir.ps1":
 
-* El script "crea-dir.sh":
-
-```bash
-#!/bin/bash
-#################################################
-# Crea el directorio indicado por parámetro si no
-# existe, y le da permisos sólo al propietario
-#################################################
-if [ ! –d $1 ]
-then
-	mkdir $1
-	chmod 700 $1
-fi
+```powershell
+<#
+    Comprueba si el directorio especificado por 
+    parámetro existe, y si no lo crea.
+#>
+Param([Parameter(Mandatory=$true)][string] $directorio)
+$ErrorActionPreference = "Stop"		# Hace que se pueda capturar la excepción
+try {
+    Get-Item $directorio
+} catch [System.Management.Automation.ItemNotFoundException] {
+    New-Item -ItemType Directory $directorio
+}
 ```
 
-* Podemos validar los parámetros pasados al script, como en el siguiente ejemplo ("comprobar.sh"):
-
-```bash
-#!/bin/bash
-#######################################################
-# Comprueba si existe el archivopasado por parámetro, 
-# y si existe indica de que tipoes.
-#######################################################
-
-# comprueba si el número de parámetros ($#) pasados al script es 0
-if [ $# -eq 0 ]; then
-	echo Debes introducir al menos un argumento.
-	exit 1
-fi
-
-if [ -f "$1" ]; then
-	# es un archivo regular
-	echo –n "$1 es un archivo regular "
-	if [ -x $1 ]; then
-		echo "ejecutable"
-	else
-		echo "no ejecutable"
-	fi
-elif [ -d "$1" ]; then
-	# es un directorio
-		echo "$1 es un directorio"
-else
-	# es una cosa rara
-	echo "$1 es una cosa rara o no existe"
-fi
-```
-
-* También podemos comprobar el resultado de la ejecución de otros programas.
-* Comprobar si existe un determinado usuario ("existe-usuario.sh"):
-
-```bash
-#!/bin/bash
-if grep –q "^$1:" /etc/passwd
-then
-	echo El usuario $1 ya existe en el sistema.
-else
-	echo El usuario $1 no existe en el sistema.
-fi
-```
-
-> La opción `-q` de `grep` hace que el resultado no salga en la consola, sino que simplemente el comando devuelva 0 (verdadero) si lo encuentra y <> 0 (falso) en caso contrario.
-
-* Ampliación del script anterior para averiguar además si el usuario es regular o del sistema ("existe-usuario2.sh"):
-
-```bash
-#!/bin/bash
-if grep –q "^$1:" /etc/passwd
-then
-	echo El usuario $1 ya existe en el sistema.
-	IDU=$(cat/etc/passwd | grep "^$1:" | cut –f 3 –d)
-	if [ $IDU –ge 500 ]
-	then
-		echo $1 es un usuario regular
-	else
-		echo $1 es un usuario del sistema
-	fi
-else
-	echo Elusuario $1 no existe en el sistema.
-fi 
-```
-
-### case
+### switch
 
 * Sintaxis:
 
-```bash
-case palabra in
-	patron1)    
-		orden1
-		;;
-	patron2)    
-		orden2
-		;;
+```powershell
+switch (expresion) {
+	patron1 { 
+            ordenes
+            break 
+	}
+	patron2 { 
+			ordenes
+			break 
+	}
 	[...]
-	patronN)    
-		ordenN
-		;;
-esac
+	default { 
+			ordenes 
+	}
+}
 ```
 
-* Controla el flujo de ejecución basándose en la "palabra" dada. 
-* La palabra se compara, en orden, con todos los patrones. 
-* Cuando la palabra coincida con un patrón, se ejecutan todas las órdenes que vayan a continuación, hasta encontrar `;;` (doble punto y coma).
-* Ejemplo "hoy.sh":
+* Controla el flujo de ejecución basándose en la expresión dada. 
+* La expresión se compara, en orden, con todos los patrones. 
+* Cuando la expresión coincide con un patrón, se ejecutan todas las órdenes que vayan a continuación, hasta encontrar `break`.
+* Ejemplo "dia-semana.ps1":
 
-```bash
-#!/bin/bash
-#############################
-# Ejemplo de uso de case-esac
-#############################
-dia=$(date | cut –c 1-3)
-case $dia in
-	lun)   echo Hoy es lunes ;;
-	mar)   echo Hoy es martes ;;
-	mié)   echo Hoy es miércoles ;;
-	jue)   echo Hoy es jueves ;;
-	vie)   echo Hoy es viernes ;;
-	sáb)   echo Hoy es sábado ;;
-	dom)   echo Hoy es domingo ;;
-	*)     echo No se sabe qué es hoy ;;
-esac
+```powershell
+$dia = Get-Date -UFormat "%a"
+switch ($dia) {
+    "lu." { "Hoy es lunes"; break }
+    "ma." { "Hoy es martes"; break }
+    "mi." { "Hoy es miércoles"; break }
+    "ju." { "Hoy es jueves"; break }
+    "vi." { "Hoy es viernes"; break }
+    "sá." { "Hoy es sábado"; break }
+    "do." { "Hoy es domingo"; break }
+    default { "No sé que día es hoy" }
+}
 ```
 
-* Ejemplo "letras.sh":
+* Ejemplo "temperatura2.ps1":
 
-```bash
-#!/bin/bash
-read -p "Introduzca A, B o C: " letra
-case "$letra" in
-	A)
-		echo Introdujo A
-		;;
-	B)
-		echo Introdujo B
-		;;
-	C)
-		echo Introdujo C
-		;;
-	*)     
-		echo No introdujo A, B o C
-		;;
-esac
+```powershell
+$temperatura = [double] (Read-Host -Prompt "¿Cuál es la temperatura del paciente?")
+switch ($temperatura) {
+    { $_ -lt 35 } # si la temperatura < 35
+        { 
+            "Hipotermia"
+            break 
+        }
+    { $_ -gt 37 -and $_ -lt 38 } # si la temperatura > 37 y temperatura < 38
+        {   
+            "Febrícula"
+            break
+        }
+    { $_ -ge 38 -and $_ -le 39 } # si la temperatura >= 38 y temperatura <= 39
+        {   
+            "Fiebre"
+            break
+        }
+    { $_ -gt 39 -and $_ -lt 40.5 } # si la temperatura > 39 y temperatura < 40.5
+        {   
+            "Fiebre alta"
+            break
+        }
+    { $_ -ge 40.4 } # si la temperatura >= 40.5
+        {   
+            "Hipertermia"
+            break
+        }
+    default # resto de los casos
+        {
+            "Normal"
+        }
+}
 ```
 
-* Variante del ejemplo anterior, donde acepta las letras tanto en mayúsculas como un minúsculas; ejemplo "letras-mayus-minus.sh":
+> La variable `$_` se corresponde con el valor de la expresión. En el ejemplo anterior `$_`  es igual a `$temperatura`.
 
-```bash
-#!/bin/bash
-read -p "Introduzca A, B o C: " letra
-case "$letra" in
-	a|A)
-		echo Introdujo A
-		;;
-	b|B)
-		echo Introdujo B
-		;;
-	c|C)
-		echo Introdujo C
-		;;
-	*)     
-		echo No introdujo A, B o C
-		;;
-esac
+* Ejemplo "menu.ps1":
+
+```powershell
+Write-Host "1) Mostrar la fecha"
+Write-Host "2) Mostrar la hora"
+Write-Host "3) Comprobar conexión a Internet"
+$opcion = [int] (Read-Host -Prompt "Elija una opción")
+switch ($opcion) {
+    1 { Get-Date -DisplayHint Date ; break }
+    2 { Get-Date -DisplayHint Time ; break }
+    3 { Test-Connection 8.8.8.8 ; break }
+    default { "Opción desconocida" }
+}
 ```
 
-* Ejemplo "menu-comandos.sh":
-
-```bash
-#!/bin/bash
-################################
-# Menú para comandos sencillos
-################################
-echo –e "\n --- MENU DE COMANDOS---\n"
-echo " a. Fecha y hora actual"
-echo " b. Usuarios conectados"
-echo " c. Nombre del directorio detrabajo"
-echo " d. Contenidos del directoriode trabajo"
-echo
-read -p "Introduzca una opción: " opcion
-echo
-case "$opcion" in
-	a)     date ;;
-	b)     who ;;
-	c)     pwd ;;
-	d)     ls ;;
-	*)     echo Opción incorrecta ;;
-esac 
-```
+> Para obtener más información: `Get-Help about_Switch`
 
 ### while
 
 * Sintaxis:
 
-```bash
-while condición
-do
+```powershell
+while (condición) {
 	orden(es)
-done
+}
 ```
 
 * Se ejecutan las órdenes una y otra vez mientras se cumpla la condición.
-* La condición se evalúa a verdadero si es 0, y falso en caso contrario (como `if-fi`).
-* Como condición podemos utilizar el resultado de la ejecución de un comando, aunque lo normal es usar `test`.
-* Ejemplo "“mientras.sh":
+* La condición se evalúa al principio del bucle.
+* Ejemplo "mientras.ps1":
 
-```bash
-#!/bin/bash
-###################################
-# Ejemplo de uso de while
-###################################
-a=42
-while [ $a –le 53 ]
-do
-	echo Contador = $a
-	a=$(expr $a + 1)
-done
+```powershell
+<#
+    Ejemplo de uso de while
+#>
+$a = 42
+while ( $a –le 53 ) {
+	Write-Host "Contador = $a"
+	$a++		# $a = $a + 1
+}
 ```
 
-* Ejemplo "líneas.sh":
+* Ejemplo "lineas.ps1":
 
-```bash
-#!/bin/bash
-##################################################
-# Va leyendo línea a línea elfichero /etc/passwd
-##################################################
-numero=1
-while read linea
-do
-	echo $numero $linea
-	numero=$(expr $numero + 1)
-done < /etc/passwd
-echo "El fichero tiene $numero líneas"
+```powershell
+<#
+	Va leyendo línea a línea el fichero indicado por parámetro
+#>
+Param([Parameter(Mandatory=$true)][string]$fichero)
+$contenido = Get-Content $fichero	# devuelve array de string del contenido de fichero
+$numero = 0
+while ($numero -lt $contenido.Length) {
+    Write-Host ($numero + 1) ":" $contenido[$numero]
+    $numero++
+}
+Write-Host "El fichero tiene $numero líneas"
 ```
 
-### until
+### do..while
+
+- Sintaxis:
+
+```powershell
+do {
+	orden(es)
+} while (condicion)
+```
+
+- Se ejecutan las órdenes una y otra vez mientras se cumpla la condición.
+- La condición se evalúa al final del bucle.
+
+### do..until
 
 * Sintaxis:
 
 ```bash
-until condición
-do
+do {
 	orden(es)
-done
+} until (condicion)
 ```
 
-* Es similar a `while` sólo que en vez de ejecutar las órdenes "mientras" se cumpla la condición, las ejecuta HASTA (until) que se cumpla. Es decir, cuando la condición se cumple, termina.
-* Al igual que con `if` y con `while`, la condición es verdadera si vale 0 y falsa en caso contrario.
-* Como condición podemos utilizar el resultado de la ejecución de un comando, aunque normal es usar `test`.
-* Ejemplo "hasta.sh":
+* Es similar a `do..while` sólo que en vez de ejecutar las órdenes "mientras" se cumpla la condición, las ejecuta HASTA (until) que se cumpla.
+* La condiución se evalúa al final del bucle.
+* Ejemplo "hasta.ps1":
 
-```bash
-#!/bin/bash
-until [ "$a" = hola ]
-do
-	read -p  "Introduce una cadena: " a
-done
+```powershell
+do {
+    $palabra = Read-Host -Prompt "¿De qué color es el caballo blanco de Santiago?"
+} until ($palabra -eq "blanco")
+Write-Host -ForegroundColor Black -BackgroundColor White "¡Qué list@ eres!"
 ```
 
 ### for
 
 * Sintaxis:
 
-```bash
-for variable in lista
-do
+```powershell
+for (inicializacion; condicion; actualizacion) {
 	orden(es)
-done
+}
 ```
 
-* El bucle se repite por cada una de las palabras o valores que contenga "lista".
-* En cada iteración del bucle `for`, "variable" toma el valor del elemento correspondiente de “lista”.
-* Ejemplo “saludar-varios.sh”:
+* El bucle se repite mientras se cumpla la **condición**.
+* El bloque de **inicialización** se ejecuta una vez al principio. Se utiliza para inicializar variables, normalmente usadas como contadores.
+* El bloque de **actualización** se ejecuta al final de cada iteración, después de ejecutar las órdenes.
+* Ejemplo "bucle-for.ps1”:
 
-```bash
-#!/bin/bash
-for i in Fran Árgel Paco Javi
-do
-	echo "Hola $i, ¿cómo estás?"
-done
+```powershell
+<#
+    Ejemplo de uso de for:
+    Cuenta desde el 42 hasta el 53
+#>
+for ($a = 42;  $a –le 53 ; $a++) {
+	Write-Host "Contador = $a"
+}
 ```
 
-* Ejemplo "comprobar-varios.sh":
+* Ejemplo "lineas2.ps1":
 
-```bash
-#!/bin/bash
-#######################################################
-# Comprueba si existen los archivospasados por parámetro, 
-# y si existe indica de que tipoes.
-#######################################################
-if [ $# -eq 0 ]; then
-	echo Debes introducir al menos un argumento.
-	exit 1
-fi
+```powershell
+<#
+	Va leyendo línea a línea el fichero indicado por parámetro
+#>
+Param([Parameter(Mandatory=$true)][string]$fichero)
+$contenido = Get-Content $fichero	# devuelve array de string del contenido de fichero
+for ($numero = 0; $numero -lt $contenido.Length; $numero++) {
+    Write-Host ($numero + 1) ":" $contenido[$numero]
+}
+Write-Host "El fichero tiene $numero líneas"
+```
 
-for fichero in $*
-do
-	if [ -f "$fichero" ]; then
-		# es un archivo regular
-		echo –n "$fichero es un archivo regular "
-		if [ -x $fichero ]; then
-			echo "ejecutable"
-		else
-			echo "no ejecutable"
-		fi
-	elif [ -d "$fichero" ]; then
-		# es un directorio
-		echo "$fichero es un directorio"
-	else
-		# es una cosa rara
-		echo "$fichero es una cosa rara o no existe"
-	fi
-done 
+>  Para obtener más información: `Get-Help about_For`.
+
+### foreach
+
+* Sintaxis:
+
+```powershell
+foreach (elemento in lista) {
+	orden(es)
+}
+```
+
+* El bucle se repite tantas veces como elementos tiene la lista.
+* En cada iteración, elemento toma el valor de un elemento de la lista.
+* Script "ficheros.ps1":
+
+```powershell
+Param([string] $directorio = ".")
+$ficheros = Get-ChildItem $directorio
+foreach ($fichero in $ficheros) {
+    Write-Host "El fichero" $fichero.Name "fue modificado el día" $fichero.LastWriteTime
+}
+```
+
+* Script "lineas3.ps1":
+
+```powershell
+<#
+	Va leyendo línea a línea el fichero indicado por parámetro
+#>
+Param([Parameter(Mandatory=$true)][string]$fichero)
+$numero=0
+foreach ($linea in Get-Content $fichero) {
+    Write-Host ($numero + 1) ":" $linea
+    $numero++
+}
+Write-Host "El fichero tiene $numero líneas"
+```
+
+> Para obtener más información: `Get-Help about_ForEach`.
+
+### ForEach-Object
+
+* Sintaxis:
+
+```powershell
+cmdlet | ForEach-Object { orden(es) }
+```
+
+* Es un cmdlet, no una estructura de control.
+* Permite usarlo en combinación con otros cmdlets mediante tuberías.
+* El bloque de órdenes se ejecuta por cada objeto devuelto por el cmdlet previo.
+* Para recoger el elemento en cada iteración usamos la variable `$_`.
+* Script "ficheros2.ps1":
+
+```powershell
+Param([string] $directorio = ".")
+Get-ChildItem $directorio | ForEach-Object {
+    Write-Host "El fichero" $_.Name "fue modificado por última vez el día" $_.LastWriteTime
+}
+```
+
+* Script "lineas4.ps1":
+
+```powershell
+<#
+	Va leyendo línea a línea el fichero indicado por parámetro
+#>
+Param([Parameter(Mandatory=$true)][string]$fichero)
+$numero = 0
+Get-Content $fichero | ForEach-Object {
+    Write-Host ($numero + 1) ":" $_
+    $numero++
+}
+Write-Host "El fichero tiene $numero líneas"
 ```
 
 ### break, continue y exit
 
 #### `break`
 
-* Hace que cualquier bucle `while`, `for` o `until` termine y pase el control a la siguiente línea después de `done`.
+* Hace que cualquier bucle termine y pase el control a la siguiente línea después del bloque de órdenes.
 
 #### `continue`
 
-* Hace que termine la iteración actual de cualquier bucle `while`, `for` o `until` y pase directamente a la siguiente iteración sin terminar de ejecutar las órdenes de la iteración actual.
+* Hace que termine la iteración actual de cualquier bucle y pase directamente a la siguiente iteración, saltádose la ejecución de las órdenes restantes de la iteración actual.
 
-#### `exit [n]`
+#### `exit`
 
-* Termina la ejecución del script y devuelve `n` como código de retorno (0 significa éxito, distinto de 0 significa error)
-
-### select
-
-* Sintaxis:
-
-```bash
-select i [ in lista ]
-do
-	orden(es)
-done
-```
-
-* Muestra un menú con las opciones de “lista”.
-* Cuando elijamos una opción,  `i` toma el valor de la opción seleccionada y se ejecutan las órdenes.
-* Está bien para hacer menús, combinándolo con un `case` anidado.
-* El bucle `select` sólo termina con `break` o `exit`.
-* Ejemplo "elección.sh":
-
-```bash
-#!/bin/bash
-PS3="Elije una opción: "
-select i in Listado Quien Salir
-do
-	case $i in
-		Listado)     ls –l ;;
-		Quien)       who ;;
-		Salir)       exit 0 ;;
-		*)           echo “Eeehhh???” ;;
-	esac
-done
-```
-
->  PS3 es la variable de entorno que corresponde al prompt de `select`.
+* Termina la ejecución del script.
 
 ## Funciones
 
+* Las funciones permiten agrupar un conjunto de órdenes que se ejecutan con una cierta frecuencia, para poder reutilizarlas.
 * Sintaxis de definición de una función:
 
-```bash
-nombre() {
+```powershell
+function nombre([parametro]...) {
 	orden(es)
+	[[return] valor]
 }
 ```
 
-* Las funciones permiten agrupar un conjunto de órdenes que se ejecutan con una cierta frecuencia, para poder reutilizarlas.
-* En "nombre" es el nombre de la función.
-* Podemos pasarle parámetros a la función al invocarla, y recogerlos dentro con `$1`, `$2`, ..., `$n`, así como conocer el número deparámetros con `$#` u obtenerlos todos con `$*`. Es como si el contenido de la función fuera un script dentro del script.
-* Las funciones se usan  dentro del script como si fueran comandos.
+* `nombre` es el nombre de la función. Lo utilizaremos para ejecutarla.
+
+  > Es recomendable usar nombres formados por "Verbo-Sujeto" (por ejemplo: `Saludar-Persona`) y que el verbo utilizado sea alguno de los devueltos por el comando `Get-Verb`.
+
+* `valor` es el resultado devuelto por la función, si es que devuelve algo.
+
+* Las funciones se usan dentro del script como si fueran cmdlets.
 
 
-* Para devolver un valor desde una función se puede hacer enviando el resultado a la salida estándar (con un `echo` por ejemplo).
-* Podemos declarar tantas funciones como queramos dentro de un script.
-* Podemos invocar unas funciones desde dentro de otras para crear funciones más complejas.
-* Ejemplo "func-error.sh":
+- Para devolver un valor desde una función se hace enviando el resultado a la salida estándar (con un `Write-Host` por ejemplo).
+- Podemos declarar tantas funciones como queramos dentro de un script.
+- Podemos invocar unas funciones desde dentro de otras para crear funciones más complejas.
+- Script "saludar.ps1":
 
-```bash
-#!/bin/bash
-
-# definimos la función "error"
-error() {
-	echo Error de sintaxis
-	exit 1
+```powershell
+# Declaración de la función
+function Saludar-Persona() {
+    "Hola Don Pepito"
 }
 
-if [ $# -eq 0 ]; then
-	error               # Invocación de la función "error"
-else
-	echo Hay $# argumentos
-fi
+# Ejecución o invocación de la función
+$saludo = Saludar-Persona
+
+# Muetra el resultado devuelto por la función
+Write-Host $saludo
 ```
 
-* Ejemplo "func-sumar.sh":
+#### Parámetros
 
-```bash
-#!/bin/bash
-sumar() {
-	echo $(expr $1 + $2)
-}
-resultado=$(sumar 12 4)
-echo $resultado
-```
+* La función puede recibir parámetros al ejecutarla, y estos hay que declararlos entre los paréntesis `(...)`.
+* La sintaxis para definir los parámetros de una función es idéntica al bloque `param` utilizado para especificar los parámetros de un script.
+* Debemos tener en cuenta que los parámetros son variables locales dentro de la función, lo que significa que no se puede acceder a ellas desde fuera de la función.
+* Ejemplo "saludar2.ps1":
 
-* Ejemplo "espacio-ocupado.sh":
 
-```bash
-#!/bin/bash
-ocupado() {
-	particion=$1
-	df -k | grep /dev/$particion | tr –s " " | cut –d " " –f 3
+```powershell
+<# 
+    Declara una función para recoger un nombre desde la consola
+#>
+function Obtener-Nombre() {
+    return Read-Host -Prompt "Introduce un nombre"
 }
 
-kbToMb() {
-	kilobytes=$1
-	resultado=$(expr $kilobytes / 1024)
-	echo $resultado
+<# 
+    Declara la función que saluda a la persona con el nombre 
+    especificado por parámetro.
+#>
+function Saludar-Persona([string] $nombre) {
+    return "Hola " + $nombre
 }
 
-partSda1=$(ocupado sda1)
-partSda2=$(ocupado sda2)
-partSdb1=$(ocupado sdb1)
+<# 
+    Invoca a la función Obtener-Nombre y guarda el resultado 
+    en la variable $nombre
+#>
+$nombre = Obtener-Nombre
 
-total=$(expr $partSda1 + $partSda2 + $partSdb1)
-totalMegas=$(kbToMb $total)
+<# 
+    Invoca a la función Saludar pasándole el nombre 
+    almacenado en la variable $nombre
+#>
+$saludo = Saludar-Persona $nombre
 
-echo "El espacio ocupado total esde $totalMegas MB"
+# Muetra el resultado devuelto por la función
+Write-Host $saludo
 ```
 
->  `df -k` devuelve el espacio libre y ocupado en kilobytes (-k) por las distintas particiones montadas.
+#### Más ejemplos de funciones
 
-### Librería de funciones
+* Ejemplo "sumar.ps1":
 
-* Es posible crear una librería de funciones que podemos reutilizar desde otros scripts.
-* Librería "funciones.sh":
-
-```bash
-ocupado() {
-	particion=$1
-	df -k | grep /dev/$particion | tr –s " " | cut –d " " –f 3
+```powershell
+function Calcular-AreaCirculo([double] $radio) {
+	$area = [Math]::PI * $radio * $radio
+	return $area
 }
-kbToMb() {
-	kilobytes=$1
-	resultado=$(expr $kilobytes / 1024)
-	echo $resultado
+
+$radio = 25
+$area = Calcular-AreaCirculo $radio
+Write-Host "El área de una circunferencia de radio $radio es $area"
+```
+
+* Ejemplo "espacio-libre.ps1":
+
+```powershell
+# Devuelve la cantidad de bytes libres de la unidad indicada
+function Obtener-EspacioLibre([string] $unidad) {
+	return (Get-PSDrive -Name $unidad).Free
+}
+
+# Convierte la cantidad de bytes indicada en gigabytes
+function Convertir-BytesAGigas([uint64] $cantidad) {
+	return $cantidad / 1GB
+}
+
+$libre = Obtener-EspacioLibre "C" 
+$gigas = Convertir-BytesAGigas $libre 
+Write-Host "La unidad $unidad dispone de $gigas GB libres"
+```
+
+### Módulos
+
+* Es posible crear módulos o librerías con elementos (llamados **miembros**) que podemos reutilizar desde otros scripts (variables, funciones, alias, cmdlets, ...).
+* Los módulos son scripts con extensión `.psm1`.
+* Módulo "trigonometria.psm1":
+
+```powershell
+function Calcular-AreaRectangulo([double] $ancho, [double] $alto) {
+	return $ancho * $alto
+}
+
+function Calcular-AreaTriangulo([double] $base, [double] $altura) {
+    return $base * $altura / 2
+}
+
+function Calcular-AreaCircunferencia([double] $radio) {
+    return [Math]::PI * $radio * $radio
 }
 ```
 
-* Script "espacio-ocupado.sh":
+#### Exportar miembros de un módulo
 
-```bash
-#!/bin/bash
+* Es posible decidir lo que es accesible dentro de un módulo mediante el cmdlet `Export-ModuleMember`.
+* Script "trigonometria-limitado.psm1":
 
-# incluir el script con las funciones para poder utilizarlas
-. ./funciones.sh
+```powershell
+function Calcular-AreaRectangulo([double] $ancho, [double] $alto) {
+	return $ancho * $alto
+}
 
-partSda1=$(ocupado sda1)
-partSda2=$(ocupado sda2)
-cpartSdb1=$(ocupado sdb1)
+function Calcular-AreaTriangulo([double] $base, [double] $altura) {
+    return $base * $altura / 2
+}
 
-total=$(expr $partSda1 + $partSda2 + $partSdb1)
-totalMegas=$(kbToMb $total)
+function Calcular-AreaCircunferencia([double] $radio) {
+    return [Math]::PI * $radio * $radio
+}
 
-echo "El espacio ocupado total esde $totalMegas MB"
+Export-ModuleMember -Function Calcular-AreaRectangulo,Calcular-AreaTriangulo
 ```
 
-:information_source: Para incluir un script dentro de otro ponemos un punto (.) un espacio y la ruta completa al script a incluir.
+* En el ejemplo anterior, los scripts que usen el módulo sólo podrán acceder a las funciones `Calcular-AreaRectangulo` y `Calcular-AreaTriangulo`, pero no a `Calcular-AreaCircunferencia`. Esta última será una función sólo para uso interno del módulo.
 
-`. /path/to/libreria`
+#### Usar un módulo
 
-También es válida la siguiente forma:
+* Para usar un módulo desde un script es necesario importarlo con el cmdlet:
 
-`source /path/to/libreria`
-
-## Definición y uso de arrays (vectores)
-
-* Definición de un array de cuatro elementos
-
-```bash
-$ miArray=(primero segundo tercero cuarto)
+```powershell
+Import-Module <modulo>
 ```
 
-* Definición de un array añadiendo elemento a elemento:
+* `modulo` es el nombre del fichero del módulo con o sin la extensión.
+* Para importar un módulo es necesario que se encuentre en alguna de las rutas de la variable de entorno `$env:PSModulePath` o especificar la ruta completa del módulo.
+* El cmdlet `Import-Module` comprueba si los nombres de las funciones utilizan verbos válidos para PowerShell. Para conocer estos verbos disponemos del cmdlet `Get-Verb`.
+  * Se mostrarán unos avisos en caso de que alguna función exportada no cumpla con este requisito.
+  * Para deshabilitar esta comprobación usamos el parámetro `-DisableNameChecking`.
 
-```bash
-$ miArray[0]=primero
-$ miArray[1]=segundo
-$ miArray[2]=tercero
-$ miArray[3]=cuarto
+```powershell
+Import-Module -DisableNameChecking <modulo>
+```
+
+* Por ejemplo, en el script "usar-modulo.ps1" vemos como importar y usar las funciones exportadas por el módulo "trigonometria.psm1":
+
+
+```powershell
+Import-Module -DisableNameChecking "x:\ruta\al\modulo\trigonometria" 
+$area = Calcular-AreaRectangulo 12 34
+Write-Host "Área = $area"
+```
+
+
+## Arrays (vectores)
+
+* Definición de un array de cuatro elementos:
+
+```powershell
+PS> $miArray = "primero","segundo","tercero","cuarto"
+```
+
+* El array puede contener cuaquier tipo de elemtno
+* Definición de un array fuertemente tipado:
+
+```powershell
+# Crea un array de enteros (int) con 4 elementos (del 0 al 3)
+PS> $otroArray = New-Object int[] 4
+PS> $otroArray[0] = 123
+PS> $otroArray[1] = "hola"
+No se puede convertir el valor "hola" al tipo "System.Int32". Error: "La cadena de entrada no tiene el formato correcto."
+En línea: 1 Carácter: 1
++ $otroArray[1] = "hola"
++ ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvalidCastFromStringToInteger
 ```
 
 * Acceder a uno de los elementos del array:
 
-```bash
-$ echo ${miArray[1]}
+```powershell
+PS> $miArray[1]
 segundo
-$ echo ${miArray[0]} blablabla ${miArray[2]}
+PS> $miArray[0] + " blablabla " + $miArray[2]
 primero blablabla tercero
 ```
 
 * Acceder a TODOS los elementos del array:
 
-```bash
-$ echo El contenido del array es: ${miArray[*]}
-El contenido del array es: primero segundo tercero cuarto
+```powershell
+PS> $miArray
+primero
+segundo
+tercero
+cuarto
 ```
 
 * Conocer el número de elementos del array:
 
-```bash
-$ echo El número de elementos del array es: ${#miArray[*]}
-El número de elementos del array es: 4
+```powershell
+PS> $miArray.Length
+4 
 ```
 
