@@ -4,23 +4,31 @@ title: Scripting en PowerShell
 
 ## El primer script
 
-* El script "Hola Mundo" (holamundo.ps1):
+El script "Hola Mundo" (holamundo.ps1):
 
 ```powershell
 Write-Host "Hola Mundo"
 ```
-* Ejecutar: `.\holamundo.ps1`
-  * Hay que añadir “.\” porque “holamundo.ps1” no está en el PATH.
+Los scripts PowerShell deben tener extensión `.ps1`.
 
-> Los scripts PowerShell deben tener extensión ".ps1".
+Para ejecutar el script:
+
+```powershell
+PS> .\holamundo.ps1
+Hola Mundo
+```
+
+> Hay que añadir `.\` porque `holamundo.ps1` no está en el PATH.
 
 >  El cmdlet `Write-Host` es equivalente a `echo`.
 
 ## El segundo script
 
-* Los comentarios simples en PowerShell se definen con `#` (almohadilla).
-* Desde la versión 2 de PowerShell se pueden usar bloques de comentarios con `<#` y `#>`.
-* El script "comentarios.ps1":
+Los comentarios simples en PowerShell se definen con `#` (almohadilla).
+
+Desde la versión 2 de PowerShell se pueden usar bloques de comentarios con `<#` y `#>`.
+
+El script "comentarios.ps1":
 
 ```bash
 # Soy un comentario simple en PowerShell
@@ -32,7 +40,7 @@ Get-Date
 query user
 ```
 
-* Los bloques de comentarios se suelen utilizar para incluir ayuda en nuestros scripts, que luego podrá ser consultada con `Get-Help <script.ps1>`:
+Los bloques de comentarios se suelen utilizar para incluir ayuda en nuestros scripts, que luego podrá ser consultada con `Get-Help <script.ps1>`:
 
 ```powershell
 <#
@@ -56,7 +64,7 @@ query user
 Write-Host "Sólo sirvo para mostrarte como se usan los comentarios"
 ```
 
-* Si consultamos la ayuda del script anterior obtendremos los siguiente:
+Si consultamos la ayuda del script anterior obtendremos los siguiente:
 
 ```powershell
 PS> Get-Help .\comentariosv2.ps1
@@ -87,7 +95,7 @@ NOTAS
 
 ## El tercer script
 
-* El script "educado.ps1":
+El script "educado.ps1":
 
 ```powershell
 $nombre = Read-Host -Prompt "¿Cómo te llamas?"
@@ -97,7 +105,7 @@ Write-Host "¿Cómo estás?"
 
 > El cmdlet `Read-Host -Prompt <mensaje>` muestra el `mensaje` al usuario, luego espera a que se introduzca un dato desde teclado y éste es devuelto como un `String`, el cuál se almacena en la variable `$nombre`. 
 
-* Es posible implementar el ejemplo anterior sin usar la variable:
+Es posible implementar el ejemplo anterior sin usar la variable:
 
 ```powershell
 Write-Host "Hola $(Read-Host -Prompt "¿Cómo te llamas?")"
@@ -106,12 +114,13 @@ Write-Host "¿Cómo estás?"
 
 ## Paso de parámetros
 
-* Es posible pasar parámetros a un script cuando lo ejecutamos, como si se tratara de un comando más.
+Es posible pasar parámetros a un script cuando lo ejecutamos, como si se tratara de un comando más.
 
 ### Bloque `param`
 
-* Es recomendable declarar los parámetros al principio del script mediante la directiva `Param`.
-* Sintaxis:
+Es recomendable declarar los parámetros al principio del script mediante la directiva `Param`.
+
+Sintaxis:
 
 ```powershell
 Param(
@@ -128,7 +137,7 @@ Donde:
 | nombre   | Nombre del parámetro (es como una variable más dentro del script). |
 | valor    | Valor por defecto que tomará el parámetro si no se especifica al ejecutar el script. |
 
-* Script "parametros.ps1":
+Script "parametros.ps1":
 
 ```powershell
 Param(
@@ -145,7 +154,7 @@ Write-Host $cuarto
 Write-Host $quinto
 ```
 
-* Ejemplo de ejecución del script anterior:
+Ejemplo de ejecución del script anterior:
 
 ```powershell
 PS> Get-Help .\parametros.ps1
@@ -182,7 +191,7 @@ False
 
 #### Parámetro con conjunto de valores limitado
 
-* Para hacer que un parámetro sólo pueda recibir un conjunto limitado de valores (limitado.ps1):
+Para hacer que un parámetro sólo pueda recibir un conjunto limitado de valores (limitado.ps1):
 
 ```powershell
 Param(
@@ -191,7 +200,7 @@ Param(
 Write-Host $parametro
 ```
 
-* Uso del script:
+Uso del script:
 
 ```powershell
 PS> .\limitado.ps1 -parametro word
@@ -209,7 +218,7 @@ En línea: 1 Carácter: 16
 
 #### Parámetros obligatorios
 
-* Es posible hacer que un parámero sea obligatorio (mandatory.ps1):
+Es posible hacer que un parámero sea obligatorio (mandatory.ps1):
 
 ```powershell
 Param(
@@ -222,7 +231,7 @@ Write-Host $segundo
 
 > En el ejemplo anterior, el parámetro `segundo` es obligatorio (**mandatory**).
 
-* Si no especificamos el valor de los parámetros obligatorios, al ejecutar el script nos pedirá dichos valores:
+Si no especificamos el valor de los parámetros obligatorios, al ejecutar el script nos pedirá dichos valores:
 
 ```powershell
 PS> .\mandatory.ps1
@@ -248,7 +257,7 @@ hola
 
 ### Variables especiales
 
-* Dentro de los scripts podemos usar las siguientes variables especiales:
+Dentro de los scripts podemos usar las siguientes variables especiales:
 
 | Variable      | Descripción                              |
 | :------------ | :--------------------------------------- |
@@ -256,7 +265,7 @@ hola
 | $args.Count   | Número de parámetros pasados al script (excluyendo los especificados en el bloque `Param`). |
 | $LASTEXITCODE | Código de retorno de la última orden ejecutada (si es <> 0 indica que hubo un error). |
 
-* Script "especiales.ps1":
+Script "especiales.ps1":
 
 ```powershell
 Write-Host "Primero:" $args[0]
@@ -271,12 +280,15 @@ Write-Host "Valor de retorno del último comando:" $LASTEXITCODE
 
 ## El cmdlet `Read-Host`
 
-* Sintaxis: `$variable = Read-Host [[-Prompt] <prompt>]`
-* Donde:
-  * `-Prompt <prompt>` muestra un mensaje antes de esperar a que se introduzca texto.
-  * `variable` es la variable donde se guardará el texto introducido (**string**).
-* Se utiliza para leer información desde el teclado (entrada estándar) y guardarla en variables.
-* Script "leer-variable.ps1":
+Sintaxis: `$variable = Read-Host [[-Prompt] <prompt>]`
+
+Donde:
+* `-Prompt <prompt>` muestra un mensaje antes de esperar a que se introduzca texto.
+* `variable` es la variable donde se guardará el texto introducido (**string**).
+
+Se utiliza para leer información desde el teclado (entrada estándar) y guardarla en variables.
+
+Script "leer-variable.ps1":
 
 ```powershell
 <#
@@ -288,7 +300,7 @@ Write-Host "El valor introducido es: $var"
 
 ## Operaciones aritméticas
 
-* PowerShell integra de forma natural las operaciones aritméticas.
+PowerShell integra de forma natural las operaciones aritméticas.
 
 | Operador | Descripción                              | Ejemplo           |
 | -------- | ---------------------------------------- | ----------------- |
@@ -303,7 +315,7 @@ Write-Host "El valor introducido es: $var"
 
 > Más información: `Get-Help about_Arithmetic_Operators`
 
-* Script "aritmetica.ps1":
+Script "aritmetica.ps1":
 
 ```powershell
 $x = [int] (Read-Host -Prompt "Introduce el valor de la variable")
@@ -312,14 +324,17 @@ $z = ($y / 2) + 5
 Write-Host $z
 ```
 
-> El cmdlet `Read-Host` devuelve valores de tipo cadena de caracteres (**string**) y para poder operar con esos valores debemos convertirlos primero a entero (**int**). 
->
-> Para ello se especifica el tipo al que queremos convertir el valor entre corchetes (`[int]`). Este proceso de cambiar un valor de un tipo de datos a otro se llama **cast**. 
+#### Casting
+
+El cmdlet `Read-Host` devuelve valores de tipo cadena de caracteres (**string**) y para poder operar con esos valores debemos convertirlos primero a entero (**int**). 
+
+Para ello se especifica el tipo al que queremos convertir el valor entre corchetes (`[int]`). Este proceso de cambiar un valor de un tipo de datos a otro se llama **casting**. 
 
 ### La clase `Math`
 
-* `Math` es una clase que ofrece funciones y constantes matemáticas (raíz cuadrada, potencia, número PI, ...). 
-* Para acceder a sus miembros usamos `[Math]::<miembro>`.
+`Math` es una clase que ofrece funciones y constantes matemáticas (raíz cuadrada, potencia, número PI, ...). 
+
+Para acceder a sus miembros usamos `[Math]::<miembro>`.
 
 | Miembro                      | Tipo      | Descripción                                    |
 | ---------------------------- | --------- | ---------------------------------------------- |
@@ -329,7 +344,7 @@ Write-Host $z
 | [Math]::Max(valor1, valor2)  | Función   | Devuelve el mayor de `valor1` y `valor2`.      |
 | [Math]::Min(valor1, valor2)  | Función   | Devuelve el menor de `valor1` y `valor2`.      |
 
-* Script "radio.ps1":
+Script "radio.ps1":
 
 ```powershell
 $radio = [double] (Read-Host -Prompt "Introduce el radio de la circunferencia")
@@ -339,7 +354,7 @@ Write-Host "El área de la circunferencia de radio" $radio "es" $area
 
 ## Operadores relacionales
 
-* Los operadores relacionales se utilizan para comparar valores y devuelven un valor de tipo booleano (True o False).
+Los operadores relacionales se utilizan para comparar valores y devuelven un valor de tipo booleano (True o False).
 
 | Operador | Descripción                                                  | Ejemplo   |
 | -------- | ------------------------------------------------------------ | --------- |
@@ -352,7 +367,7 @@ Write-Host "El área de la circunferencia de radio" $radio "es" $area
 
 > Para obtener más información podemos ejecutar el siguiente cmdlet: `Get-Help about_Comparison_Operators`
 
-* Script "comparacion.ps1":
+Script "comparacion.ps1":
 
 ```powershell
 Write-Host 
@@ -365,8 +380,9 @@ $resultado = $arg1 -eq $arg2
 Write-Host "El resultado es" $resultado
 ```
 
-* También se pueden comparar otros tipos de datos:
-* Script "comparar-strings.ps1":
+También se pueden comparar otros tipos de datos:
+
+Script "comparar-strings.ps1":
 
 ```powershell
 # Compara dos strings
@@ -376,7 +392,7 @@ $resultado = $a -eq $b
 Write-Host "¿" $a "es igual a" $b "?" $resultado
 ```
 
-* Otros operadores relacionales:
+Otros operadores relacionales:
 
 | Operador       | Descripción                                                  |
 | -------------- | ------------------------------------------------------------ |
@@ -391,7 +407,7 @@ Write-Host "¿" $a "es igual a" $b "?" $resultado
 | `-is`          | Comprueba si un valor es de un tipo de datos determinado (int, double, string, ...) |
 | `-isnot`       | Comprueba si un valor NO es de un tipo determinado.          |
 
-* Ejemplos:
+Ejemplos:
 
 ```powershell
 # -in / -notin
@@ -459,11 +475,9 @@ PS> $b -is [string]
 True
 ```
 
-
-
 ## Operadores lógicos
 
-* Los operadores lógicos permiten crear expresiones de comparación más complejas.
+Los operadores lógicos permiten crear expresiones de comparación más complejas.
 
 | Operador | Descripción                                                  | Ejemplo             |
 | -------- | ------------------------------------------------------------ | ------------------- |
@@ -471,7 +485,7 @@ True
 | `-and`   | "Y" lógico. Si alguno de los operandos es Falso, devuelve Falso. | `$False -and $True` |
 | `-not`   | Negación. Si el operando es Verdadero, devuelve Falso, y viceversa. | `-not $True`        |
 
-* Más ejemplos:
+Más ejemplos:
 
 ```powershell
 PS> $a = $True
@@ -493,7 +507,7 @@ False
 
 ### if
 
-* Sintaxis:
+Sintaxis:
 
 ```powershell
 if (condicion1) {
@@ -505,8 +519,9 @@ if (condicion1) {
 }
 ```
 
-* Nos permite tomar decisiones según se cumplan o no unas condiciones (expresiones booleanas).
-* El script "temperatura.ps1":
+Nos permite tomar decisiones según se cumplan o no unas condiciones (expresiones booleanas).
+
+El script "temperatura.ps1":
 
 ```powershell
 $temperatura = [double] (Read-Host -Prompt "¿Cuál es la temperatura del paciente?")
@@ -525,7 +540,7 @@ if ($temperatura -lt 35) {
 }
 ```
 
-* El script "crea-dir.ps1":
+El script "crea-dir.ps1":
 
 ```powershell
 <#
@@ -543,7 +558,7 @@ try {
 
 ### switch
 
-* Sintaxis:
+Sintaxis:
 
 ```powershell
 switch (expresion) {
@@ -562,10 +577,9 @@ switch (expresion) {
 }
 ```
 
-* Controla el flujo de ejecución basándose en la expresión dada. 
-* La expresión se compara, en orden, con todos los patrones. 
-* Cuando la expresión coincide con un patrón, se ejecutan todas las órdenes que vayan a continuación, hasta encontrar `break`.
-* Ejemplo "dia-semana.ps1":
+Controla el flujo de ejecución basándose en la expresión dada. La expresión se compara, en orden, con todos los patrones. Cuando la expresión coincide con un patrón, se ejecutan todas las órdenes que vayan a continuación, hasta encontrar `break`.
+
+Ejemplo "dia-semana.ps1":
 
 ```powershell
 $dia = Get-Date -UFormat "%a"
@@ -581,7 +595,7 @@ switch ($dia) {
 }
 ```
 
-* Ejemplo "temperatura2.ps1":
+Ejemplo "temperatura2.ps1":
 
 ```powershell
 $temperatura = [double] (Read-Host -Prompt "¿Cuál es la temperatura del paciente?")
@@ -620,7 +634,7 @@ switch ($temperatura) {
 
 > La variable `$_` se corresponde con el valor de la expresión. En el ejemplo anterior `$_`  es igual a `$temperatura`.
 
-* Ejemplo "menu.ps1":
+Ejemplo "menu.ps1":
 
 ```powershell
 Write-Host "1) Mostrar la fecha"
@@ -639,7 +653,7 @@ switch ($opcion) {
 
 ### while
 
-* Sintaxis:
+Sintaxis:
 
 ```powershell
 while (condición) {
@@ -647,9 +661,9 @@ while (condición) {
 }
 ```
 
-* Se ejecutan las órdenes una y otra vez mientras se cumpla la condición.
-* La condición se evalúa al principio del bucle.
-* Ejemplo "mientras.ps1":
+Se ejecutan las órdenes una y otra vez mientras se cumpla la condición. La condición se evalúa al principio del bucle.
+
+Ejemplo "mientras.ps1":
 
 ```powershell
 <#
@@ -662,7 +676,7 @@ while ( $a –le 53 ) {
 }
 ```
 
-* Ejemplo "lineas.ps1":
+Ejemplo "lineas.ps1":
 
 ```powershell
 <#
@@ -680,7 +694,7 @@ Write-Host "El fichero tiene $numero líneas"
 
 ### do..while
 
-- Sintaxis:
+Sintaxis:
 
 ```powershell
 do {
@@ -688,12 +702,11 @@ do {
 } while (condicion)
 ```
 
-- Se ejecutan las órdenes una y otra vez mientras se cumpla la condición.
-- La condición se evalúa al final del bucle.
+Se ejecutan las órdenes una y otra vez mientras se cumpla la condición. La condición se evalúa al final del bucle.
 
 ### do..until
 
-* Sintaxis:
+Sintaxis:
 
 ```bash
 do {
@@ -701,9 +714,9 @@ do {
 } until (condicion)
 ```
 
-* Es similar a `do..while` sólo que en vez de ejecutar las órdenes "mientras" se cumpla la condición, las ejecuta HASTA (until) que se cumpla.
-* La condiución se evalúa al final del bucle.
-* Ejemplo "hasta.ps1":
+Es similar a `do..while` sólo que en vez de ejecutar las órdenes "mientras" se cumpla la condición, las ejecuta HASTA (until) que se cumpla. La condiución se evalúa al final del bucle.
+
+Ejemplo "hasta.ps1":
 
 ```powershell
 do {
@@ -714,7 +727,7 @@ Write-Host -ForegroundColor Black -BackgroundColor White "¡Qué list@ eres!"
 
 ### for
 
-* Sintaxis:
+Sintaxis:
 
 ```powershell
 for (inicializacion; condicion; actualizacion) {
@@ -722,10 +735,9 @@ for (inicializacion; condicion; actualizacion) {
 }
 ```
 
-* El bucle se repite mientras se cumpla la **condición**.
-* El bloque de **inicialización** se ejecuta una vez al principio. Se utiliza para inicializar variables, normalmente usadas como contadores.
-* El bloque de **actualización** se ejecuta al final de cada iteración, después de ejecutar las órdenes.
-* Ejemplo "bucle-for.ps1”:
+El bucle se repite mientras se cumpla la **condición**. El bloque de **inicialización** se ejecuta una vez al principio. Se utiliza para inicializar variables, normalmente usadas como contadores. El bloque de **actualización** se ejecuta al final de cada iteración, después de ejecutar las órdenes.
+
+Ejemplo "bucle-for.ps1”:
 
 ```powershell
 <#
@@ -737,7 +749,7 @@ for ($a = 42;  $a –le 53 ; $a++) {
 }
 ```
 
-* Ejemplo "lineas2.ps1":
+Ejemplo "lineas2.ps1":
 
 ```powershell
 <#
@@ -755,7 +767,7 @@ Write-Host "El fichero tiene $numero líneas"
 
 ### foreach
 
-* Sintaxis:
+Sintaxis:
 
 ```powershell
 foreach (elemento in lista) {
@@ -763,9 +775,9 @@ foreach (elemento in lista) {
 }
 ```
 
-* El bucle se repite tantas veces como elementos tiene la lista.
-* En cada iteración, elemento toma el valor de un elemento de la lista.
-* Script "ficheros.ps1":
+El bucle se repite tantas veces como elementos tiene la lista. En cada iteración, `elemento` toma el valor de un elemento de la lista. El bucle termina cuando se hayan recorrido todos los elementos de la lista.
+
+Script "ficheros.ps1":
 
 ```powershell
 Param([string] $directorio = ".")
@@ -775,7 +787,7 @@ foreach ($fichero in $ficheros) {
 }
 ```
 
-* Script "lineas3.ps1":
+Script "lineas3.ps1":
 
 ```powershell
 <#
@@ -794,17 +806,15 @@ Write-Host "El fichero tiene $numero líneas"
 
 ### ForEach-Object
 
-* Sintaxis:
+Sintaxis:
 
 ```powershell
 cmdlet | ForEach-Object { orden(es) }
 ```
 
-* Es un cmdlet, no una estructura de control.
-* Permite usarlo en combinación con otros cmdlets mediante tuberías.
-* El bloque de órdenes se ejecuta por cada objeto devuelto por el cmdlet previo.
-* Para recoger el elemento en cada iteración usamos la variable `$_`.
-* Script "ficheros2.ps1":
+Es un cmdlet, no una estructura de control. Permite usarlo en combinación con otros cmdlets mediante tuberías. El bloque de órdenes se ejecuta por cada objeto devuelto por el cmdlet previo. Para recoger el elemento en cada iteración usamos la variable `$_`.
+
+Script "ficheros2.ps1":
 
 ```powershell
 Param([string] $directorio = ".")
@@ -813,7 +823,7 @@ Get-ChildItem $directorio | ForEach-Object {
 }
 ```
 
-* Script "lineas4.ps1":
+Script "lineas4.ps1":
 
 ```powershell
 <#
@@ -832,20 +842,21 @@ Write-Host "El fichero tiene $numero líneas"
 
 #### `break`
 
-* Hace que cualquier bucle termine y pase el control a la siguiente línea después del bloque de órdenes.
+Hace que cualquier bucle termine y pase el control a la siguiente línea después del bloque de órdenes.
 
 #### `continue`
 
-* Hace que termine la iteración actual de cualquier bucle y pase directamente a la siguiente iteración, saltádose la ejecución de las órdenes restantes de la iteración actual.
+Hace que termine la iteración actual de cualquier bucle y pase directamente a la siguiente iteración, saltádose la ejecución de las órdenes restantes de la iteración actual.
 
 #### `exit`
 
-* Termina la ejecución del script.
+Termina la ejecución del script.
 
 ## Funciones
 
-* Las funciones permiten agrupar un conjunto de órdenes que se ejecutan con una cierta frecuencia, para poder reutilizarlas.
-* Sintaxis de definición de una función:
+Las funciones permiten agrupar un conjunto de órdenes que se ejecutan con una cierta frecuencia, para poder reutilizarlas.
+
+Sintaxis de definición de una función:
 
 ```powershell
 function nombre([parametro]...) {
@@ -854,19 +865,21 @@ function nombre([parametro]...) {
 }
 ```
 
+Donde:
+
 * `nombre` es el nombre de la función. Lo utilizaremos para ejecutarla.
 
   > Es recomendable usar nombres formados por "Verbo-Sujeto" (por ejemplo: `Saludar-Persona`) y que el verbo utilizado sea alguno de los devueltos por el comando `Get-Verb`.
 
 * `valor` es el resultado devuelto por la función, si es que devuelve algo.
 
-* Las funciones se usan dentro del script como si fueran cmdlets.
+Las funciones se usan dentro del script como si fueran cmdlets.
 
+Para devolver un valor desde una función se puede hacer enviando el resultado a la salida estándar (con un `Write-Host` por ejemplo) o usando la orden `return` seguida del valor a devovler.
 
-- Para devolver un valor desde una función se hace enviando el resultado a la salida estándar (con un `Write-Host` por ejemplo).
-- Podemos declarar tantas funciones como queramos dentro de un script.
-- Podemos invocar unas funciones desde dentro de otras para crear funciones más complejas.
-- Script "saludar.ps1":
+Podemos declarar tantas funciones como queramos dentro de un script, así como es posible invocar unas funciones desde dentro de otras para crear funciones más complejas.
+
+Script "saludar.ps1":
 
 ```powershell
 # Declaración de la función
@@ -883,11 +896,13 @@ Write-Host $saludo
 
 #### Parámetros
 
-* La función puede recibir parámetros al ejecutarla, y estos hay que declararlos entre los paréntesis `(...)`.
-* La sintaxis para definir los parámetros de una función es idéntica al bloque `param` utilizado para especificar los parámetros de un script.
-* Debemos tener en cuenta que los parámetros son variables locales dentro de la función, lo que significa que no se puede acceder a ellas desde fuera de la función.
-* Ejemplo "saludar2.ps1":
+La función puede recibir parámetros al ejecutarla, y estos hay que declararlos entre los paréntesis `(...)`.
 
+La sintaxis para definir los parámetros de una función es idéntica al bloque `param` utilizado para especificar los parámetros de un script.
+
+Debemos tener en cuenta que los parámetros son variables locales dentro de la función, lo que significa que no se puede acceder a ellas desde fuera de la función.
+
+Ejemplo "saludar2.ps1":
 
 ```powershell
 <# 
@@ -923,7 +938,7 @@ Write-Host $saludo
 
 #### Más ejemplos de funciones
 
-* Ejemplo "sumar.ps1":
+Ejemplo "sumar.ps1":
 
 ```powershell
 function Calcular-AreaCirculo([double] $radio) {
@@ -936,7 +951,7 @@ $area = Calcular-AreaCirculo $radio
 Write-Host "El área de una circunferencia de radio $radio es $area"
 ```
 
-* Ejemplo "espacio-libre.ps1":
+Ejemplo "espacio-libre.ps1":
 
 ```powershell
 # Devuelve la cantidad de bytes libres de la unidad indicada
@@ -956,9 +971,11 @@ Write-Host "La unidad $unidad dispone de $gigas GB libres"
 
 ### Módulos
 
-* Es posible crear módulos o librerías con elementos (llamados **miembros**) que podemos reutilizar desde otros scripts (variables, funciones, alias, cmdlets, ...).
-* Los módulos son scripts con extensión `.psm1`.
-* Módulo "trigonometria.psm1":
+Es posible crear módulos o librerías con elementos (llamados **miembros**) que podemos reutilizar desde otros scripts (variables, funciones, alias, cmdlets, ...).
+
+Los módulos son scripts con extensión `.psm1`.
+
+Módulo "trigonometria.psm1":
 
 ```powershell
 function Calcular-AreaRectangulo([double] $ancho, [double] $alto) {
@@ -976,8 +993,9 @@ function Calcular-AreaCircunferencia([double] $radio) {
 
 #### Exportar miembros de un módulo
 
-* Es posible decidir lo que es accesible dentro de un módulo mediante el cmdlet `Export-ModuleMember`.
-* Script "trigonometria-limitado.psm1":
+Es posible decidir lo que es accesible dentro de un módulo mediante el cmdlet `Export-ModuleMember`.
+
+Script "trigonometria-limitado.psm1":
 
 ```powershell
 function Calcular-AreaRectangulo([double] $ancho, [double] $alto) {
@@ -995,28 +1013,28 @@ function Calcular-AreaCircunferencia([double] $radio) {
 Export-ModuleMember -Function Calcular-AreaRectangulo,Calcular-AreaTriangulo
 ```
 
-* En el ejemplo anterior, los scripts que usen el módulo sólo podrán acceder a las funciones `Calcular-AreaRectangulo` y `Calcular-AreaTriangulo`, pero no a `Calcular-AreaCircunferencia`. Esta última será una función sólo para uso interno del módulo.
+> En el ejemplo anterior, los scripts que usen el módulo sólo podrán acceder a las funciones `Calcular-AreaRectangulo` y `Calcular-AreaTriangulo`, pero no a `Calcular-AreaCircunferencia`. Esta última será una función sólo para uso interno del módulo.
 
 #### Usar un módulo
 
-* Para usar un módulo desde un script es necesario importarlo con el cmdlet:
+Para usar un módulo desde un script es necesario importarlo con el cmdlet:
 
 ```powershell
 Import-Module <modulo>
 ```
 
-* `modulo` es el nombre del fichero del módulo con o sin la extensión.
-* Para importar un módulo es necesario que se encuentre en alguna de las rutas de la variable de entorno `$env:PSModulePath` o especificar la ruta completa del módulo.
-* El cmdlet `Import-Module` comprueba si los nombres de las funciones utilizan verbos válidos para PowerShell. Para conocer estos verbos disponemos del cmdlet `Get-Verb`.
-  * Se mostrarán unos avisos en caso de que alguna función exportada no cumpla con este requisito.
-  * Para deshabilitar esta comprobación usamos el parámetro `-DisableNameChecking`.
+Donde:
 
+* `modulo` es el nombre del fichero del módulo con o sin la extensión.
+
+Para importar un módulo es necesario que se encuentre en alguna de las rutas de la variable de entorno `$env:PSModulePath` o especificar la ruta completa del módulo.
+
+El cmdlet `Import-Module` comprueba si los nombres de las funciones utilizan verbos válidos para PowerShell. Para conocer estos verbos disponemos del cmdlet `Get-Verb`. Se mostrarán unos avisos en caso de que alguna función exportada no cumpla con este requisito. Para deshabilitar esta comprobación usamos el parámetro `-DisableNameChecking`.
 ```powershell
 Import-Module -DisableNameChecking <modulo>
 ```
 
-* Por ejemplo, en el script "usar-modulo.ps1" vemos como importar y usar las funciones exportadas por el módulo "trigonometria.psm1":
-
+Por ejemplo, en el script "usar-modulo.ps1" vemos como importar y usar las funciones exportadas por el módulo "trigonometria.psm1":
 
 ```powershell
 Import-Module -DisableNameChecking "x:\ruta\al\modulo\trigonometria" 
@@ -1027,17 +1045,19 @@ Write-Host "Área = $area"
 
 ## Arrays (vectores)
 
-* Definición de un array de cuatro elementos:
+Definición de un array de cuatro elementos:
 
 ```powershell
 PS> $miArray = "primero","segundo","tercero","cuarto"
 ```
 
-* El array puede contener cuaquier tipo de elemtno
-* Definición de un array fuertemente tipado:
+El array puede contener cuaquier tipo de elemento.
+
+Definición de un array fuertemente tipado:
 
 ```powershell
 # Crea un array de enteros (int) con 4 elementos (del 0 al 3)
+# Este array sólo podrá contener enteros
 PS> $otroArray = New-Object int[] 4
 PS> $otroArray[0] = 123
 PS> $otroArray[1] = "hola"
@@ -1049,7 +1069,7 @@ En línea: 1 Carácter: 1
     + FullyQualifiedErrorId : InvalidCastFromStringToInteger
 ```
 
-* Acceder a uno de los elementos del array:
+Acceder a uno de los elementos del array:
 
 ```powershell
 PS> $miArray[1]
@@ -1058,7 +1078,7 @@ PS> $miArray[0] + " blablabla " + $miArray[2]
 primero blablabla tercero
 ```
 
-* Acceder a TODOS los elementos del array:
+Acceder a TODOS los elementos del array:
 
 ```powershell
 PS> $miArray
@@ -1068,7 +1088,7 @@ tercero
 cuarto
 ```
 
-* Conocer el número de elementos del array:
+Conocer el número de elementos del array:
 
 ```powershell
 PS> $miArray.Length
