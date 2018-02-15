@@ -4,22 +4,34 @@ title: Scripting en BASH
 
 ## El primer script
 
-* El script "Hola mundo" (holamundo.sh):
+Para crear el script "Hola mundo" (holamundo.sh) abrimos un editor de texto (`nano`, p.ej.) y escribimos lo siguiente:
 
 ```bash
 #!/bin/bash
 echo Hola Mundo
 ```
-* Permisos de ejecución: `chmod +x holamundo.sh`
-* Ejecutar: `./holamundo.sh`
-  * Hay que añadir “./” porque “holamundo.sh” no está en el PATH.
+Le damos permisos de ejecución:
 
-> La primera línea **#!/bin/bash** indica a la shell que el script debe ejecutarse con el intérprete de comandos `/bin/bash`. Debemos incluirla en todos los scripts.
+```bash
+$ chmod +x holamundo.sh
+```
+
+Y ya lo podemos ejecutar:
+
+```bash
+$ ./holamundo.sh
+Hola Mundo
+```
+
+Hay que añadir `./` porque "holamundo.sh" no está en el PATH.
+
+> La primera línea `#!/bin/bash` indica a la shell que el script debe ejecutarse con el intérprete de comandos `/bin/bash`. Debemos incluirla en todos los scripts.
 
 ## El segundo script
 
-* Los comentarios (#).
-* El script "comentarios.sh":
+Los comentarios son todas aquellas líneas que comienzan por `#` (almohadilla). Son ignoradas por el intérprete de comandos.
+
+El script "comentarios.sh":
 
 ```bash
 #!/bin/bash
@@ -32,7 +44,7 @@ date
 
 ## El tercer script
 
-* El script "educado.sh":
+El script "educado.sh":
 
 ```bash
 #!/bin/bash
@@ -45,8 +57,9 @@ echo ¿Cómo estás?
 
 ## Paso de parámetros
 
-* Es posible pasar parámetros a un script cuando lo ejecutamos, como si se tratara de un comando más.
-* Son accesibles utilizando las siguientes variables:
+Es posible pasar parámetros a un script cuando lo ejecutamos, como si se tratara de un comando más.
+
+Son accesibles utilizando las siguientes variables:
 
 | Parámetro | Descripción                              |
 | --------- | ---------------------------------------- |
@@ -56,7 +69,7 @@ echo ¿Cómo estás?
 | $3        | Es el tercer parámetro pasado al script. |
 | $n        | Es el enésimo parámetro pasado al script. |
 
-* Script "parametros.sh":
+Script "parametros.sh":
 
 ```bash
 #!/bin/bash
@@ -70,7 +83,7 @@ echo Parámetro 2 = $2
 echo Parámetro 3 = $3
 ```
 
-* Ejemplo de ejecución del script anterior:
+Ejemplo de ejecución del script anterior:
 
 ```bash
 $ ./parametros.sh abc 123 xyz
@@ -82,7 +95,7 @@ Parámetro 3 = xyz
 
 ## Variables especiales
 
-* Dentro de los scripts podemos usar las siguientes variables especiales:
+Dentro de los scripts podemos usar las siguientes variables especiales:
 
 | Parámetro | Descripción                              |
 | :-------- | :--------------------------------------- |
@@ -91,7 +104,7 @@ Parámetro 3 = xyz
 | $*        | Cadena de parámetros entera (excluyendo el nombre del script). |
 | $@        | Array de parámetros (excluyendo el nombre del script), donde cada parámetro es una cadena distinta dentro del array. |
 
-* Script "especiales.sh":
+Script "especiales.sh":
 
 ```bash
 #!/bin/bash
@@ -104,16 +117,19 @@ cp
 echo La variable \? vale $?
 ```
 
-* `\` (escapar): Se pone delante de los símbolos especiales para que no sean interpretados y se muestren literalmente.
+>  `\` (escapar): Se pone delante de los símbolos especiales para que no sean interpretados y se muestren literalmente.
 
 ## Ordenes importantes en la programación de scripts
 
 ### El comando `shift`
 
-* Sintaxis: `shift n`
-* Desplaza "n" posiciones a la izquierda los parámetros, de forma que, por ejemplo, el parámetro $3 pase a ser \$2 si n=1.
-* Esto permite leer los parámetros cuando son más de 9.
-* Script "desplazamiento.sh":
+Sintaxis: `shift n`
+
+Desplaza "n" posiciones a la izquierda los parámetros, de forma que, por ejemplo, el parámetro $3 pase a ser \$2 si n=1.
+
+Esto permite leer los parámetros cuando son más de 9.
+
+Script "desplazamiento.sh":
 
 ```bash
 #!/bin/bash
@@ -133,16 +149,19 @@ echo Ahora \$# vale: $#
 echo Ahora \$* vale: $*
 ```
 
-* Ejemplo de ejecución del script anterior: `./desplazamiento uno dos tres cuatro cinco`
+Ejemplo de ejecución del script anterior: `./desplazamiento uno dos tres cuatro cinco`
 
 ### El comando `read`
 
-* Sintaxis: `read [-p <prompt>] <variable(s)>`
-* Donde:
-  * `-p <prompt>` muestra un mensaje antes de esperar a que se introduzca texto.
-  * `variable(s)` es la lista de nombres de variables donde se guardará el texto introducido.
-* Se utiliza para leer información desde el teclado (entrada estándar) y guardarla en variables
-* Script "leer_variable.sh":
+Sintaxis: `read [-p <prompt>] <variable(s)>`
+
+Donde:
+* `-p <prompt>` muestra un mensaje antes de esperar a que se introduzca texto.
+* `variable(s)` es la lista de nombres de variables donde se guardará el texto introducido.
+
+Se utiliza para leer información desde el teclado (entrada estándar) y guardarla en variables
+
+Script "leer_variable.sh":
 
 ```bash
 #!/bin/bash
@@ -153,7 +172,7 @@ read -p "Introduce un valor: " var
 echo El valor introducido es: $var
 ```
 
-* Script "leer_variables.sh":
+Script "leer_variables.sh":
 
 ```bash
 #!/bin/bash
@@ -167,7 +186,7 @@ echo El valor introducido para var2 es: $var2
 echo El valor introducido para var3 es: $var3
 ```
 
-* Ejemplo de uso del script anterior:
+Ejemplo de uso del script anterior:
 
 ```bash
 $ ./leer_variables.sh hola don pepito, hola don jose
@@ -178,8 +197,9 @@ El valor introducido para var3 es: pepito, hola don jose
 
 ### El comando `expr`
 
-* Sintaxis: `expr arg1 op arg2 [ op arg3 … ]`
-* Permite evaluar expresiones aritméticas, lógicas y relacionales (comparaciones).
+Sintaxis: `expr arg1 op arg2 [ op arg3 … ]`
+
+Permite evaluar expresiones aritméticas, lógicas y relacionales (comparaciones).
 
 #### Operadores aritméticos
 
@@ -193,7 +213,7 @@ El valor introducido para var3 es: pepito, hola don jose
 
 > :warning: Al multiplicar es necesario escapar el símbolo `*` con una `\` (barra invertida)
 
-* Script "sumar.sh":
+Script "sumar.sh":
 
 ```bash
 #!/bin/bash
@@ -211,9 +231,9 @@ resultado=$(expr $arg1 + $arg2)
 echo El resultado es $resultado
 ```
 
-* Es posible usar paréntesis en la expresión para alterar la prioridad de las operaciones, pero también hay que escaparlos con una `\` delante.
+Es posible usar paréntesis en la expresión para alterar la prioridad de las operaciones, pero también hay que escaparlos con una `\` delante.
 
-* Script "calculos.sh":
+Script "calculos.sh":
 
 ```bash
 #!/bin/bash
@@ -239,11 +259,11 @@ echo El resultado es $resultado
 | <        | ¿Es el primer operando menor que el segundo operando? | `expr 4 \< 5`  |
 | <=       | ¿Es el primer operando menor o igual que el segundo operando? | `expr 4 \<= 5` |
 
-* Si el resultado es verdadero devuelve 1, si es falso devuelve 0.
+Si el resultado es verdadero devuelve 1, si es falso devuelve 0.
 
 >  ​ `>` y `<` tienen significado especial para la BASH (son redirecciones) y hay que escaparlos.
 
-* Script "comparacion.sh":
+Script "comparacion.sh":
 
 ```bash
 #!/bin/bash
@@ -270,7 +290,7 @@ echo El resultado es $resultado
 
 >  :eyes: `|` y `&` deben ser escapados.
 
-* Más ejemplos:
+Más ejemplos:
 
 ```bash
 $ expr 0 \& 2
@@ -289,12 +309,15 @@ $ expr 0 \| 3
 
 #### Para archivos y directorios
 
-* Sintaxis: `test –<opcion> <argumento>` ó `[ –<opcion> <argumento> ]`
-* Donde:
-  * `opcion` indica el tipo de comprobación (test) que se va a realizar (ver tabla más abajo).
-  * `argumento` valor sobre el que se va a realizar la comprobación.
-* El comando `test` devuelve el resultado de la comprobación como un **valor de retorno**, que podemos consultar mediante la variable `$?`. A diferencia de `expr`, no muestra nada en la salida estándar.
-* Algunas opciones relacionadas con archivos y directorios:
+Sintaxis: `test –<opcion> <argumento>` ó `[ –<opcion> <argumento> ]`
+
+Donde:
+* `opcion` indica el tipo de comprobación (test) que se va a realizar (ver tabla más abajo).
+* `argumento` valor sobre el que se va a realizar la comprobación.
+
+El comando `test` devuelve el resultado de la comprobación como un **valor de retorno**, que podemos consultar mediante la variable `$?`. A diferencia de `expr`, no muestra nada en la salida estándar.
+
+Algunas opciones relacionadas con archivos y directorios:
 
 | Opción | Descripción                              |
 | ------ | ---------------------------------------- |
@@ -306,7 +329,7 @@ $ expr 0 \| 3
 | -d     | Devuelve verdadero (0) si existe y es un directorio. |
 | -e     | Devuelve verdadero (0) si existe.        |
 
-* Ejemplo:
+Ejemplo:
 
 ```bash
 # comprueba si existe el fichero /etc/passwd 
@@ -325,7 +348,7 @@ $ test -d /etc/passwd ; echo $?
 1	# falso
 ```
 
-* Igual que el ejemplo anterior pero usando la otra notación aceptada por la BASH para el comando `test`:
+Igual que el ejemplo anterior pero usando la otra notación aceptada por la BASH para el comando `test`:
 
 ```bash
 # comprueba si existe el fichero /etc/passwd 
@@ -347,8 +370,9 @@ $ [ -d /etc/passwd ] ; echo $?
 
 #### Para cadenas de caracteres
 
-* Sintaxis: `test cadena1 operador cadena2` ó  `[ cadena1 operador cadena2 ]`
-* Operadores:
+Sintaxis: `test cadena1 operador cadena2` ó  `[ cadena1 operador cadena2 ]`
+
+Operadores:
 
 | Operador | Descripción                              |
 | -------- | ---------------------------------------- |
@@ -359,8 +383,9 @@ $ [ -d /etc/passwd ] ; echo $?
 
 > `>` y `<` hay que escaparlos para que no sean interpretados por la BASH (son redirecciones) .
 
-* Es sensible a mayúsculas y minúsculas, por lo que “hola” es distinto de “Hola” u “HOLA”.
-* Ejemplos:
+Es sensible a mayúsculas y minúsculas, por lo que “hola” es distinto de “Hola” u “HOLA”.
+
+Ejemplos:
 
 ```bash
 # comprueba si hola<>adios
@@ -389,7 +414,7 @@ $ [ "hola" = "HOLA" ] ; echo ?
 
 ```
 
-* Es conveniente poner las cadenas entre comillas dobles (""), sobre todo si tienen espacios. 
+Es conveniente poner las cadenas entre comillas dobles (""), sobre todo si tienen espacios. 
 
 ```bash
 $ [ pepito = "pepito" ] ; echo $?
@@ -407,8 +432,9 @@ bash: [: demasiados argumentos		# error
 
 #### Para números
 
-* Sintaxis: `test numero1 operador numero2  ` ó `[ numero1 operador numero2 ]`
-* Operadores:
+Sintaxis: `test numero1 operador numero2  ` ó `[ numero1 operador numero2 ]`
+
+Operadores:
 
 | Operador | Descripción                              |
 | -------- | ---------------------------------------- |
@@ -419,7 +445,7 @@ bash: [: demasiados argumentos		# error
 | -eq      | `numero1` igual a `numero2` (equal)      |
 | -ne      | `numero1` distinto de `numero2` (not equal) |
 
-* Ejemplos:
+Ejemplos:
 
 ```bash
 $ a=23
@@ -435,9 +461,11 @@ $ test $a -ne 23 ; echo $?
 
 #### Operadores lógicos
 
-* Sintaxis: `test operando1 operador operando2` ó `[ operando1 operador operando2 ] `
-* Permite componer expresiones más complejas (AND, OR y NOT) con el comando `test`.
-* Operadores:
+Sintaxis: `test operando1 operador operando2` ó `[ operando1 operador operando2 ] `
+
+Permite componer expresiones más complejas (AND, OR y NOT) con el comando `test`.
+
+Operadores:
 
 | Operador | Descripción                              |
 | -------- | ---------------------------------------- |
@@ -448,7 +476,7 @@ $ test $a -ne 23 ; echo $?
 
 >  `!` (NOT) es un operador unario: `test ! operando1`, por lo que sólo recibe un operando.
 
-* Ejemplos:
+Ejemplos:
 
 ```bash
 $ a=12
@@ -483,7 +511,7 @@ $ [ \( $a -lt $b -a $b -eq 50 \) -o ! -f /etc/passwd ] ; echo $?
 
 ### if
 
-* Sintaxis:
+Sintaxis:
 
 ```bash
 if condicion1
@@ -497,9 +525,11 @@ else
 fi
 ```
 
-* Nos permite tomar decisiones a partir de los códigos de retorno de los comandos utilizados como condiciones.
-* Normalmente se usa junto con la orden `test`.
-* El script "existe-hosts.sh":
+Nos permite tomar decisiones a partir de los códigos de retorno de los comandos utilizados como condiciones.
+
+Normalmente se usa junto con la orden `test`.
+
+El script "existe-hosts.sh":
 
 ```bash
 #!/bin/bash
@@ -518,7 +548,7 @@ fi
 >
 > Si es <> 0, es falso y se ejecuta la orden  `echo`.
 
-* El script "crea-dir.sh":
+El script "crea-dir.sh":
 
 ```bash
 #!/bin/bash
@@ -533,7 +563,7 @@ then
 fi
 ```
 
-* Podemos validar los parámetros pasados al script, como en el siguiente ejemplo ("comprobar.sh"):
+Podemos validar los parámetros pasados al script, como en el siguiente ejemplo ("comprobar.sh"):
 
 ```bash
 #!/bin/bash
@@ -565,8 +595,9 @@ else
 fi
 ```
 
-* También podemos comprobar el resultado de la ejecución de otros programas.
-* Comprobar si existe un determinado usuario ("existe-usuario.sh"):
+También podemos comprobar el resultado de la ejecución de otros programas.
+
+Comprobar si existe un determinado usuario ("existe-usuario.sh"):
 
 ```bash
 #!/bin/bash
@@ -580,7 +611,7 @@ fi
 
 > La opción `-q` de `grep` hace que el resultado no salga en la consola, sino que simplemente el comando devuelva 0 (verdadero) si lo encuentra y <> 0 (falso) en caso contrario.
 
-* Ampliación del script anterior para averiguar además si el usuario es regular o del sistema ("existe-usuario2.sh"):
+Ampliación del script anterior para averiguar además si el usuario es regular o del sistema ("existe-usuario2.sh"):
 
 ```bash
 #!/bin/bash
@@ -601,7 +632,7 @@ fi
 
 ### case
 
-* Sintaxis:
+Sintaxis:
 
 ```bash
 case palabra in
@@ -618,10 +649,13 @@ case palabra in
 esac
 ```
 
-* Controla el flujo de ejecución basándose en la "palabra" dada. 
-* La palabra se compara, en orden, con todos los patrones. 
-* Cuando la palabra coincida con un patrón, se ejecutan todas las órdenes que vayan a continuación, hasta encontrar `;;` (doble punto y coma).
-* Ejemplo "hoy.sh":
+Controla el flujo de ejecución basándose en la "palabra" dada. 
+
+La palabra se compara, en orden, con todos los patrones. 
+
+Cuando la palabra coincida con un patrón, se ejecutan todas las órdenes que vayan a continuación, hasta encontrar `;;` (doble punto y coma).
+
+Ejemplo "hoy.sh":
 
 ```bash
 #!/bin/bash
@@ -641,7 +675,7 @@ case $dia in
 esac
 ```
 
-* Ejemplo "letras.sh":
+Ejemplo "letras.sh":
 
 ```bash
 #!/bin/bash
@@ -662,7 +696,7 @@ case "$letra" in
 esac
 ```
 
-* Variante del ejemplo anterior, donde acepta las letras tanto en mayúsculas como un minúsculas; ejemplo "letras-mayus-minus.sh":
+Variante del ejemplo anterior, donde acepta las letras tanto en mayúsculas como un minúsculas; ejemplo "letras-mayus-minus.sh":
 
 ```bash
 #!/bin/bash
@@ -683,7 +717,7 @@ case "$letra" in
 esac
 ```
 
-* Ejemplo "menu-comandos.sh":
+Ejemplo "menu-comandos.sh":
 
 ```bash
 #!/bin/bash
@@ -709,7 +743,7 @@ esac
 
 ### while
 
-* Sintaxis:
+Sintaxis:
 
 ```bash
 while condición
@@ -718,10 +752,13 @@ do
 done
 ```
 
-* Se ejecutan las órdenes una y otra vez mientras se cumpla la condición.
-* La condición se evalúa a verdadero si es 0, y falso en caso contrario (como `if-fi`).
-* Como condición podemos utilizar el resultado de la ejecución de un comando, aunque lo normal es usar `test`.
-* Ejemplo "“mientras.sh":
+Se ejecutan las órdenes una y otra vez mientras se cumpla la condición.
+
+La condición se evalúa a verdadero si es 0, y falso en caso contrario (como `if-fi`).
+
+Como condición podemos utilizar el resultado de la ejecución de un comando, aunque lo normal es usar `test`.
+
+Ejemplo "“mientras.sh":
 
 ```bash
 #!/bin/bash
@@ -736,7 +773,7 @@ do
 done
 ```
 
-* Ejemplo "líneas.sh":
+Ejemplo "lineas.sh":
 
 ```bash
 #!/bin/bash
@@ -754,7 +791,7 @@ echo "El fichero tiene $numero líneas"
 
 ### until
 
-* Sintaxis:
+Sintaxis:
 
 ```bash
 until condición
@@ -763,10 +800,13 @@ do
 done
 ```
 
-* Es similar a `while` sólo que en vez de ejecutar las órdenes "mientras" se cumpla la condición, las ejecuta HASTA (until) que se cumpla. Es decir, cuando la condición se cumple, termina.
-* Al igual que con `if` y con `while`, la condición es verdadera si vale 0 y falsa en caso contrario.
-* Como condición podemos utilizar el resultado de la ejecución de un comando, aunque normal es usar `test`.
-* Ejemplo "hasta.sh":
+Es similar a `while` sólo que en vez de ejecutar las órdenes "mientras" se cumpla la condición, las ejecuta HASTA (until) que se cumpla. Es decir, cuando la condición se cumple, termina.
+
+Al igual que con `if` y con `while`, la condición es verdadera si vale 0 y falsa en caso contrario.
+
+Como condición podemos utilizar el resultado de la ejecución de un comando, aunque normal es usar `test`.
+
+Ejemplo "hasta.sh":
 
 ```bash
 #!/bin/bash
@@ -778,7 +818,7 @@ done
 
 ### for
 
-* Sintaxis:
+Sintaxis:
 
 ```bash
 for variable in lista
@@ -787,9 +827,9 @@ do
 done
 ```
 
-* El bucle se repite por cada una de las palabras o valores que contenga "lista".
-* En cada iteración del bucle `for`, "variable" toma el valor del elemento correspondiente de “lista”.
-* Ejemplo "saludar-varios.sh":
+El bucle se repite por cada una de las palabras o valores que contenga "lista". En cada iteración del bucle `for`, "variable" toma el valor del elemento correspondiente de “lista”.
+
+Ejemplo "saludar-varios.sh":
 
 ```bash
 #!/bin/bash
@@ -799,7 +839,7 @@ do
 done
 ```
 
-* Ejemplo "comprobar-varios.sh":
+Ejemplo "comprobar-varios.sh":
 
 ```bash
 #!/bin/bash
@@ -836,19 +876,19 @@ done
 
 #### `break`
 
-* Hace que cualquier bucle `while`, `for` o `until` termine y pase el control a la siguiente línea después de `done`.
+Hace que cualquier bucle `while`, `for` o `until` termine y pase el control a la siguiente línea después de `done`.
 
 #### `continue`
 
-* Hace que termine la iteración actual de cualquier bucle `while`, `for` o `until` y pase directamente a la siguiente iteración sin terminar de ejecutar las órdenes de la iteración actual.
+Hace que termine la iteración actual de cualquier bucle `while`, `for` o `until` y pase directamente a la siguiente iteración sin terminar de ejecutar las órdenes de la iteración actual.
 
 #### `exit [n]`
 
-* Termina la ejecución del script y devuelve `n` como código de retorno (0 significa éxito, distinto de 0 significa error)
+Termina la ejecución del script y devuelve `n` como código de retorno (0 significa éxito, distinto de 0 significa error)
 
 ### select
 
-* Sintaxis:
+Sintaxis:
 
 ```bash
 select i [ in lista ]
@@ -857,11 +897,11 @@ do
 done
 ```
 
-* Muestra un menú con las opciones de “lista”.
-* Cuando elijamos una opción,  `i` toma el valor de la opción seleccionada y se ejecutan las órdenes.
-* Está bien para hacer menús, combinándolo con un `case` anidado.
-* El bucle `select` sólo termina con `break` o `exit`.
-* Ejemplo "elección.sh":
+Muestra un menú con las opciones de "lista". Cuando elijamos una opción,  `i` toma el valor de la opción seleccionada y se ejecutan las órdenes. El bucle `select` sólo termina con `break` o `exit`.
+
+Es útil para hacer menús, combinándolo con un `case` anidado.
+
+Ejemplo "elección.sh":
 
 ```bash
 #!/bin/bash
@@ -877,11 +917,11 @@ do
 done
 ```
 
->  PS3 es la variable de entorno que corresponde al prompt de `select`.
+>  **PS3** es la variable de entorno que corresponde al prompt de `select`.
 
 ## Funciones
 
-* Sintaxis de definición de una función:
+Sintaxis de definición de una función:
 
 ```bash
 nombre() {
@@ -889,16 +929,21 @@ nombre() {
 }
 ```
 
-* Las funciones permiten agrupar un conjunto de órdenes que se ejecutan con una cierta frecuencia, para poder reutilizarlas.
-* En "nombre" es el nombre de la función.
-* Podemos pasarle parámetros a la función al invocarla, y recogerlos dentro con `$1`, `$2`, ..., `$n`, así como conocer el número deparámetros con `$#` u obtenerlos todos con `$*`. Es como si el contenido de la función fuera un script dentro del script.
-* Las funciones se usan  dentro del script como si fueran comandos.
+Donde:
 
+* `nombre` es el nombre de la función.
 
-* Para devolver un valor desde una función se puede hacer enviando el resultado a la salida estándar (con un `echo` por ejemplo).
-* Podemos declarar tantas funciones como queramos dentro de un script.
-* Podemos invocar unas funciones desde dentro de otras para crear funciones más complejas.
-* Ejemplo "func-error.sh":
+Las funciones permiten agrupar un conjunto de órdenes que se ejecutan con una cierta frecuencia, para poder reutilizarlas.
+
+Podemos pasarle parámetros a la función al invocarla, y recogerlos dentro con `$1`, `$2`, ..., `$n`, así como conocer el número deparámetros con `$#` u obtenerlos todos con `$*`. Es como si el contenido de la función fuera un script dentro del script.
+
+Las funciones se usan  dentro del script como si fueran comandos.
+
+Para devolver un valor desde una función se puede hacer enviando el resultado a la salida estándar (con un `echo` por ejemplo).
+
+Podemos declarar tantas funciones como queramos dentro de un script, así como invocar unas funciones desde dentro de otras para crear funciones más complejas.
+
+Ejemplo "func-error.sh":
 
 ```bash
 #!/bin/bash
@@ -916,7 +961,7 @@ else
 fi
 ```
 
-* Ejemplo "func-sumar.sh":
+Ejemplo "func-sumar.sh":
 
 ```bash
 #!/bin/bash
@@ -927,10 +972,11 @@ resultado=$(sumar 12 4)
 echo $resultado
 ```
 
-* Ejemplo "espacio-ocupado.sh":
+Ejemplo "espacio-ocupado.sh":
 
 ```bash
 #!/bin/bash
+
 ocupado() {
 	particion=$1
 	df -k | grep /dev/$particion | tr –s " " | cut –d " " –f 3
@@ -956,8 +1002,9 @@ echo "El espacio ocupado total esde $totalMegas MB"
 
 ### Librería de funciones
 
-* Es posible crear una librería de funciones que podemos reutilizar desde otros scripts.
-* Librería "funciones.sh":
+Es posible crear una librería de funciones que podemos reutilizar desde otros scripts.
+
+Librería "funciones.sh":
 
 ```bash
 ocupado() {
@@ -971,7 +1018,7 @@ kbToMb() {
 }
 ```
 
-* Script "espacio-ocupado.sh":
+Script "espacio-ocupado.sh":
 
 ```bash
 #!/bin/bash
@@ -997,15 +1044,15 @@ También es válida la siguiente forma:
 
 `source /path/to/libreria`
 
-## Definición y uso de arrays (vectores)
+## Arrays (vectores)
 
-* Definición de un array de cuatro elementos
+Definición de un array de cuatro elementos
 
 ```bash
 $ miArray=(primero segundo tercero cuarto)
 ```
 
-* Definición de un array añadiendo elemento a elemento:
+Definición de un array añadiendo elemento a elemento:
 
 ```bash
 $ miArray[0]=primero
@@ -1014,7 +1061,7 @@ $ miArray[2]=tercero
 $ miArray[3]=cuarto
 ```
 
-* Acceder a uno de los elementos del array:
+Acceder a uno de los elementos del array:
 
 ```bash
 $ echo ${miArray[1]}
@@ -1023,14 +1070,14 @@ $ echo ${miArray[0]} blablabla ${miArray[2]}
 primero blablabla tercero
 ```
 
-* Acceder a TODOS los elementos del array:
+Acceder a TODOS los elementos del array:
 
 ```bash
 $ echo El contenido del array es: ${miArray[*]}
 El contenido del array es: primero segundo tercero cuarto
 ```
 
-* Conocer el número de elementos del array:
+Conocer el número de elementos del array:
 
 ```bash
 $ echo El número de elementos del array es: ${#miArray[*]}
