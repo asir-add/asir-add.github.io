@@ -5,8 +5,8 @@ title: Proyecto Check-Files
 Este proyecto consiste en implementar un script para el PowerShell de Windows que verifique si existen o no y si han cambiado una serie de archivos y subcarpetas de una carpeta dada. Esta información se leerá de un archivo como el siguiente:
 
 ```powershell
-c:\micarpeta						<-- primera línea, la carpeta contenedora
-fichero1.txt,11/03/2013 13:35:00	<-- resto de líneas, los archivos y subcarpetas a comprobar
+C:\micarpeta <-- primera línea, la carpeta contenedora
+fichero1.txt,11/03/2013 13:35:00 <-- resto de líneas, los archivos y subcarpetas a comprobar
 fichero2.pdf,10/01/2012 11:17:22
 subcarpeta1,30/11/2012 12:21:08
 documento1.docx,23/04/2010 23:07:18
@@ -24,16 +24,16 @@ El script deberá mostrar un listado de los cambios producidos.
 * La sintaxis del script es la siguiente:
 
 ```powershell
-Check-Files.ps1 [ --help | --check fichero | --generate fichero --target carpeta ]
+Check-Files.ps1 [ -Help | -Check fichero | -Generate fichero -Target carpeta ]
 ```
 
 * El funcionamiento del script será el siguiente:
 
-| Opción                                | Descripción                                                  |
-| ------------------------------------- | ------------------------------------------------------------ |
-| `--help`                              | Muestra la ayuda de sí mismo: `Get-Help .\Check-Files.ps1`   |
-| `--check fichero `                    | Comprueba si ha habido cambios en la carpeta usando el `fichero` de control pasado por parámetro. Los cambios a controlar y notificar son los siguiente: el fichero ha sido modificado (por su fecha/hora), el fichero ha sido creado o el fichero ya no existe. |
-| `--generate fichero --target carpeta` | Para la `carpeta` indicada genera el `fichero` de control.   |
+| Opción                              | Descripción                                                  |
+| ----------------------------------- | ------------------------------------------------------------ |
+| `-Help`                             | Muestra la ayuda de sí mismo: `Get-Help .\Check-Files.ps1`   |
+| `-Check fichero `                   | Comprueba si ha habido cambios en la carpeta usando el `fichero` de control pasado por parámetro. Los cambios a controlar y notificar son los siguiente: el fichero ha sido modificado (por su fecha/hora), el fichero ha sido creado o el fichero ya no existe. |
+| `-Generate fichero -Target carpeta` | Para la `carpeta` indicada genera el `fichero` de control.   |
 
 > El script deberá contener los comentarios de ayuda de PowerShell, de forma que se muestre toda la información del mismo con `Get-Help`.
 
@@ -54,9 +54,9 @@ d-----       30/11/2012     12:21                subcarpeta1
 -a----       11/03/2013     13:35           1045 fichero1.txt
 -a----       10/01/2012     11:17           2047 fichero2.pdf
 
-# Genera el fichero de control "info.txt" para el directorio "c:\micarpeta"
-PS C:\> .\Check-Files.ps1 --generate info.txt --target c:\micarpeta
-Fichero de control info.txt generado para la carpeta c:\micarpeta
+# Genera el fichero de control "info.txt" para el directorio "C:\micarpeta"
+PS C:\> .\Check-Files.ps1 -Generate info.txt -Target C:\micarpeta
+Fichero de control info.txt generado para la carpeta C:\micarpeta
 
 # Muestra el contenido del fichero de control generado
 PS C:\> Get-Content info.txt
@@ -68,7 +68,7 @@ documento1.docx,23/04/2010 23:07:18
 documento2.odt,08/01/2013 05:49:39
 
 # Comprueba si ha habido cambios
-PS C:\> .\Check-Files.ps1 --check info.txt
+PS C:\> .\Check-Files.ps1 -Check info.txt
 Comprobando cambios en C:\micarpeta:
 - No ha habido cambios, todo sigue igual
 
@@ -78,7 +78,7 @@ PS C:\micarpeta> "Nueva línea" >> fichero1.txt	# Añade una línea al final de 
 PS C:\micarpeta> "Nuevo fichero" > nuevo.txt	# Crea el fichero nuevo.txt
 
 # Comprueba si ha habido cambios
-PS C:\> .\Check-Files.ps1 --check info.txt
+PS C:\> .\Check-Files.ps1 -Check info.txt
 Comprobando cambios en C:\micarpeta:
 - fichero1.txt ha cambiado
 - fichero2.pdf ya no existe
@@ -87,8 +87,8 @@ Comprobando cambios en C:\micarpeta:
 
 ## Calificación
 
-| Opción     | Funcionalidad                   | Peso (%) |
-| ---------- | ------------------------------- | :------: |
-| --help     | Mostrar la ayuda.               |    10    |
-| --check    | Comprueba si ha habido cambios. |    45    |
-| --generate | Genera el fichero de control.   |    45    |
+| Opción    | Funcionalidad                   | Peso (%) |
+| --------- | ------------------------------- | :------: |
+| -Help     | Mostrar la ayuda.               |    10    |
+| -Check    | Comprueba si ha habido cambios. |    45    |
+| -Generate | Genera el fichero de control.   |    45    |
