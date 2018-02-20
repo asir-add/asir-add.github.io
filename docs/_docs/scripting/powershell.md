@@ -285,12 +285,13 @@ Write-Host "Valor de retorno del último comando:" $LASTEXITCODE
 Sintaxis:
 
 ```powershell
-$variable = Read-Host [[-Prompt] <prompt>]
+$variable = Read-Host [[-Prompt] <prompt>] [-AsSecureString]
 ```
 
 Donde:
 * `-Prompt <prompt>` muestra un mensaje antes de esperar a que se introduzca texto.
 * `variable` es la variable donde se guardará el texto introducido (**string**).
+* `-AsSecureString` hace que el texto introducido sea seguro (una contraseña, por ejemplo).
 
 Se utiliza para leer información desde el teclado (entrada estándar) y guardarla en variables.
 
@@ -302,6 +303,18 @@ Script "Leer-Variable.ps1":
 #>
 $var = Read-Host -Prompt "Introduce un valor"
 Write-Host "El valor introducido es:" $var
+```
+
+Script "Nueva-Contraseña.ps1":
+
+```powershell
+$password = Read-Host -Prompt "Introduce la contraseña" -AsSecureString
+Write-Host "La contraseña introducida es" $password
+
+# Extraer la contraseña encriptada de un SecureString
+$bstr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
+$plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
+Write-Host "La contraseña introducida es" $plainPassword
 ```
 
 ## Operaciones aritméticas

@@ -73,6 +73,14 @@ E: - peazovirus.exe
 El ejecutable peazovirus.exe de la unidad E: ha sido puesto en cuarentena.
 ```
 
+### Pistas
+
+Para obtener todas las unidades de disco (Provider.Name == FileSystem) montadas (Free != nulo) en el sistema:
+
+```powershell
+PS> Get-PSDrive | Where-Object { $_.Provider.Name -eq "FileSystem" -and $_.Free -ne $null }
+```
+
 ## Calificación
 
 | Opción             | Funcionalidad                                       | Peso (%) |
