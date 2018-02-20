@@ -837,12 +837,12 @@ Sintaxis:
 ```powershell
 try {
 	orden(es) controladas
-} catch [<excepcion>] {
+} catch [<excepción>] {
 	orden(es) que se ejecutan en respuesta a la <excepción>
 } catch {
 	orden(es) que se ejecutan en respuesta a cualquier excepción no capturada antes
 } finally {
-    orden(es) que se ejecutan tanto si hay error como si no
+	orden(es) que se ejecutan tanto si hay error como si no
 }
 ```
 
@@ -885,12 +885,12 @@ Param([Parameter(Mandatory=$true)][string] $directorio)
 $ErrorActionPreference = "Stop"		# Hace que se pueda capturar la excepción
 try {
 	# Obtiene el directorio indicado (lanza excepción si el directorio no existe)
-    Get-Item $directorio
+	Get-Item $directorio
 } catch [System.Management.Automation.ItemNotFoundException] {
 	# Crea el directorio porque no se encontró
-    New-Item -ItemType Directory $directorio
+	New-Item -ItemType Directory $directorio
 } finally {
-    Write-Host "El directorio" $directorio "ya existía o ha sido creado"
+	Write-Host "El directorio" $directorio "ya existía o ha sido creado"
 }
 ```
 
