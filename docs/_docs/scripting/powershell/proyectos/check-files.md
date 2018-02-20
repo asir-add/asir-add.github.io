@@ -32,43 +32,63 @@ Check-Files.ps1 [ --help | --check fichero | --generate fichero --target carpeta
 | Opción                                | Descripción                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | `--help`                              | Muestra la ayuda de sí mismo: `Get-Help .\Check-Files.ps1`   |
-| `--check fichero `                    | Comprueba si ha habido cambios en la carpeta usando el `fichero` de control pasado por parámetro. Para cada cambios mostrar información del cambio: el fichero ha sido modificado (por su fecha/hora), el fichero ha sido creado o el fichero ya no existe. |
+| `--check fichero `                    | Comprueba si ha habido cambios en la carpeta usando el `fichero` de control pasado por parámetro. Los cambios a controlar y notificar son los siguiente: el fichero ha sido modificado (por su fecha/hora), el fichero ha sido creado o el fichero ya no existe. |
 | `--generate fichero --target carpeta` | Para la `carpeta` indicada genera el `fichero` de control.   |
 
 > El script deberá contener los comentarios de ayuda de PowerShell, de forma que se muestre toda la información del mismo con `Get-Help`.
 
 ### Ejemplos de uso
 
-Suponiendo que hay un pendrive en la unidad `E:` conteniendo el fichero `autorun.inf` anterior y otro en la unidad `F:` sin éste fichero.
+Suponiendo que disponemos de la carpeta `C:\micarpeta`.
 
 ```powershell
-# Comprobar si hay virus sólo en la unidad E:
-PS> .\Clean-MemoryStick.ps1 --check E:
-E: - peazovirus.exe
+PS C:\micarpeta> Get-ChildItem
 
-# Comprobar si hay virus en todas las unidades (E: y F: en este caso)
-PS> .\Clean-MemoryStick.ps1 --check
-E: - peazovirus.exe
-F: - No se ha encontrado nada.
+    Directorio: C:\micarpeta
 
-# Eliminar virus de la unidad E:
-PS> .\Clean-MemoryStick.ps1 --clean E:
-E: - peazovirus.exe
-¿Desea eliminar el ejecutable? (S/N): s
-El ejecutable peazovirus.exe ha sido eliminado de la unidad E:
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       30/11/2012     12:21                subcarpeta1
+-a----       23/04/2010     23:07          70011 documento1.docx
+-a----       08/01/2013     05:49          34234 documento2.odt
+-a----       11/03/2013     13:35           1045 fichero1.txt
+-a----       10/01/2012     11:17           2047 fichero2.pdf
 
-# Poner en cuarentena virus en la unidad E:
-PS> .\Clean-MemoryStick.ps1 --clean E: --quarantine
-E: - peazovirus.exe
-¿Desea poner el ejecutable en cuarentena? (S/N): s
-El ejecutable peazovirus.exe de la unidad E: ha sido puesto en cuarentena.
+# Genera el fichero de control "info.txt" para el directorio "c:\micarpeta"
+PS C:\> .\Check-Files.ps1 --generate info.txt --target c:\micarpeta
+Fichero de control info.txt generado para la carpeta c:\micarpeta
+
+# Muestra el contenido del fichero de control generado
+PS C:\> Get-Content info.txt
+C:\micarpeta
+fichero1.txt,11/03/2013 13:35:00
+fichero2.pdf,10/01/2012 11:17:22
+subcarpeta1,30/11/2012 12:21:08
+documento1.docx,23/04/2010 23:07:18
+documento2.odt,08/01/2013 05:49:39
+
+# Comprueba si ha habido cambios
+PS C:\> .\Check-Files.ps1 --check info.txt
+Comprobando cambios en C:\micarpeta:
+- No ha habido cambios, todo sigue igual
+
+# Aplicamos algunos cambios sobre el contenido del directorio "c:\micarpeta"
+PS C:\micarpeta> Remove-Item fichero2.pdf		# Elimina fichero2.pdf
+PS C:\micarpeta> "Nueva línea" >> fichero1.txt	# Añade una línea al final de fichero1.txt
+PS C:\micarpeta> "Nuevo fichero" > nuevo.txt	# Crea el fichero nuevo.txt
+
+# Comprueba si ha habido cambios
+PS C:\> .\Check-Files.ps1 --check info.txt
+Comprobando cambios en C:\micarpeta:
+- fichero1.txt ha cambiado
+- fichero2.pdf ya no existe
+- nuevo.txt ha sido creado
 ```
 
 ## Calificación
 
-| Opción               | Funcionalidad                                       | Peso (%) |
-| -------------------- | --------------------------------------------------- | :------: |
-| --help               | Mostrar la ayuda.                                   |    15    |
-| --check              | Buscar ejecutables en `autorun.inf`.                |    30    |
-| --clean              | Eliminar ejecutables en `autorun.inf`.              |    40    |
-| --clean --quarantine | Mover ejecutables en `autorun.inf` a `.quarantine`. |    15    |
+| Opción     | Funcionalidad                   | Peso (%) |
+| ---------- | ------------------------------- | :------: |
+| --help     | Mostrar la ayuda.               |    10    |
+| --check    | Comprueba si ha habido cambios. |    45    |
+| --generate | Genera el fichero de control.   |    45    |
