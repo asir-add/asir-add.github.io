@@ -4,7 +4,7 @@ title: Scripting en PowerShell
 
 ## El primer script
 
-El script "Hola Mundo" (holamundo.ps1):
+Script "Hola Mundo" (HolaMundo.ps1):
 
 ```powershell
 Write-Host "Hola Mundo"
@@ -14,11 +14,11 @@ Los scripts PowerShell deben tener extensión `.ps1`.
 Para ejecutar el script:
 
 ```powershell
-PS> .\holamundo.ps1
+PS> .\HolaMundo.ps1
 Hola Mundo
 ```
 
-> Hay que añadir `.\` porque `holamundo.ps1` no está en el PATH.
+> Hay que añadir `.\` porque `HolaMundo.ps1` no está en el PATH.
 
 >  El cmdlet `Write-Host` es equivalente a `echo`.
 
@@ -28,19 +28,21 @@ Los comentarios simples en PowerShell se definen con `#` (almohadilla).
 
 Desde la versión 2 de PowerShell se pueden usar bloques de comentarios con `<#` y `#>`.
 
-El script "comentarios.ps1":
+Script "ComentariosSimples.ps1":
 
-```bash
+```powershell
 # Soy un comentario simple en PowerShell
 Get-Date
 <#
 	Y you soy un 
 	bloque de comentarios
 #>
-query user
+(Get-WmiObject Win32_OperatingSystem).Caption
 ```
 
-Los bloques de comentarios se suelen utilizar para incluir ayuda en nuestros scripts, que luego podrá ser consultada con `Get-Help <script.ps1>`:
+Los bloques de comentarios se suelen utilizar para incluir ayuda en nuestros scripts, que luego podrá ser consultada con `Get-Help <script.ps1>`.
+
+Script "ComentariosComplejos.ps1":
 
 ```powershell
 <#
@@ -67,16 +69,16 @@ Write-Host "Sólo sirvo para mostrarte como se usan los comentarios"
 Si consultamos la ayuda del script anterior obtendremos los siguiente:
 
 ```powershell
-PS> Get-Help .\comentariosv2.ps1
+PS> Get-Help .\ComentariosComplejos.ps1
 
 NOMBRE
-    comentariosv2.ps1
+    ComentariosComplejos.ps1
     
 SINOPSIS
     Breve descripción de lo que hace nuestro script.
     
 SINTAXIS
-    comentariosv2.ps1 [<CommonParameters>]
+    ComentariosComplejos.ps1 [<CommonParameters>]
     
 DESCRIPCIÓN
     Descripción detallada de nuestro script.
@@ -86,16 +88,16 @@ VÍNCULOS RELACIONADOS
     http://fvarrui.github.io/ADD 
 
 NOTAS
-    Para ver los ejemplos, escriba: "get-help comentariosv2.ps1 -examples".
-    Para obtener más información, escriba: "get-help comentariosv2.ps1 -detailed".
-    Para obtener información técnica, escriba: "get-help comentariosv2.ps1 -full".
-    Para obtener ayuda disponible en línea, escriba: "get-help comentariosv2.ps1 -online"
+    Para ver los ejemplos, escriba: "get-help ComentariosComplejos.ps1 -examples".
+    Para obtener más información, escriba: "get-help ComentariosComplejos.ps1 -detailed".
+    Para obtener información técnica, escriba: "get-help ComentariosComplejos.ps1 -full".
+    Para obtener ayuda disponible en línea, escriba: "get-help ComentariosComplejos.ps1 -online"
 
 ```
 
 ## El tercer script
 
-El script "educado.ps1":
+El script "Educado.ps1":
 
 ```powershell
 $nombre = Read-Host -Prompt "¿Cómo te llamas?"
@@ -137,51 +139,51 @@ Donde:
 | nombre   | Nombre del parámetro (es como una variable más dentro del script). |
 | valor    | Valor por defecto que tomará el parámetro si no se especifica al ejecutar el script. |
 
-Script "parametros.ps1":
+Script "Parametros.ps1":
 
 ```powershell
 Param(
-    [string] $primero,
-    [string] $segundo = "valor por defecto",
-    [switch] $tercero = $false,
-    [bool] $cuarto,
-    [int] $quinto
+    [string] $Primero,
+    [string] $Segundo = "valor por defecto",
+    [switch] $Tercero = $false,
+    [bool] $Cuarto,
+    [int] $Quinto
 )
-Write-Host $primero
-Write-Host $segundo
-Write-Host $tercero
-Write-Host $cuarto
-Write-Host $quinto
+Write-Host $Primero
+Write-Host $Segundo
+Write-Host $Tercero
+Write-Host $Cuarto
+Write-Host $Quinto
 ```
 
 Ejemplo de ejecución del script anterior:
 
 ```powershell
-PS> Get-Help .\parametros.ps1
-parametros.ps1 [[-primero] <string>] [[-segundo] <string>] [[-cuarto] <bool>] [[-quinto] <int>] [-tercero]
+PS> Get-Help .\Parametros.ps1
+Parametros.ps1 [[-Primero] <string>] [[-Segundo] <string>] [[-Cuarto] <bool>] [[-Quinto] <int>] [-Tercero]
 
-PS> .\parametros.ps1
+PS> .\Parametros.ps1
 
 valor por defecto
 False
 False
 0
 
-PS> .\parametros.ps1 -primero "hola" -tercero
+PS> .\Parametros.ps1 -Primero "hola" -Tercero
 hola
 valor por defecto
 True
 False
 0
 
-PS> .\parametros.ps1 -primero "hola" -segundo "don pepito"
+PS> .\Parametros.ps1 -Primero "hola" -Segundo "don pepito"
 hola
 don pepito
 False
 False
 0
 
-PS> .\parametros.ps1 -primero "hola" -tercero -quinto 123 -desconocido
+PS> .\Parametros.ps1 -Primero "hola" -Tercero -Quinto 123 -Desconocido
 hola
 valor por defecto
 True
@@ -191,53 +193,53 @@ False
 
 #### Parámetro con conjunto de valores limitado
 
-Para hacer que un parámetro sólo pueda recibir un conjunto limitado de valores (limitado.ps1):
+Para hacer que un parámetro sólo pueda recibir un conjunto limitado de valores (Limitado.ps1):
 
 ```powershell
 Param(
-    [ValidateSet("word","excel","powerpoint")][string] $parametro
+    [ValidateSet("word","excel","powerpoint")][string] $Parametro
 )
-Write-Host $parametro
+Write-Host $Parametro
 ```
 
 Uso del script:
 
 ```powershell
-PS> .\limitado.ps1 -parametro word
+PS> .\Limitado.ps1 -parametro word
 word
 
-PS> .\limitado.ps1 -parametro access
-.\limitado.ps1 : No se puede validar el argumento del parámetro 'parametro'. El argumento "access" no pertenece al conjunto 
+PS> .\Limitado.ps1 -parametro access
+.\Limitado.ps1 : No se puede validar el argumento del parámetro 'Parametro'. El argumento "access" no pertenece al conjunto 
 "word;excel;powerpoint" especificado por el atributo ValidateSet. Proporcione un argumento que pertenezca al conjunto e intente ejecutar el comando de nuevo.
 En línea: 1 Carácter: 16
-+ .\limitado.ps1 access
++ .\Limitado.ps1 access
 +                ~~~~~~
-    + CategoryInfo          : InvalidData: (:) [limitado.ps1], ParameterBindingValidationException
-    + FullyQualifiedErrorId : ParameterArgumentValidationError,limitado.ps1
+    + CategoryInfo          : InvalidData: (:) [Limitado.ps1], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Limitado.ps1
 ```
 
 #### Parámetros obligatorios
 
-Es posible hacer que un parámero sea obligatorio (mandatory.ps1):
+Es posible hacer que un parámero sea obligatorio (Mandatory.ps1):
 
 ```powershell
 Param(
-    [string] $primero,
-    [Parameter(Mandatory=$true)][string] $segundo
+    [string] $Primero,
+    [Parameter(Mandatory=$true)][string] $Segundo
 )
-Write-Host $primero
-Write-Host $segundo
+Write-Host $Primero
+Write-Host $Segundo
 ```
 
-> En el ejemplo anterior, el parámetro `segundo` es obligatorio (**mandatory**).
+> En el ejemplo anterior, el parámetro `Segundo` es obligatorio (**mandatory**).
 
 Si no especificamos el valor de los parámetros obligatorios, al ejecutar el script nos pedirá dichos valores:
 
 ```powershell
-PS> .\mandatory.ps1
-cmdlet mandatory.ps1 en la posición 1 de la canalización de comandos
+PS> .\Mandatory.ps1
+cmdlet Mandatory.ps1 en la posición 1 de la canalización de comandos
 Proporcione valores para los parámetros siguientes:
-segundo: hola
+Segundo: hola
 
 hola
 ```
@@ -265,7 +267,7 @@ Dentro de los scripts podemos usar las siguientes variables especiales:
 | $args.Count   | Número de parámetros pasados al script (excluyendo los especificados en el bloque `Param`). |
 | $LASTEXITCODE | Código de retorno de la última orden ejecutada (si es <> 0 indica que hubo un error). |
 
-Script "especiales.ps1":
+Script "Especiales.ps1":
 
 ```powershell
 Write-Host "Primero:" $args[0]
@@ -280,7 +282,11 @@ Write-Host "Valor de retorno del último comando:" $LASTEXITCODE
 
 ## El cmdlet `Read-Host`
 
-Sintaxis: `$variable = Read-Host [[-Prompt] <prompt>]`
+Sintaxis:
+
+```powershell
+$variable = Read-Host [[-Prompt] <prompt>]
+```
 
 Donde:
 * `-Prompt <prompt>` muestra un mensaje antes de esperar a que se introduzca texto.
@@ -288,14 +294,14 @@ Donde:
 
 Se utiliza para leer información desde el teclado (entrada estándar) y guardarla en variables.
 
-Script "leer-variable.ps1":
+Script "Leer-Variable.ps1":
 
 ```powershell
 <#
 	Ejemplo de uso de Read-Host
 #>
 $var = Read-Host -Prompt "Introduce un valor"
-Write-Host "El valor introducido es: $var"
+Write-Host "El valor introducido es:" $var
 ```
 
 ## Operaciones aritméticas
@@ -315,7 +321,7 @@ PowerShell integra de forma natural las operaciones aritméticas.
 
 > Más información: `Get-Help about_Arithmetic_Operators`
 
-Script "aritmetica.ps1":
+Script "Aritmetica.ps1":
 
 ```powershell
 $x = [int] (Read-Host -Prompt "Introduce el valor de la variable")
@@ -344,7 +350,7 @@ Para acceder a sus miembros usamos `[Math]::<miembro>`.
 | [Math]::Max(valor1, valor2)  | Función   | Devuelve el mayor de `valor1` y `valor2`.      |
 | [Math]::Min(valor1, valor2)  | Función   | Devuelve el menor de `valor1` y `valor2`.      |
 
-Script "radio.ps1":
+Script "Radio.ps1":
 
 ```powershell
 $radio = [double] (Read-Host -Prompt "Introduce el radio de la circunferencia")
@@ -367,7 +373,7 @@ Los operadores relacionales se utilizan para comparar valores y devuelven un val
 
 > Para obtener más información podemos ejecutar el siguiente cmdlet: `Get-Help about_Comparison_Operators`
 
-Script "comparacion.ps1":
+Script "Comparacion.ps1":
 
 ```powershell
 Write-Host 
@@ -382,7 +388,7 @@ Write-Host "El resultado es" $resultado
 
 También se pueden comparar otros tipos de datos:
 
-Script "comparar-strings.ps1":
+Script "Comparar-Strings.ps1":
 
 ```powershell
 # Compara dos strings
@@ -521,7 +527,7 @@ if (condicion1) {
 
 Nos permite tomar decisiones según se cumplan o no unas condiciones (expresiones booleanas).
 
-El script "temperatura.ps1":
+El script "Temperatura.ps1":
 
 ```powershell
 $temperatura = [double] (Read-Host -Prompt "¿Cuál es la temperatura del paciente?")
@@ -537,22 +543,6 @@ if ($temperatura -lt 35) {
     "Hipertermia"
 } else {
     "Normal"
-}
-```
-
-El script "crea-dir.ps1":
-
-```powershell
-<#
-    Comprueba si el directorio especificado por 
-    parámetro existe, y si no lo crea.
-#>
-Param([Parameter(Mandatory=$true)][string] $directorio)
-$ErrorActionPreference = "Stop"		# Hace que se pueda capturar la excepción
-try {
-    Get-Item $directorio
-} catch [System.Management.Automation.ItemNotFoundException] {
-    New-Item -ItemType Directory $directorio
 }
 ```
 
@@ -579,23 +569,23 @@ switch (expresion) {
 
 Controla el flujo de ejecución basándose en la expresión dada. La expresión se compara, en orden, con todos los patrones. Cuando la expresión coincide con un patrón, se ejecutan todas las órdenes que vayan a continuación, hasta encontrar `break`.
 
-Ejemplo "dia-semana.ps1":
+Ejemplo "Obtener-DiaSemana.ps1":
 
 ```powershell
 $dia = Get-Date -UFormat "%a"
 switch ($dia) {
-    "lu." { "Hoy es lunes"; break }
-    "ma." { "Hoy es martes"; break }
-    "mi." { "Hoy es miércoles"; break }
-    "ju." { "Hoy es jueves"; break }
-    "vi." { "Hoy es viernes"; break }
-    "sá." { "Hoy es sábado"; break }
-    "do." { "Hoy es domingo"; break }
+    "lu." { "Hoy es lunes :_("; break }
+    "ma." { "Hoy es martes :-|"; break }
+    "mi." { "Hoy es miércoles :-)"; break }
+    "ju." { "Hoy es juernes :-D"; break }
+    "vi." { "Hoy es viernes ;-P"; break }
+    "sá." { "Hoy es sábado ;-D"; break }
+    "do." { "Hoy es domingo :-("; break }
     default { "No sé que día es hoy" }
 }
 ```
 
-Ejemplo "temperatura2.ps1":
+Ejemplo "TemperaturaConSwitch.ps1":
 
 ```powershell
 $temperatura = [double] (Read-Host -Prompt "¿Cuál es la temperatura del paciente?")
@@ -634,7 +624,7 @@ switch ($temperatura) {
 
 > La variable `$_` se corresponde con el valor de la expresión. En el ejemplo anterior `$_`  es igual a `$temperatura`.
 
-Ejemplo "menu.ps1":
+Ejemplo "Menu.ps1":
 
 ```powershell
 Write-Host "1) Mostrar la fecha"
@@ -661,9 +651,9 @@ while (condición) {
 }
 ```
 
-Se ejecutan las órdenes una y otra vez mientras se cumpla la condición. La condición se evalúa al principio del bucle.
+Se ejecutan las órdenes una y otra vez mientras se cumpla la condición. La condición se evalúa al principio del bucle, y debe ser una expresión booleana (debe devolver verdadero o falso).
 
-Ejemplo "mientras.ps1":
+Script "Mientras.ps1":
 
 ```powershell
 <#
@@ -676,14 +666,14 @@ while ( $a –le 53 ) {
 }
 ```
 
-Ejemplo "lineas.ps1":
+Script "LineasConWhile.ps1":
 
 ```powershell
 <#
 	Va leyendo línea a línea el fichero indicado por parámetro
 #>
 Param([Parameter(Mandatory=$true)][string]$fichero)
-$contenido = Get-Content $fichero	# devuelve array de string del contenido de fichero
+$contenido = Get-Content $fichero	# devuelve un array de string con el contenido de fichero
 $numero = 0
 while ($numero -lt $contenido.Length) {
     Write-Host ($numero + 1) ":" $contenido[$numero]
@@ -716,7 +706,7 @@ do {
 
 Es similar a `do..while` sólo que en vez de ejecutar las órdenes "mientras" se cumpla la condición, las ejecuta HASTA (until) que se cumpla. La condiución se evalúa al final del bucle.
 
-Ejemplo "hasta.ps1":
+Script "Hasta.ps1":
 
 ```powershell
 do {
@@ -737,7 +727,7 @@ for (inicializacion; condicion; actualizacion) {
 
 El bucle se repite mientras se cumpla la **condición**. El bloque de **inicialización** se ejecuta una vez al principio. Se utiliza para inicializar variables, normalmente usadas como contadores. El bloque de **actualización** se ejecuta al final de cada iteración, después de ejecutar las órdenes.
 
-Ejemplo "bucle-for.ps1”:
+Script "Bucle-For.ps1”:
 
 ```powershell
 <#
@@ -749,7 +739,7 @@ for ($a = 42;  $a –le 53 ; $a++) {
 }
 ```
 
-Ejemplo "lineas2.ps1":
+Script "LineasConFor.ps1":
 
 ```powershell
 <#
@@ -777,7 +767,7 @@ foreach (elemento in lista) {
 
 El bucle se repite tantas veces como elementos tiene la lista. En cada iteración, `elemento` toma el valor de un elemento de la lista. El bucle termina cuando se hayan recorrido todos los elementos de la lista.
 
-Script "ficheros.ps1":
+Script "Ficheros.ps1":
 
 ```powershell
 Param([string] $directorio = ".")
@@ -787,7 +777,7 @@ foreach ($fichero in $ficheros) {
 }
 ```
 
-Script "lineas3.ps1":
+Script "LineasConForEach.ps1":
 
 ```powershell
 <#
@@ -814,7 +804,7 @@ cmdlet | ForEach-Object { orden(es) }
 
 Es un cmdlet, no una estructura de control. Permite usarlo en combinación con otros cmdlets mediante tuberías. El bloque de órdenes se ejecuta por cada objeto devuelto por el cmdlet previo. Para recoger el elemento en cada iteración usamos la variable `$_`.
 
-Script "ficheros2.ps1":
+Script "FicherosConForEach-Object.ps1":
 
 ```powershell
 Param([string] $directorio = ".")
@@ -823,7 +813,7 @@ Get-ChildItem $directorio | ForEach-Object {
 }
 ```
 
-Script "lineas4.ps1":
+Script "Enumera-Lineas.ps1":
 
 ```powershell
 <#
@@ -836,6 +826,72 @@ Get-Content $fichero | ForEach-Object {
     $numero++
 }
 Write-Host "El fichero tiene $numero líneas"
+```
+
+### try..catch
+
+Mediante el bloque `try..catch` podemos capturar errores que ocurran en nuestro script. 
+
+Sintaxis:
+
+```powershell
+try {
+	orden(es) controladas
+} catch [<excepcion>] {
+	orden(es) que se ejecutan en respuesta a la <excepción>
+} catch {
+	orden(es) que se ejecutan en respuesta a cualquier excepción no capturada antes
+} finally {
+    orden(es) que se ejecutan tanto si hay error como si no
+}
+```
+
+Cuando una de las instrucciones de nuestro script produce un error (por el motivo que sea), éste lanza (throw) una excepción (error). 
+
+Las excepciones pueden ser de muchos tipos, y podemos capturarlas todas
+
+```powershell
+catch {
+	orden(es)
+}
+```
+
+O sólo alguna concreta:
+
+```powershell
+catch [<excepción>] {
+	orden(es)
+}
+```
+
+Por ejemplo, para capturar la excepción `ItemNotFoundException` lanzada por un cmdlet cuando no existe un archivo o carpeta:
+
+```powershell
+catch [System.Management.Automation.ItemNotFoundException] {
+	orden(es)
+}
+```
+
+Para capturar las excepciones que pueden lanzar una o varias instrucciones las metemos dentro del bloque `try`, y mediante los bloques `catch` indicamos lo que se hará en caso de que se produzca un error.
+
+Script "Crea-Dir.ps1":
+
+```powershell
+<#
+    Comprueba si el directorio especificado por 
+    parámetro existe, y si no lo crea.
+#>
+Param([Parameter(Mandatory=$true)][string] $directorio)
+$ErrorActionPreference = "Stop"		# Hace que se pueda capturar la excepción
+try {
+	# Obtiene el directorio indicado (lanza excepción si el directorio no existe)
+    Get-Item $directorio
+} catch [System.Management.Automation.ItemNotFoundException] {
+	# Crea el directorio porque no se encontró
+    New-Item -ItemType Directory $directorio
+} finally {
+    Write-Host "El directorio" $directorio "ya existía o ha sido creado"
+}
 ```
 
 ### break, continue y exit
@@ -879,7 +935,7 @@ Para devolver un valor desde una función se puede hacer enviando el resultado a
 
 Podemos declarar tantas funciones como queramos dentro de un script, así como es posible invocar unas funciones desde dentro de otras para crear funciones más complejas.
 
-Script "saludar.ps1":
+Script "Saludar.ps1":
 
 ```powershell
 # Declaración de la función
@@ -902,7 +958,7 @@ La sintaxis para definir los parámetros de una función es idéntica al bloque 
 
 Debemos tener en cuenta que los parámetros son variables locales dentro de la función, lo que significa que no se puede acceder a ellas desde fuera de la función.
 
-Ejemplo "saludar2.ps1":
+Ejemplo "Saludar2.ps1":
 
 ```powershell
 <# 
@@ -938,7 +994,7 @@ Write-Host $saludo
 
 #### Más ejemplos de funciones
 
-Ejemplo "sumar.ps1":
+Ejemplo "Sumar.ps1":
 
 ```powershell
 function Calcular-AreaCirculo([double] $radio) {
@@ -951,7 +1007,7 @@ $area = Calcular-AreaCirculo $radio
 Write-Host "El área de una circunferencia de radio $radio es $area"
 ```
 
-Ejemplo "espacio-libre.ps1":
+Ejemplo "Espacio-Libre.ps1":
 
 ```powershell
 # Devuelve la cantidad de bytes libres de la unidad indicada
@@ -975,7 +1031,7 @@ Es posible crear módulos o librerías con elementos (llamados **miembros**) que
 
 Los módulos son scripts con extensión `.psm1`.
 
-Módulo "trigonometria.psm1":
+Módulo "Trigonometria.psm1":
 
 ```powershell
 function Calcular-AreaRectangulo([double] $ancho, [double] $alto) {
@@ -995,7 +1051,7 @@ function Calcular-AreaCircunferencia([double] $radio) {
 
 Es posible decidir lo que es accesible dentro de un módulo mediante el cmdlet `Export-ModuleMember`.
 
-Script "trigonometria-limitado.psm1":
+Script "Trigonometria-Limitado.psm1":
 
 ```powershell
 function Calcular-AreaRectangulo([double] $ancho, [double] $alto) {
