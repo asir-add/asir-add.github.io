@@ -4,7 +4,7 @@ title: Proyecto Check-Files
 
 Este proyecto consiste en implementar un script para el PowerShell de Windows que verifique si existen o no y si han cambiado una serie de archivos y subcarpetas de una carpeta dada. Esta información se leerá de un archivo como el siguiente:
 
-```powershell
+```
 C:\micarpeta                      <-- primera línea, la carpeta contenedora
 fichero1.txt,11/03/2013 13:35:00  <-- resto de líneas, los archivos y subcarpetas a comprobar
 fichero2.pdf,10/01/2012 11:17:22
@@ -21,13 +21,13 @@ El script deberá mostrar un listado de los cambios producidos.
 
 ## Sintaxis
 
-* La sintaxis del script es la siguiente:
+La sintaxis del script es la siguiente:
 
 ```powershell
 Check-Files.ps1 [ -Help | -Check fichero | -Generate fichero -Target carpeta ]
 ```
 
-* El funcionamiento del script será el siguiente:
+El funcionamiento del script será el siguiente:
 
 | Opción                              | Descripción                                                  |
 | ----------------------------------- | ------------------------------------------------------------ |

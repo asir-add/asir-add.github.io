@@ -25,13 +25,13 @@ Este proyecto consiste en implementar un script para el PowerShell de Windows qu
 
 ## Sintaxis
 
-* La sintaxis del script es la siguiente:
+La sintaxis del script es la siguiente:
 
 ```powershell
 Clean-MemoryStick.ps1 [ -Help | -Check [unidad] | -Clean [unidad] [-Quarantine] ]
 ```
 
-* El funcionamiento del script será el siguiente:
+El funcionamiento del script será el siguiente:
 
 | Opción                          | Descripción                                                  |
 | ------------------------------- | ------------------------------------------------------------ |
@@ -47,7 +47,7 @@ Suponiendo que hay un pendrive en la unidad `E:` conteniendo el fichero `autorun
 
 ```powershell
 # Muestra la ayuda del script
-PS> .\Clean-MemoryStick.ps1 --help
+PS> .\Clean-MemoryStick.ps1 -Help
 # ó
 PS> Get-Help .\Clean-MemoryStick.ps1
 
@@ -85,7 +85,7 @@ PS> Get-PSDrive | Where-Object { $_.Provider.Name -eq "FileSystem" -and $_.Free 
 
 | Opción             | Funcionalidad                                       | Peso (%) |
 | ------------------ | --------------------------------------------------- | :------: |
-| -Help              | Mostrar la ayuda.                                   |    15    |
+| -Help              | Mostrar la ayuda.                                   |    10    |
 | -Check             | Buscar ejecutables en `autorun.inf`.                |    30    |
-| -Clean             | Eliminar ejecutables en `autorun.inf`.              |    40    |
+| -Clean             | Eliminar ejecutables en `autorun.inf`.              |    45    |
 | -Clean -Quarantine | Mover ejecutables en `autorun.inf` a `.quarantine`. |    15    |
