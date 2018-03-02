@@ -110,10 +110,10 @@ PS> (Get-ItemProperty -Path clave -Name valor).valor
 Para crear un valor nuevo:
 
 ```powershell
-PS> New-ItemProperty -Path clave -Name valor -ValueType tipo -Value dato | Out-Null
+PS> New-ItemProperty -Path clave -Name valor -PropertyType tipo -Value dato | Out-Null
 ```
 
->  Donde `tipo` puede ser `String,` `ExpandString`, `Binary`, `DWord`, `MultiString`, `QWord`, `Unknown`.
+>  Donde `tipo` puede ser `String`, `Boolean`, `ExpandString`, `Binary`, `DWord`, `MultiString`, `QWord`, `Unknown`.
 
 Para modificar un valor existente:
 
