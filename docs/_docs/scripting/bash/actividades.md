@@ -1,4 +1,6 @@
-# Actividades de scripting en BASH
+---
+title: Actividades de scripting en BASH
+---
 
 > En todos los scripts se debe comprobar si se está haciendo buen uso del script (número de parámetros) y mostrar una ayuda en caso contrario.
 
