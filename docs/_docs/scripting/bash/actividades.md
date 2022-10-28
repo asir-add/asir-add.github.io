@@ -42,9 +42,9 @@ Actividades:
 
 10. **instalar-amsn.sh**: descargar, compilar e instalar AMSN (Alvaro’s Messenger), siguiendo los siguientes pasos:
     
-    a. Descargar el código fuente AMSN usando el comando `wget <url>`, donde <url> es la dirección de lo que queremos descargar.
+    a. Descargar el código fuente AMSN usando el comando `wget <url>`, donde **url** es la dirección de lo que queremos descargar:
     
-    > http://sourceforge.net/projects/amsn/files/amsn/0.98.3/amsn-0.98.3-src.tar.gz/download
+    http://sourceforge.net/projects/amsn/files/amsn/0.98.3/amsn-0.98.3-src.tar.gz/download
     
     b. Descomprimimos y desempaquetamos el archivo descargado (usar `gunzip` y `tar`).
     
