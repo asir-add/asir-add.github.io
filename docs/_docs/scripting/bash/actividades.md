@@ -158,7 +158,7 @@ Actividades:
 34. **superwrite.sh**: Enviar un mensaje con `write` a todos los usuarios que han iniciado sesión en el sistema, menos a ti mismo. Por ejemplo: 
     
     ```bash
-    ./superwrite "Hola a tod@s, ¿qué tal?""
+    ./superwrite "Hola a tod@s, ¿qué tal?"
     ```
 
 35. **crear-usuario.sh**: Pedir todos los datos del usuario por teclado y si no existe, crearlo (ver comando `useradd`). Los datos a solicitar son **nombre de usuario** (username), **shell** (por ejemplo, `/bin/bash`), **contraseña** (password) y **nombre completo** (por ejemplo, "Perico de los Palotes", a guardar en el comentario).
