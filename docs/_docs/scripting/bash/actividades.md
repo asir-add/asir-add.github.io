@@ -44,7 +44,7 @@ Actividades:
     
     a. Descargar el código fuente AMSN usando el comando `wget <url>`, donde **url** es la dirección de lo que queremos descargar:
     
-    http://sourceforge.net/projects/amsn/files/amsn/0.98.3/amsn-0.98.3-src.tar.gz/download
+    [Download aMSN from SourceForge.net](http://sourceforge.net/projects/amsn/files/amsn/0.98.3/amsn-0.98.3-src.tar.gz/download)
     
     b. Descomprimimos y desempaquetamos el archivo descargado (usar `gunzip` y `tar`).
     
