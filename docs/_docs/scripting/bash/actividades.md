@@ -34,8 +34,8 @@ Actividades:
    > 
    > NOTA 2: Al reiniciar y apagar se debe pedir por teclado el tiempo en segundos que tardará en llevarse a cabo la operación así como el mensaje de aviso a enviar a todos los usuarios que han iniciado sesión en nuestro sistema.
 
-9. **menu-instalacion.sh**: hacer un menú que permite elegir entre desinstalar o instalar al menos 3 programas con `apt-get` (o `apt`). Si el programa está instalado, tendrá que mostrarse la opción **Desinstalar <programa>**. Si el
-   programa no está instalado, se mostrará la opción **Instalar <programa>**.
+9. **menu-instalacion.sh**: hacer un menú que permite elegir entre desinstalar o instalar al menos 3 programas con `apt-get` (o `apt`). Si el programa está instalado, tendrá que mostrarse la opción **Desinstalar programa**. Si el
+   programa no está instalado, se mostrará la opción **Instalar programa**.
    Por ejemplo, el programa `cowsay`.
    
    > NOTA: Averiguar cómo determinar si un programa ya está instalado en nuestro sistema, sin instalarlo.
@@ -70,33 +70,35 @@ Actividades:
 
 15. **triangulo.sh**: calcule el área de un triángulo cuya base y altura son introducidos por parámetro.
 
-16. **euro-ptas.sh**: realice la conversión de euros a pesetas.ptas-euros.sh: realice la conversión de pesetas a euros.
+16. **euro-ptas.sh**: realice la conversión de euros a pesetas.
 
-17. **precio-igic.sh**: pida el precio de un producto y el porcentaje de IGIC a aplicar, y que calcule el precio final.
+17. **ptas-euros.sh**: realice la conversión de pesetas a euros.
 
-18. **descuento.sh**: pida el precio de un producto y el porcentaje de descuento, y que calcule el precio final.
+18. **precio-igic.sh**: pida el precio de un producto y el porcentaje de IGIC a aplicar, y que calcule el precio final.
 
-19. **particiones.sh**: muestre el espacio libre de cada partición.
+19. **descuento.sh**: pida el precio de un producto y el porcentaje de descuento, y que calcule el precio final.
 
-20. **info-fich.sh**: pida por teclado el nombre de un fichero de texto y que a continuación muestre el contenido del fichero y después todos los datos del mismo (permisos, tamaño, etc.)
+20. **particiones.sh**: muestre el espacio libre de cada partición.
 
-21. **frutiversa.sh**: pida 5 nombres de fruta y que luego los muestre en el orden inverso.
+21. **info-fich.sh**: pida por teclado el nombre de un fichero de texto y que a continuación muestre el contenido del fichero y después todos los datos del mismo (permisos, tamaño, etc.)
 
-22. **listar-hasta-100.sh**: Listar los número del 1 al 100.
+22. **frutiversa.sh**: pida 5 nombres de fruta y que luego los muestre en el orden inverso.
 
-23. **listar-rango.sh**: Listar todos los números del rango comprendido entre los dos números pasados por parámetro.
+23. **listar-hasta-100.sh**: Listar los número del 1 al 100.
 
-24. **sumar-todos.sh**: Sumar todos los números pasados por parámetro y mostrar el resultado. Puede aceptar de 1 a N parámetros, pero no 0 parámetros (da error).
+24. **listar-rango.sh**: Listar todos los números del rango comprendido entre los dos números pasados por parámetro.
 
-25. **sumar-rango.sh**: Sumar todos los números del rango comprendido entre los dos números pasados por parámetro, y mostrar el resultado.
+25. **sumar-todos.sh**: Sumar todos los números pasados por parámetro y mostrar el resultado. Puede aceptar de 1 a N parámetros, pero no 0 parámetros (da error).
 
-26. **listar-usuarios.sh**: Listar los nombres de todos los usuarios del sistema (ver fichero `/etc/passwd`).
+26. **sumar-rango.sh**: Sumar todos los números del rango comprendido entre los dos números pasados por parámetro, y mostrar el resultado.
 
-27. **listar-grupos.sh**: Listar los nombres de todos los grupos del sistema (ver fichero `/etc/group`).
+27. **listar-usuarios.sh**: Listar los nombres de todos los usuarios del sistema (ver fichero `/etc/passwd`).
 
-28. **comprobar-todos.sh**: Comprobar que todos los ficheros pasados por parámetro existen y que son ficheros.
+28. **listar-grupos.sh**: Listar los nombres de todos los grupos del sistema (ver fichero `/etc/group`).
 
-29. **config-ref.sh**: Mostrar la dirección IP y la máscara de subred del dispositivo o interfaz de red (lo, eth0, eth1, wlan0 wlan1, etc.) (ver comando `ifconfig` o `ip`). 
+29. **comprobar-todos.sh**: Comprobar que todos los ficheros pasados por parámetro existen y que son ficheros.
+
+30. **config-ref.sh**: Mostrar la dirección IP y la máscara de subred del dispositivo o interfaz de red (lo, eth0, eth1, wlan0 wlan1, etc.) (ver comando `ifconfig` o `ip`). 
     
     Ejemplo:
     
@@ -109,7 +111,7 @@ Actividades:
     
     >  NOTA: Tener en cuenta el caso particular de la interfaz `lo`.
 
-30. **espacio-ocupado.sh**: Calcular la cantidad de espacio total en bytes ocupado por todos los ficheros del directorio especificado por parámetro y mostrarla en la salida estándar. 
+31. **espacio-ocupado.sh**: Calcular la cantidad de espacio total en bytes ocupado por todos los ficheros del directorio especificado por parámetro y mostrarla en la salida estándar. 
     
     Ejemplo:
     
@@ -118,7 +120,7 @@ Actividades:
     2600 bytes
     ```
 
-31. **espacio-ocupado-plus.sh**: Mejorar el script anterior para que cumpla la siguiente sintaxis: `./espacio-ocupado.sh [ -b | -k | -m ] directorio(s)`
+32. **espacio-ocupado-plus.sh**: Mejorar el script anterior para que cumpla la siguiente sintaxis: `./espacio-ocupado.sh [ -b | -k | -m ] directorio(s)`
     
     Opciones:
     `-b` : mostrar el resultado en bytes
@@ -127,7 +129,7 @@ Actividades:
     
     Además acepta 1 o más directorios y deberá devolver el total.
 
-32. **descarga-masiva.sh**: Descargar, uno detrás de otro, todos los recursos especificados en un fichero de texto mediante sus URLs (ver comando “wget”).
+33. **descarga-masiva.sh**: Descargar, uno detrás de otro, todos los recursos especificados en un fichero de texto mediante sus URLs (ver comando “wget”).
     
     Ejemplo:
     
@@ -145,7 +147,7 @@ Actividades:
     * Errores: 1
     ```
 
-33. **saludar.sh**: Saludar según la hora del sistema: 
+34. **saludar.sh**: Saludar según la hora del sistema: 
     
     a. Entre las [ 6h y las 12h ): **Buenos días**.
     
@@ -155,14 +157,14 @@ Actividades:
     
     d. Entre las [ 0h y las 6h ): **Vete a acostarte**
 
-34. **superwrite.sh**: Enviar un mensaje con `write` a todos los usuarios que han iniciado sesión en el sistema, menos a ti mismo. Por ejemplo: 
+35. **superwrite.sh**: Enviar un mensaje con `write` a todos los usuarios que han iniciado sesión en el sistema, menos a ti mismo. Por ejemplo: 
     
     ```bash
     ./superwrite "Hola a tod@s, ¿qué tal?"
     ```
 
-35. **crear-usuario.sh**: Pedir todos los datos del usuario por teclado y si no existe, crearlo (ver comando `useradd`). Los datos a solicitar son **nombre de usuario** (username), **shell** (por ejemplo, `/bin/bash`), **contraseña** (password) y **nombre completo** (por ejemplo, "Perico de los Palotes", a guardar en el comentario).
+36. **crear-usuario.sh**: Pedir todos los datos del usuario por teclado y si no existe, crearlo (ver comando `useradd`). Los datos a solicitar son **nombre de usuario** (username), **shell** (por ejemplo, `/bin/bash`), **contraseña** (password) y **nombre completo** (por ejemplo, "Perico de los Palotes", a guardar en el comentario).
     
     > OJO: Se debe crear también el directorio HOME del usuario (consultar opciones de `useradd`).
 
-36. **eliminar-usuario.sh**: Mostrar un listado sólo con los nombres de todos los usuarios regulares del sistema (`UID >= 1000`) y al elegir uno que se elimine completamente del sistema, junto con su directorio **HOME**. Para elegir un usuario se especificará su **UID**. Debe pedir confirmación antes de eliminarlo. En caso de que no exista, mostrar un mensaje de error.
+37. **eliminar-usuario.sh**: Mostrar un listado sólo con los nombres de todos los usuarios regulares del sistema (`UID >= 1000`) y al elegir uno que se elimine completamente del sistema, junto con su directorio **HOME**. Para elegir un usuario se especificará su **UID**. Debe pedir confirmación antes de eliminarlo. En caso de que no exista, mostrar un mensaje de error.
