@@ -32,7 +32,7 @@ Actividades:
    
    > NOTA 1: Matar la shell usando `kill` para la primera opción y usar el comando `shutdown` para las dos últimas.
    > 
-   > NOTA 2: Al reiniciar y apagar se debe pedir por teclado el tiempo en segundos que tardará en llevarse a cabo la operación así como el mensaje de aviso a enviar a todos los usuarios que han iniciado sesión en nuestro sistema.
+   > NOTA 2: Al reiniciar y apagar se debe pedir por teclado el tiempo en minutos que tardará en llevarse a cabo la operación así como el mensaje de aviso a enviar a todos los usuarios que han iniciado sesión en nuestro sistema.
 
 9. **menu-instalacion.sh**: hacer un menú que permite elegir entre desinstalar o instalar al menos 3 programas con `apt-get` (o `apt`). Si el programa está instalado, tendrá que mostrarse la opción **Desinstalar programa**. Si el
    programa no está instalado, se mostrará la opción **Instalar programa**.
