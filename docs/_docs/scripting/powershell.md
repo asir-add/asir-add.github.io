@@ -2,6 +2,18 @@
 title: Scripting en PowerShell
 ---
 
+## Habilitar la ejecución de scripts PowerShell
+
+> IMPORTANTE: Para poder ejecutar scripts PowerShell.
+
+Abrir un PowerShell como **Administrador** y ejecutar el siguiente comando:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass -Force;
+```
+
+El comando anterior deshabilitará las políticas de ejecución de scripts PowerShell (`Bypass`) para el usuario actual (`CurrentUser`).
+
 ## El primer script
 
 Script "Hola Mundo" (HolaMundo.ps1):
@@ -9,6 +21,7 @@ Script "Hola Mundo" (HolaMundo.ps1):
 ```powershell
 Write-Host "Hola Mundo"
 ```
+
 Los scripts PowerShell deben tener extensión `.ps1`.
 
 Para ejecutar el script:
@@ -34,8 +47,8 @@ Script "ComentariosSimples.ps1":
 # Soy un comentario simple en PowerShell
 Get-Date
 <#
-	Y you soy un 
-	bloque de comentarios
+    Y you soy un 
+    bloque de comentarios
 #>
 (Get-WmiObject Win32_OperatingSystem).Caption
 ```
@@ -47,21 +60,21 @@ Script "ComentariosComplejos.ps1":
 ```powershell
 <#
 .SYNOPSIS
-	Breve descripción de lo que hace nuestro script.
+    Breve descripción de lo que hace nuestro script.
 .DESCRIPTION
-	Descripción detallada de nuestro script.
+    Descripción detallada de nuestro script.
 .NOTES
-	File Name      : <script.ps1>
-	Author         : Fran Vargas (mi@email.com)
-	Prerequisite   : PowerShell vX sobre Windows X o superior.
-	Copyright 2018 - Fran Vargas (IES Domingo Pérez Minik)
+    File Name      : <script.ps1>
+    Author         : Fran Vargas (mi@email.com)
+    Prerequisite   : PowerShell vX sobre Windows X o superior.
+    Copyright 2018 - Fran Vargas (IES Domingo Pérez Minik)
 .LINK
-	Script publicado en:
-	http://fvarrui.github.io/ADD
+    Script publicado en:
+    http://fvarrui.github.io/ADD
 .EXAMPLE
-	Ejemplo 1
+    Ejemplo 1
 .EXAMPLE
-	Ejemplo 2
+    Ejemplo 2
 #>
 Write-Host "Sólo sirvo para mostrarte como se usan los comentarios"
 ```
@@ -73,13 +86,13 @@ PS> Get-Help .\ComentariosComplejos.ps1
 
 NOMBRE
     ComentariosComplejos.ps1
-    
+
 SINOPSIS
     Breve descripción de lo que hace nuestro script.
-    
+
 SINTAXIS
     ComentariosComplejos.ps1 [<CommonParameters>]
-    
+
 DESCRIPCIÓN
     Descripción detallada de nuestro script.
 
@@ -92,7 +105,6 @@ NOTAS
     Para obtener más información, escriba: "get-help ComentariosComplejos.ps1 -detailed".
     Para obtener información técnica, escriba: "get-help ComentariosComplejos.ps1 -full".
     Para obtener ayuda disponible en línea, escriba: "get-help ComentariosComplejos.ps1 -online"
-
 ```
 
 ## El tercer script
@@ -126,17 +138,17 @@ Sintaxis:
 
 ```powershell
 Param(
-	[<tipo>] $<nombre> [ = <valor> ],
-	[...]
+    [<tipo>] $<nombre> [ = <valor> ],
+    [...]
 )
 ```
 
 Donde:
 
-| Elemento | Descripción                              |
-| -------- | ---------------------------------------- |
-| tipo     | Tipo de datos del parámetros (string, bool, int, ...). |
-| nombre   | Nombre del parámetro (es como una variable más dentro del script). |
+| Elemento | Descripción                                                                          |
+| -------- | ------------------------------------------------------------------------------------ |
+| tipo     | Tipo de datos del parámetros (string, bool, int, ...).                               |
+| nombre   | Nombre del parámetro (es como una variable más dentro del script).                   |
 | valor    | Valor por defecto que tomará el parámetro si no se especifica al ejecutar el script. |
 
 Script "Parametros.ps1":
@@ -246,26 +258,26 @@ hola
 
 #### Tipos de datos de los parámetros
 
-| Tipo     | Descripción                              |
-| -------- | ---------------------------------------- |
-| [int]    | Entero de 32 bits.                       |
-| [long]   | Entero de 64 bits.                       |
-| [string] | Cadena de caracteres.                    |
-| [char]   | Carácter.                                |
-| [bool]   | Verdadero (`$true`) o falso (`$false`).  |
-| [double] | Número de coma flotante de 64 bits.      |
-| [single] | Número de coma flotante de 32 bits.      |
+| Tipo     | Descripción                                                        |
+| -------- | ------------------------------------------------------------------ |
+| [int]    | Entero de 32 bits.                                                 |
+| [long]   | Entero de 64 bits.                                                 |
+| [string] | Cadena de caracteres.                                              |
+| [char]   | Carácter.                                                          |
+| [bool]   | Verdadero (`$true`) o falso (`$false`).                            |
+| [double] | Número de coma flotante de 64 bits.                                |
+| [single] | Número de coma flotante de 32 bits.                                |
 | [switch] | Verdadero si se especifica el parámetro o falso en caso contrario. |
 
 ### Variables especiales
 
 Dentro de los scripts podemos usar las siguientes variables especiales:
 
-| Variable      | Descripción                              |
-| :------------ | :--------------------------------------- |
+| Variable      | Descripción                                                                                                                                                                                                 |
+|:------------- |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | $args         | Array con todos los parámetros  pasados al script (excluyendo los especificados en el bloque `Param`). Podemos acceder a los elementos del array con `$args[0]` , `$args[1]`, `$args[2] `, ..., `$args[n]`. |
-| $args.Count   | Número de parámetros pasados al script (excluyendo los especificados en el bloque `Param`). |
-| $LASTEXITCODE | Código de retorno de la última orden ejecutada (si es <> 0 indica que hubo un error). |
+| $args.Count   | Número de parámetros pasados al script (excluyendo los especificados en el bloque `Param`).                                                                                                                 |
+| $LASTEXITCODE | Código de retorno de la última orden ejecutada (si es <> 0 indica que hubo un error).                                                                                                                       |
 
 Script "Especiales.ps1":
 
@@ -289,6 +301,7 @@ $variable = Read-Host [[-Prompt] <prompt>] [-AsSecureString]
 ```
 
 Donde:
+
 * `-Prompt <prompt>` muestra un mensaje antes de esperar a que se introduzca texto.
 * `variable` es la variable donde se guardará el texto introducido (**string**).
 * `-AsSecureString` hace que el texto introducido sea seguro (una contraseña, por ejemplo).
@@ -299,7 +312,7 @@ Script "Leer-Variable.ps1":
 
 ```powershell
 <#
-	Ejemplo de uso de Read-Host
+    Ejemplo de uso de Read-Host
 #>
 $var = Read-Host -Prompt "Introduce un valor"
 Write-Host "El valor introducido es:" $var
@@ -367,7 +380,7 @@ Script "Radio.ps1":
 
 ```powershell
 $radio = [double] (Read-Host -Prompt "Introduce el radio de la circunferencia")
-$area = [Math]::PI * [Math]::pow($radio, 2)	# area = PI * radio^2
+$area = [Math]::PI * [Math]::pow($radio, 2)    # area = PI * radio^2
 Write-Host "El área de la circunferencia de radio" $radio "es" $area
 ```
 
@@ -375,13 +388,13 @@ Write-Host "El área de la circunferencia de radio" $radio "es" $area
 
 Los operadores relacionales se utilizan para comparar valores y devuelven un valor de tipo booleano (True o False).
 
-| Operador | Descripción                                                  | Ejemplo   |
-| -------- | ------------------------------------------------------------ | --------- |
-| `-eq`    | ¿Son los operandos iguales?                                  | `4 -eq 5` |
-| `-ne`    | ¿Son los operandos distintos?                                | `4 -ne 5` |
-| `-gt`    | ¿Es el primer operando mayor que el segundo operando?        | `4 -gt 5` |
+| Operador | Descripción                                                   | Ejemplo   |
+| -------- | ------------------------------------------------------------- | --------- |
+| `-eq`    | ¿Son los operandos iguales?                                   | `4 -eq 5` |
+| `-ne`    | ¿Son los operandos distintos?                                 | `4 -ne 5` |
+| `-gt`    | ¿Es el primer operando mayor que el segundo operando?         | `4 -gt 5` |
 | `-ge`    | ¿Es el primer operando mayor o igual que el segundo operando? | `4 -ge 5` |
-| `-lt`    | ¿Es el primer operando menor que el segundo operando?        | `4 -lt 5` |
+| `-lt`    | ¿Es el primer operando menor que el segundo operando?         | `4 -lt 5` |
 | `-le`    | ¿Es el primer operando menor o igual que el segundo operando? | `4 -le 5` |
 
 > Para obtener más información podemos ejecutar el siguiente cmdlet: `Get-Help about_Comparison_Operators`
@@ -413,18 +426,18 @@ Write-Host "¿" $a "es igual a" $b "?" $resultado
 
 Otros operadores relacionales:
 
-| Operador       | Descripción                                                  |
-| -------------- | ------------------------------------------------------------ |
-| `-in`          | Comprueba si un elemento está dentro de un array.            |
-| `-notin`       | Comprueba si un elemento NO está dentro de un array.         |
-| `-like`        | Compara una cadena con otra usando el metacarácter *. Si casa devuelve True. |
-| `-notlike`     | Compara una cadena con otra usando el metacarácter *. Si casa devuelve False. |
-| `-match`       | Compara una cadena de caracteres con una expresión regular. Si casa devuelve True. |
+| Operador       | Descripción                                                                         |
+| -------------- | ----------------------------------------------------------------------------------- |
+| `-in`          | Comprueba si un elemento está dentro de un array.                                   |
+| `-notin`       | Comprueba si un elemento NO está dentro de un array.                                |
+| `-like`        | Compara una cadena con otra usando el metacarácter *. Si casa devuelve True.        |
+| `-notlike`     | Compara una cadena con otra usando el metacarácter *. Si casa devuelve False.       |
+| `-match`       | Compara una cadena de caracteres con una expresión regular. Si casa devuelve True.  |
 | `-notmatch`    | Compara una cadena de caracteres con una expresión regular. Si casa devuelve False. |
-| `-contains`    | Comprueba si un array contiene un elemento.                  |
-| `-notcontains` | Comprueba si un array NO contiene un elemento.               |
+| `-contains`    | Comprueba si un array contiene un elemento.                                         |
+| `-notcontains` | Comprueba si un array NO contiene un elemento.                                      |
 | `-is`          | Comprueba si un valor es de un tipo de datos determinado (int, double, string, ...) |
-| `-isnot`       | Comprueba si un valor NO es de un tipo determinado.          |
+| `-isnot`       | Comprueba si un valor NO es de un tipo determinado.                                 |
 
 Ejemplos:
 
@@ -450,7 +463,7 @@ True
 
 # -match / -notmatch
 
-PS> "12345678Z" -match "^[0-9]{8}\-?[a-zA-Z]$"	# exp. regular para validar un DNI
+PS> "12345678Z" -match "^[0-9]{8}\-?[a-zA-Z]$"    # exp. regular para validar un DNI
 True
 
 PS> "12345678-Z" -match "^[0-9]{8}\-?[a-zA-Z]$"
@@ -459,7 +472,7 @@ True
 PS> "922102030" -match "^[0-9]{8}\-?[a-zA-Z]$"
 False
 
-PS> "922102030" -match "^[0-9]{9}$"		# exp. regular para validar teléfono con 9 dígitos
+PS> "922102030" -match "^[0-9]{9}$"        # exp. regular para validar teléfono con 9 dígitos
 True
 
 PS> "78560432E" -match "^[0-9]{9}$"
@@ -498,11 +511,11 @@ True
 
 Los operadores lógicos permiten crear expresiones de comparación más complejas.
 
-| Operador | Descripción                                                  | Ejemplo             |
-| -------- | ------------------------------------------------------------ | ------------------- |
+| Operador | Descripción                                                              | Ejemplo             |
+| -------- | ------------------------------------------------------------------------ | ------------------- |
 | `-or`    | "O" lógico. Si alguno de los operandos es Verdadero, devuelve Verdadero. | `$False -or $True`  |
-| `-and`   | "Y" lógico. Si alguno de los operandos es Falso, devuelve Falso. | `$False -and $True` |
-| `-not`   | Negación. Si el operando es Verdadero, devuelve Falso, y viceversa. | `-not $True`        |
+| `-and`   | "Y" lógico. Si alguno de los operandos es Falso, devuelve Falso.         | `$False -and $True` |
+| `-not`   | Negación. Si el operando es Verdadero, devuelve Falso, y viceversa.      | `-not $True`        |
 
 Más ejemplos:
 
@@ -530,11 +543,11 @@ Sintaxis:
 
 ```powershell
 if (condicion1) {
-	ordenes
+    ordenes
 } elseif (condicion2) {
-	ordenes
+    ordenes
 } else {
-	ordenes
+    ordenes
 }
 ```
 
@@ -565,18 +578,18 @@ Sintaxis:
 
 ```powershell
 switch (expresion) {
-	patron1 { 
+    patron1 { 
             ordenes
             break 
-	}
-	patron2 { 
-			ordenes
-			break 
-	}
-	[...]
-	default { 
-			ordenes 
-	}
+    }
+    patron2 { 
+            ordenes
+            break 
+    }
+    [...]
+    default { 
+            ordenes 
+    }
 }
 ```
 
@@ -660,7 +673,7 @@ Sintaxis:
 
 ```powershell
 while (condición) {
-	orden(es)
+    orden(es)
 }
 ```
 
@@ -674,8 +687,8 @@ Script "Mientras.ps1":
 #>
 $a = 42
 while ( $a –le 53 ) {
-	Write-Host "Contador = $a"
-	$a++		# $a = $a + 1
+    Write-Host "Contador = $a"
+    $a++        # $a = $a + 1
 }
 ```
 
@@ -683,10 +696,10 @@ Script "LineasConWhile.ps1":
 
 ```powershell
 <#
-	Va leyendo línea a línea el fichero indicado por parámetro
+    Va leyendo línea a línea el fichero indicado por parámetro
 #>
 Param([Parameter(Mandatory=$true)][string]$fichero)
-$contenido = Get-Content $fichero	# devuelve un array de string con el contenido de fichero
+$contenido = Get-Content $fichero    # devuelve un array de string con el contenido de fichero
 $numero = 0
 while ($numero -lt $contenido.Length) {
     Write-Host ($numero + 1) ":" $contenido[$numero]
@@ -701,7 +714,7 @@ Sintaxis:
 
 ```powershell
 do {
-	orden(es)
+    orden(es)
 } while (condicion)
 ```
 
@@ -713,7 +726,7 @@ Sintaxis:
 
 ```bash
 do {
-	orden(es)
+    orden(es)
 } until (condicion)
 ```
 
@@ -734,7 +747,7 @@ Sintaxis:
 
 ```powershell
 for (inicializacion; condicion; actualizacion) {
-	orden(es)
+    orden(es)
 }
 ```
 
@@ -748,7 +761,7 @@ Script "Bucle-For.ps1”:
     Cuenta desde el 42 hasta el 53
 #>
 for ($a = 42;  $a –le 53 ; $a++) {
-	Write-Host "Contador = $a"
+    Write-Host "Contador = $a"
 }
 ```
 
@@ -756,10 +769,10 @@ Script "LineasConFor.ps1":
 
 ```powershell
 <#
-	Va leyendo línea a línea el fichero indicado por parámetro
+    Va leyendo línea a línea el fichero indicado por parámetro
 #>
 Param([Parameter(Mandatory=$true)][string]$fichero)
-$contenido = Get-Content $fichero	# devuelve array de string del contenido de fichero
+$contenido = Get-Content $fichero    # devuelve array de string del contenido de fichero
 for ($numero = 0; $numero -lt $contenido.Length; $numero++) {
     Write-Host ($numero + 1) ":" $contenido[$numero]
 }
@@ -774,7 +787,7 @@ Sintaxis:
 
 ```powershell
 foreach (elemento in lista) {
-	orden(es)
+    orden(es)
 }
 ```
 
@@ -794,7 +807,7 @@ Script "LineasConForEach.ps1":
 
 ```powershell
 <#
-	Va leyendo línea a línea el fichero indicado por parámetro
+    Va leyendo línea a línea el fichero indicado por parámetro
 #>
 Param([Parameter(Mandatory=$true)][string]$fichero)
 $numero=0
@@ -830,7 +843,7 @@ Script "Enumera-Lineas.ps1":
 
 ```powershell
 <#
-	Va leyendo línea a línea el fichero indicado por parámetro
+    Va leyendo línea a línea el fichero indicado por parámetro
 #>
 Param([Parameter(Mandatory=$true)][string]$fichero)
 $numero = 0
@@ -849,13 +862,13 @@ Sintaxis:
 
 ```powershell
 try {
-	orden(es) controladas
+    orden(es) controladas
 } catch [<excepción>] {
-	orden(es) que se ejecutan en respuesta a la <excepción>
+    orden(es) que se ejecutan en respuesta a la <excepción>
 } catch {
-	orden(es) que se ejecutan en respuesta a cualquier excepción no capturada antes
+    orden(es) que se ejecutan en respuesta a cualquier excepción no capturada antes
 } finally {
-	orden(es) que se ejecutan tanto si hay error como si no
+    orden(es) que se ejecutan tanto si hay error como si no
 }
 ```
 
@@ -865,7 +878,7 @@ Las excepciones pueden ser de muchos tipos, y podemos capturarlas todas
 
 ```powershell
 catch {
-	orden(es)
+    orden(es)
 }
 ```
 
@@ -873,7 +886,7 @@ O sólo alguna concreta:
 
 ```powershell
 catch [<excepción>] {
-	orden(es)
+    orden(es)
 }
 ```
 
@@ -881,7 +894,7 @@ Por ejemplo, para capturar la excepción `ItemNotFoundException` lanzada por un 
 
 ```powershell
 catch [System.Management.Automation.ItemNotFoundException] {
-	orden(es)
+    orden(es)
 }
 ```
 
@@ -895,15 +908,15 @@ Script "Crea-Dir.ps1":
     parámetro existe, y si no lo crea.
 #>
 Param([Parameter(Mandatory=$true)][string] $directorio)
-$ErrorActionPreference = "Stop"		# Hace que se pueda capturar la excepción
+$ErrorActionPreference = "Stop"        # Hace que se pueda capturar la excepción
 try {
-	# Obtiene el directorio indicado (lanza excepción si el directorio no existe)
-	Get-Item $directorio
+    # Obtiene el directorio indicado (lanza excepción si el directorio no existe)
+    Get-Item $directorio
 } catch [System.Management.Automation.ItemNotFoundException] {
-	# Crea el directorio porque no se encontró
-	New-Item -ItemType Directory $directorio
+    # Crea el directorio porque no se encontró
+    New-Item -ItemType Directory $directorio
 } finally {
-	Write-Host "El directorio" $directorio "ya existía o ha sido creado"
+    Write-Host "El directorio" $directorio "ya existía o ha sido creado"
 }
 ```
 
@@ -929,15 +942,15 @@ Sintaxis de definición de una función:
 
 ```powershell
 function nombre([parametro]...) {
-	orden(es)
-	[[return] valor]
+    orden(es)
+    [[return] valor]
 }
 ```
 
 Donde:
 
 * `nombre` es el nombre de la función. Lo utilizaremos para ejecutarla.
-
+  
   > Es recomendable usar nombres formados por "Verbo-Sujeto" (por ejemplo: `Saludar-Persona`) y que el verbo utilizado sea alguno de los devueltos por el comando `Get-Verb`.
 
 * `valor` es el resultado devuelto por la función, si es que devuelve algo.
@@ -1011,8 +1024,8 @@ Ejemplo "Sumar.ps1":
 
 ```powershell
 function Calcular-AreaCirculo([double] $radio) {
-	$area = [Math]::PI * $radio * $radio
-	return $area
+    $area = [Math]::PI * $radio * $radio
+    return $area
 }
 
 $radio = 25
@@ -1025,12 +1038,12 @@ Ejemplo "Espacio-Libre.ps1":
 ```powershell
 # Devuelve la cantidad de bytes libres de la unidad indicada
 function Obtener-EspacioLibre([string] $unidad) {
-	return (Get-PSDrive -Name $unidad).Free
+    return (Get-PSDrive -Name $unidad).Free
 }
 
 # Convierte la cantidad de bytes indicada en gigabytes
 function Convertir-BytesAGigas([uint64] $cantidad) {
-	return $cantidad / 1GB
+    return $cantidad / 1GB
 }
 
 $libre = Obtener-EspacioLibre "C" 
@@ -1048,7 +1061,7 @@ Módulo "Trigonometria.psm1":
 
 ```powershell
 function Calcular-AreaRectangulo([double] $ancho, [double] $alto) {
-	return $ancho * $alto
+    return $ancho * $alto
 }
 
 function Calcular-AreaTriangulo([double] $base, [double] $altura) {
@@ -1068,7 +1081,7 @@ Script "Trigonometria-Limitado.psm1":
 
 ```powershell
 function Calcular-AreaRectangulo([double] $ancho, [double] $alto) {
-	return $ancho * $alto
+    return $ancho * $alto
 }
 
 function Calcular-AreaTriangulo([double] $base, [double] $altura) {
@@ -1099,6 +1112,7 @@ Donde:
 Para importar un módulo es necesario que se encuentre en alguna de las rutas de la variable de entorno `$env:PSModulePath` o especificar la ruta completa del módulo.
 
 El cmdlet `Import-Module` comprueba si los nombres de las funciones utilizan verbos válidos para PowerShell. Para conocer estos verbos disponemos del cmdlet `Get-Verb`. Se mostrarán unos avisos en caso de que alguna función exportada no cumpla con este requisito. Para deshabilitar esta comprobación usamos el parámetro `-DisableNameChecking`.
+
 ```powershell
 Import-Module -DisableNameChecking <modulo>
 ```
@@ -1110,7 +1124,6 @@ Import-Module -DisableNameChecking "x:\ruta\al\modulo\trigonometria"
 $area = Calcular-AreaRectangulo 12 34
 Write-Host "Área = $area"
 ```
-
 
 ## Arrays (vectores)
 
@@ -1163,4 +1176,3 @@ Conocer el número de elementos del array:
 PS> $miArray.Length
 4 
 ```
-
