@@ -4,9 +4,7 @@ title: Scripting en PowerShell
 
 ## Habilitar la ejecución de scripts PowerShell
 
-> IMPORTANTE: Para poder ejecutar scripts PowerShell. 
-
-Abrir un PowerShell como **Administrador** y ejecutar el siguiente comando:
+Para poder ejecutar scripts `.ps1` debemos abrir PowerShell como **Administrador** y ejecutar el siguiente comando:
 
 ```powershell
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass -Force;
