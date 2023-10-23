@@ -4,7 +4,7 @@ title: Scripting en PowerShell
 
 ## Habilitar la ejecución de scripts PowerShell
 
-> IMPORTANTE: Para poder ejecutar scripts PowerShell.
+> IMPORTANTE: Para poder ejecutar scripts PowerShell. 
 
 Abrir un PowerShell como **Administrador** y ejecutar el siguiente comando:
 
@@ -13,6 +13,8 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass -Force;
 ```
 
 El comando anterior deshabilitará las políticas de ejecución de scripts PowerShell (`Bypass`) para el usuario actual (`CurrentUser`).
+
+> OJO: Se debe hacer esto con precaución.
 
 ## El primer script
 
