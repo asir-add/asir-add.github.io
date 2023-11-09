@@ -127,9 +127,11 @@ PS> Start-Process -FilePath fichero
 
 ## Calificación
 
-| Opción | Funcionalidad     | Peso (%) |
-| ------ | ----------------- |:--------:|
-| -Help  | Mostrar la ayuda. | 10       |
-|        |                   |          |
-|        |                   |          |
-|        |                   |          |
+| Opción        | Funcionalidad                              | Peso (%) |
+| ------------- | ------------------------------------------ |:--------:|
+| `-Help`       | Mostrar la ayuda.                          | 10       |
+| `-Show`       | Abrir fichero dentro de comprimido.        | 15       |
+| `-Add`        | Añadir fichero a comprimido.               | 15       |
+| `-Remove`     | Eliminar fichero de comprimido.            | 15       |
+| `-Extract`    | Extraer un fichero de comprimido.          | 25       |
+| `-ExtractAll` | Extraer todos los ficheros del comprimido. | 20       |
