@@ -28,16 +28,17 @@ Este proyecto consiste en implementar un script para el PowerShell de Windows qu
 La sintaxis del script es la siguiente:
 
 ```powershell
-Clean-MemoryStick.ps1 [ -Help | -Check [unidad] | -Clean [unidad] [-Quarantine] ]
+Clean-MemoryStick.ps1 [ -Help | -Check unidad | -CheckAll  | -Clean unidad [-Quarantine] ]
 ```
 
 El funcionamiento del script será el siguiente:
 
-| Opción                          | Descripción                                                  |
-| ------------------------------- | ------------------------------------------------------------ |
-| `-Help`                         | Muestra la ayuda de sí mismo: `Get-Help .\Clean-MemoryStick.ps1` |
-| `-Check [unidad] `              | Busca en todos los dispositivos removibles (pendrives) si existe fichero `autorun.inf`; si existe, se extraerá el nombre del ejecutable de la opción `open`  y se mostrará la letra de la unidad y el nombre del ejecutable.  Si se especifica la letra de la unidad (D:, E:, F:, ...), sólo se comprobará esa unidad. |
-| `-Clean [unidad] [-Quarantine]` | Busca en todos los dispositivos removibles (pendrives) si existe fichero `autorun.inf`; si existe, se extraerá el nombre del ejecutable de la opción `open`  y se preguntará al usuario si se quiere eliminar el ejecutable de la unidad correspondiente.  Si se especifica la letra de la unidad (D:, E:, F:, ...), sólo se comprobará esa unidad. Si se especifica además la opción `-Quarantine`, en vez de eliminar los archivos ejecutables, se moverán a la carpeta `.quarantine` en el directorio HOME del usuario (`$HOME\.quarantine`). Este directorio deberá crearse si no existe. |
+| Opción                        | Descripción                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-Help`                       | Muestra la ayuda de sí mismo: `Get-Help .\Clean-MemoryStick.ps1`                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `-Check unidad`               | Busca en la unidad (C:, D:, E:, ...) del dispositivo removible (pendrive) si existe el fichero `autorun.inf`; si existe, se extraerá el nombre del ejecutable de la opción `open`  y se mostrará la letra de la unidad y el nombre del ejecutable.                                                                                                                                                                                                                                                                     |
+| `-CheckAll`                   | Similar a `-Check` pero busca en todos los dispositivos removibles.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `-Clean unidad [-Quarantine]` | Busca en la unidad (C:, D:, E:, ...) del dispositivo removible (pendrive) si existe fichero `autorun.inf`; si existe, se extraerá el nombre del ejecutable de la opción `open`  y se preguntará al usuario si se quiere eliminar el ejecutable de la unidad correspondiente. Si se especifica además la opción `-Quarantine`, en vez de eliminar los archivos ejecutables, se moverán a la carpeta `.quarantine` en el directorio HOME del usuario (`$HOME\.quarantine`). Este directorio deberá crearse si no existe. |
 
 > El script deberá contener los comentarios de ayuda de PowerShell, de forma que se muestre toda la información del mismo con `Get-Help`.
 
@@ -56,7 +57,7 @@ PS> .\Clean-MemoryStick.ps1 -Check E:
 E: - peazovirus.exe
 
 # Comprobar si hay virus en todas las unidades (E: y F: en este caso)
-PS> .\Clean-MemoryStick.ps1 -Check
+PS> .\Clean-MemoryStick.ps1 -CheckAll
 E: - peazovirus.exe
 F: - No se ha encontrado nada.
 
@@ -66,7 +67,13 @@ E: - peazovirus.exe
 ¿Desea eliminar el ejecutable? (S/N): s
 El ejecutable peazovirus.exe ha sido eliminado de la unidad E:
 
-# Poner en cuarentena virus en la unidad E:
+# Poner en cuarentena el virus en la unidad E:
+PS> .\Clean-MemoryStick.ps1 -Clean E: -Quarantine
+E: - peazovirus.exe
+¿Desea poner el ejecutable en cuarentena? (S/N): s
+El ejecutable peazovirus.exe de la unidad E: ha sido puesto en cuarentena.
+
+# Poner en cuarentena lo que hay en todas las unidades
 PS> .\Clean-MemoryStick.ps1 -Clean E: -Quarantine
 E: - peazovirus.exe
 ¿Desea poner el ejecutable en cuarentena? (S/N): s
@@ -83,9 +90,10 @@ PS> Get-PSDrive | Where-Object { $_.Provider.Name -eq "FileSystem" -and $_.Free 
 
 ## Calificación
 
-| Opción             | Funcionalidad                                       | Peso (%) |
-| ------------------ | --------------------------------------------------- | :------: |
-| -Help              | Mostrar la ayuda.                                   |    10    |
-| -Check             | Buscar ejecutables en `autorun.inf`.                |    30    |
-| -Clean             | Eliminar ejecutables en `autorun.inf`.              |    45    |
-| -Clean -Quarantine | Mover ejecutables en `autorun.inf` a `.quarantine`. |    15    |
+| Opción      | Funcionalidad                                       | Peso (%) |
+| ----------- | --------------------------------------------------- |:--------:|
+| -Help       | Mostrar la ayuda.                                   | 10       |
+| -Check      | Buscar ejecutables en `autorun.inf`.                | 20       |
+| -CheckAll   | Check en todas las unidades.                        | 15       |
+| -Clean      | Eliminar ejecutables en `autorun.inf`.              | 40       |
+| -Quarantine | Mover ejecutables en `autorun.inf` a `.quarantine`. | 15       |
