@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Script de validación para actividad de OpenLDAP
+# Módulo: ADD
+# Última modificación: 2024-02-2
+# Autor: Javier Valencia Rodríguez
+
 HOST="$1"
 if [ -z "$HOST" ]; then
 	HOST="localhost"
@@ -7,16 +12,17 @@ fi
 TMPFILE=$(mktemp)
 ERRORS=0
 TOTAL=0
+DOMAIN="dc=iescanarias,dc=es"
 
 ASIR1=(
-	"ou=ASIR1,dc=iescanarias,dc=es"
+	"ou=ASIR1,$DOMAIN"
 	"ou: ASIR1"
 	"objectClass: organizationalUnit"
 	"objectClass: top"
 )
 
 AlumnosASIR1=(
-	"cn=AlumnosASIR1,ou=ASIR1,dc=iescanarias,dc=es"
+	"cn=AlumnosASIR1,ou=ASIR1,$DOMAIN"
 	"gidNumber: 2001"
 	"cn: AlumnosASIR1"
 	"memberUid: cbronson"
@@ -28,7 +34,7 @@ AlumnosASIR1=(
 )
 
 ProfesoresASIR1=(
-	"cn=ProfesoresASIR1,ou=ASIR1,dc=iescanarias,dc=es"
+	"cn=ProfesoresASIR1,ou=ASIR1,$DOMAIN"
 	"gidNumber: 3001"
 	"cn: ProfesoresASIR1"
 	"memberUid: fvargas"
@@ -38,7 +44,7 @@ ProfesoresASIR1=(
 )
 
 Charles_Bronson=(
-	"cn=Charles Bronson,ou=ASIR1,dc=iescanarias,dc=es"
+	"cn=Charles Bronson,ou=ASIR1,$DOMAIN"
 	"cn: Charles Bronson"
 	"givenName: Charles"
 	"sn: Bronson"
@@ -55,7 +61,7 @@ Charles_Bronson=(
 )
 
 Chuck_Norris=(
-	"cn=Chuck Norris,ou=ASIR1,dc=iescanarias,dc=es"
+	"cn=Chuck Norris,ou=ASIR1,$DOMAIN"
 	"cn: Chuck Norris"
 	"givenName: Chuck"
 	"sn: Norris"
@@ -72,7 +78,7 @@ Chuck_Norris=(
 )
 
 Clint_Eastwood=(
-	"cn=Clint Eastwood,ou=ASIR1,dc=iescanarias,dc=es"
+	"cn=Clint Eastwood,ou=ASIR1,$DOMAIN"
 	"cn: Clint Eastwood"
 	"givenName: Clint"
 	"sn: Eastwood"
@@ -89,7 +95,7 @@ Clint_Eastwood=(
 )
 
 Michael_Knight=(
-	"cn=Michael Knight,ou=ASIR1,dc=iescanarias,dc=es"
+	"cn=Michael Knight,ou=ASIR1,$DOMAIN"
 	"cn: Michael Knight"
 	"givenName: Michael"
 	"sn: Knight"
@@ -106,14 +112,14 @@ Michael_Knight=(
 )
 
 ASIR2=(
-	"ou=ASIR2,dc=iescanarias,dc=es"
+	"ou=ASIR2,$DOMAIN"
 	"ou: ASIR2"
 	"objectClass: organizationalUnit"
 	"objectClass: top"
 )
 
 AlumnosASIR2=(
-	"cn=AlumnosASIR2,ou=ASIR2,dc=iescanarias,dc=es"
+	"cn=AlumnosASIR2,ou=ASIR2,$DOMAIN"
 	"gidNumber: 2002"
 	"cn: AlumnosASIR2"
 	"memberUid: mbarracus"
@@ -125,7 +131,7 @@ AlumnosASIR2=(
 )
 
 ProfesoresASIR2=(
-	"cn=ProfesoresASIR2,ou=ASIR2,dc=iescanarias,dc=es"
+	"cn=ProfesoresASIR2,ou=ASIR2,$DOMAIN"
 	"gidNumber: 3002"
 	"cn: ProfesoresASIR2"
 	"memberUid: aperez"
@@ -135,7 +141,7 @@ ProfesoresASIR2=(
 )
 
 MA_Barracus=(
-	"cn=MA Barracus,ou=ASIR2,dc=iescanarias,dc=es"
+	"cn=MA Barracus,ou=ASIR2,$DOMAIN"
 	"cn: MA Barracus"
 	"givenName: MA"
 	"sn: Barracus"
@@ -152,7 +158,7 @@ MA_Barracus=(
 )
 
 Phoenix_Johnson=(
-	"cn=Phoenix Johnson,ou=ASIR2,dc=iescanarias,dc=es"
+	"cn=Phoenix Johnson,ou=ASIR2,$DOMAIN"
 	"cn: Phoenix Johnson"
 	"givenName: Phoenix"
 	"sn: Johnson"
@@ -168,7 +174,7 @@ Phoenix_Johnson=(
 )
 
 Anibal_Smith=(
-	"cn=Anibal Smith,ou=ASIR2,dc=iescanarias,dc=es"
+	"cn=Anibal Smith,ou=ASIR2,$DOMAIN"
 	"cn: Anibal Smith"
 	"givenName: Anibal"
 	"sn: Smith"
@@ -185,7 +191,7 @@ Anibal_Smith=(
 )
 
 Murdock_Sanchez=(
-	"cn=Murdock Sánchez,ou=ASIR2,dc=iescanarias,dc=es"
+	"cn=Murdock Sánchez,ou=ASIR2,$DOMAIN"
 	"cn: Murdock Sánchez"
 	"givenName: Murdock"
 	"sn: Sánchez"
@@ -202,14 +208,14 @@ Murdock_Sanchez=(
 )
 
 Profesores=(
-	"ou=Profesores,dc=iescanarias,dc=es"
+	"ou=Profesores,$DOMAIN"
 	"ou: Profesores"
 	"objectClass: organizationalUnit"
 	"objectClass: top"
 )
 
 _Profesores=(
-	"cn=Profesores,ou=Profesores,dc=iescanarias,dc=es"
+	"cn=Profesores,ou=Profesores,$DOMAIN"
 	"gidNumber: 3000"
 	"cn: Profesores"
 	"memberUid: fvargas"
@@ -220,7 +226,7 @@ _Profesores=(
 )
 
 Francisco_Vargas=(
-	"cn=Francisco Vargas,ou=Profesores,dc=iescanarias,dc=es"
+	"cn=Francisco Vargas,ou=Profesores,$DOMAIN"
 	"cn: Francisco Vargas"
 	"givenName: Francisco"
 	"sn: Vargas"
@@ -237,7 +243,7 @@ Francisco_Vargas=(
 )
 
 Angel_Perez=(
-	"cn=Ángel Pérez,ou=Profesores,dc=iescanarias,dc=es"
+	"cn=Ángel Pérez,ou=Profesores,$DOMAIN"
 	"cn: Ángel Pérez"
 	"givenName: Ángel"
 	"sn: Pérez"
@@ -254,7 +260,7 @@ Angel_Perez=(
 )
 
 Paco_Gonzalez=(
-	"cn=Paco González,ou=Profesores,dc=iescanarias,dc=es"
+	"cn=Paco González,ou=Profesores,$DOMAIN"
 	"cn: Paco González"
 	"givenName: Paco"
 	"sn: González"
@@ -313,7 +319,7 @@ main() {
 
 check() {
 	(( TOTAL += $# ))
-	ldapsearch -x -b "$1" -s base -h "$HOST" >$TMPFILE 2>/dev/null
+	ldapsearch -x -b "$1" -s base -H "ldap://$HOST" >$TMPFILE 2>/dev/null
 	
 	case $? in
 		255) show error "*** FALLO DE CONEXION ***"; exit ;;
@@ -367,7 +373,7 @@ decode_attributes() {
 	mv "$1.decoded" "$1"
 }
 
-if [[ ! -x /usr/bin/ldapsearch ]]; then
+if [ ! -x /usr/bin/ldapsearch ]; then
 	echo "Necesita instalar el paquete 'ldap-utils'."
 	exit
 fi
