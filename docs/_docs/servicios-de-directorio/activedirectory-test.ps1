@@ -8,7 +8,7 @@
         "givenName" = "Charles"
         "surname" = "Bronson"
         "mail" = "bronson@gmail.com"
-        "userPrincipalName" = "cbronson@iesdpm.com"
+        "userPrincipalName" = "cbronson@iescanarias.es"
         "enabled" = "true"
         "cannotChangePassword" = "false"
     }
@@ -18,7 +18,7 @@
         "givenName" = "Chuck"
         "surname" = "Norris"
         "mail" = "norris@hotmail.com"
-        "userPrincipalName" = "cnorris@iesdpm.com"
+        "userPrincipalName" = "cnorris@iescanarias.es"
         "enabled" = "true"
         "cannotChangePassword" = "false"
     }
@@ -28,7 +28,7 @@
         "givenName" = "Clint"
         "surname" = "Eastwood"
         "mail" = "clint@yahoo.es"
-        "userPrincipalName" = "eastwood@iesdpm.com"
+        "userPrincipalName" = "eastwood@iescanarias.es"
         "enabled" = "false"
         "cannotChangePassword" = "true"
     }
@@ -38,7 +38,7 @@
         "givenName" = "Michael"
         "surname" = "Knight"
         "mail" = "maikel@hotmail.es"
-        "userPrincipalName" = "mknight@iesdpm.com"
+        "userPrincipalName" = "mknight@iescanarias.es"
         "enabled" = "true"
         "cannotChangePassword" = "false"
     }
@@ -70,7 +70,7 @@
         "givenName" = "MA"
         "surname" = "Barracus"
         "mail" = "ma@barracus.com"
-        "userPrincipalName" = "mbarracus@iesdpm.com"
+        "userPrincipalName" = "mbarracus@iescanarias.es"
         "enabled" = "true"
         "cannotChangePassword" = "false"
     }
@@ -79,7 +79,7 @@
         "objectClass" = "user"
         "givenName" = "Phoenix"
         "surname" = "Johnson"
-        "userPrincipalName" = "phoenix@iesdpm.com"
+        "userPrincipalName" = "phoenix@iescanarias.es"
         "enabled" = "true"
         "cannotChangePassword" = "false"
     }
@@ -89,7 +89,7 @@
         "givenName" = "Anibal"
         "surname" = "Smith"
         "mail" = "asmith@todoloquepuedas.com"
-        "userPrincipalName" = "asmith@iesdpm.com"
+        "userPrincipalName" = "asmith@iescanarias.es"
         "enabled" = "true"
         "cannotChangePassword" = "false"
     }
@@ -99,7 +99,7 @@
         "givenName" = "Murdock"
         "surname" = "Sánchez"
         "mail" = "murdock69@hotmail.com"
-        "userPrincipalName" = "murdock@iesdpm.com"
+        "userPrincipalName" = "murdock@iescanarias.es"
         "enabled" = "true"
         "cannotChangePassword" = "true"
     }
@@ -131,7 +131,7 @@
         "givenName" = "Francisco"
         "surname" = "Vargas"
         "mail" = "fran@iesdpm.org"
-        "userPrincipalName" = "fvargas@iesdpm.com"
+        "userPrincipalName" = "fvargas@iescanarias.es"
         "enabled" = "true"
         "cannotChangePassword" = "false"
     }
@@ -141,7 +141,7 @@
         "givenName" = "Ángel"
         "surname" = "Pérez"
         "mail" = "angel@iesdpm.org"
-        "userPrincipalName" = "aperez@iesdpm.com"
+        "userPrincipalName" = "aperez@iescanarias.es"
         "enabled" = "true"
         "cannotChangePassword" = "false"
     }
@@ -151,7 +151,7 @@
         "givenName" = "Paco"
         "surname" = "González"
         "mail" = "paco@iesdpm.org"
-        "userPrincipalName" = "pgonzalez@iesdpm.com"
+        "userPrincipalName" = "pgonzalez@iescanarias.es"
         "enabled" = "false"
         "cannotChangePassword" = "true"
     }
